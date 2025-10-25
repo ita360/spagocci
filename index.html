@@ -2,7 +2,7 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8">
-  <title>Progetto Spagocci 1.0</title>
+  <title>Catalogo Recensioni da Discord</title>
   <style>
     body { font-family: sans-serif; padding: 20px; background: #f9f9f9; }
     h1 { margin-bottom: 20px; }
@@ -12,14 +12,34 @@
   </style>
 </head>
 <body>
-  <h1>Se ci credi non è impossibile</h1>
+  <h1>Oggetti da Discord</h1>
   <div id="catalogo"></div>
 
   <script>
-    fetch('https://ita360.github.io/spagocci/data.json')
+    const timestamp = new Date().getTime(); // cache busting
+    fetch(`https://ita360.github.io/spagocci/data.json?t=${timestamp}`)
       .then(res => {
         if (!res.ok) throw new Error('File non trovato o accesso negato');
         return res.json();
       })
       .then(data => {
-
+        if (!Array.isArray(data)) throw new Error('Formato JSON non valido');
+        data.reverse().forEach(item => {
+          const div = document.createElement('div');
+          div.className = 'item';
+          div.innerHTML = `
+            <p>${item.text}</p>
+            ${item.link ? `<a href="${item.link}" target="_blank">🔗 Link</a>` : ''}
+            ${item.image ? `<img src="${item.image}" alt="Immagine"/>` : ''}
+            <small>${new Date(item.timestamp).toLocaleString()}</small>
+          `;
+          document.getElementById('catalogo').appendChild(div);
+        });
+      })
+      .catch(err => {
+        document.getElementById('catalogo').innerHTML = `<p style="color:red;">❌ Errore: ${err.message}</p>`;
+        console.error('Errore nel caricamento:', err);
+      });
+  </script>
+</body>
+</html>
