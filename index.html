@@ -14,10 +14,9 @@
 <body>
   <h1>Se ci credi non è un sogno</h1>
   <div id="catalogo"></div>
-
   <script>
     const timestamp = new Date().getTime(); // cache busting
-    fetch(`https://spagocci.github.com/spagocci/data.json?t=${timestamp}`)
+   fetch(`https://spagocci.github.io/recensioni/data.json?t=${timestamp}`)
       .then(res => {
         if (!res.ok) throw new Error('File non trovato o accesso negato');
         return res.json();
@@ -44,3 +43,4 @@ ${item.link
   </script>
 </body>
 </html>
+
