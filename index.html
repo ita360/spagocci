@@ -7,7 +7,28 @@
     body { font-family: sans-serif; padding: 20px; background: #f9f9f9; }
     h1 { margin-bottom: 10px; }
     button { margin-bottom: 20px; padding: 8px 12px; font-size: 1em; cursor: pointer; }
-    .item { margin-bottom: 20px; padding: 10px; background: #fff; border: 1px solid #ccc; }
+
+    .row {
+      display: flex;
+      gap: 20px;
+    }
+
+    .column {
+      flex: 1;
+      background: #fff;
+      padding: 10px;
+      border: 1px solid #ccc;
+      overflow-y: auto;
+      max-height: 80vh;
+    }
+
+    .item {
+      margin-bottom: 20px;
+      padding: 10px;
+      background: #fefefe;
+      border: 1px solid #ddd;
+    }
+
     img { max-width: 200px; display: block; margin-top: 10px; }
     small { color: #666; font-size: 0.9em; }
   </style>
@@ -15,11 +36,19 @@
 <body>
   <h1>Se ci credi non è un sogno</h1>
   <button onclick="caricaCatalogo()">🔄 Aggiorna contenuto</button>
-  <div id="catalogo"></div>
+
+  <div class="row">
+    <div class="column" id="canaleSinistra">
+      <h2>#tutti</h2>
+    </div>
+    <div class="column" id="canaleDestra">
+      <h2>#perpochisecondi</h2>
+    </div>
+  </div>
 
   <script>
     function caricaCatalogo() {
-      const timestamp = new Date().getTime(); // cache busting
+      const timestamp = new Date().getTime();
       fetch(`https://spagocci.github.io/recensioni/data.json?t=${timestamp}`)
         .then(res => {
           if (!res.ok) throw new Error('File non trovato o accesso negato');
@@ -27,8 +56,12 @@
         })
         .then(data => {
           if (!Array.isArray(data)) throw new Error('Formato JSON non valido');
-          const container = document.getElementById('catalogo');
-          container.innerHTML = ''; // pulisce prima di aggiornare
+
+          const sinistra = document.getElementById('canaleSinistra');
+          const destra = document.getElementById('canaleDestra');
+          sinistra.innerHTML = '<h2>#tutti</h2>';
+          destra.innerHTML = '<h2>#perpochisecondi</h2>';
+
           data.reverse().forEach(item => {
             const div = document.createElement('div');
             div.className = 'item';
@@ -39,17 +72,23 @@
               ${item.image ? `<img src="${item.image}" alt="Immagine"/>` : ''}
               <small>${new Date(item.timestamp).toLocaleString()}</small>
             `;
-            container.appendChild(div);
+
+            if (item.sourceChannel === '1431706668881805364') {
+              sinistra.appendChild(div);
+            } else if (item.sourceChannel === '1430829927175032954') {
+              destra.appendChild(div);
+            }
           });
         })
         .catch(err => {
-          document.getElementById('catalogo').innerHTML = `<p style="color:red;">❌ Errore: ${err.message}</p>`;
+          document.getElementById('canaleSinistra').innerHTML = `<p style="color:red;">❌ Errore: ${err.message}</p>`;
+          document.getElementById('canaleDestra').innerHTML = `<p style="color:red;">❌ Errore: ${err.message}</p>`;
           console.error('Errore nel caricamento:', err);
         });
     }
 
-    caricaCatalogo(); // prima chiamata
-    setInterval(caricaCatalogo, 15000); // ogni 15 secondi
+    caricaCatalogo();
+    setInterval(caricaCatalogo, 15000);
   </script>
 </body>
 </html>
