@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head><title>Catalogo Recensioni</title></head>
+<body>
+  <h1>Lista Oggetti</h1>
+  <div id="catalogo"></div>
+
+  <script>
+    fetch('data.json')
+      .then(res => res.text())
+      .then(text => {
+        const data = JSON.parse('[' + text.trim().replace(/,$/, '') + ']');
+        data.forEach(item => {
+          document.getElementById('catalogo').innerHTML += `
+            <div style="margin-bottom:20px;">
+              <p>${item.text}</p>
+              <a href="${item.link}" target="_blank">🔗 Link</a><br/>
+              ${item.image ? `<img src="${item.image}" width="150"/>` : ''}
+              <hr/>
+            </div>`;
+        });
+      });
+  </script>
+</body>
+</html>
