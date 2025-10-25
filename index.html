@@ -5,7 +5,8 @@
   <title>Progetto Spagocci 1.1</title>
   <style>
     body { font-family: sans-serif; padding: 20px; background: #f9f9f9; }
-    h1 { margin-bottom: 20px; }
+    h1 { margin-bottom: 10px; }
+    button { margin-bottom: 20px; padding: 8px 12px; font-size: 1em; cursor: pointer; }
     .item { margin-bottom: 20px; padding: 10px; background: #fff; border: 1px solid #ccc; }
     img { max-width: 200px; display: block; margin-top: 10px; }
     small { color: #666; font-size: 0.9em; }
@@ -13,34 +14,42 @@
 </head>
 <body>
   <h1>Se ci credi non è un sogno</h1>
+  <button onclick="caricaCatalogo()">🔄 Aggiorna contenuto</button>
   <div id="catalogo"></div>
+
   <script>
-    const timestamp = new Date().getTime(); // cache busting
-   fetch(`https://spagocci.github.io/recensioni/data.json?t=${timestamp}`)
-      .then(res => {
-        if (!res.ok) throw new Error('File non trovato o accesso negato');
-        return res.json();
-      })
-      .then(data => {
-        if (!Array.isArray(data)) throw new Error('Formato JSON non valido');
-        data.reverse().forEach(item => {
-          const div = document.createElement('div');
-          div.className = 'item';
-          div.innerHTML = `
-${item.link
-  ? `<p><a href="${item.link}" target="_blank">${item.text}</a></p>`
-  : `<p>${item.text}</p>`}
-            ${item.image ? `<img src="${item.image}" alt="Immagine"/>` : ''}
-            <small>${new Date(item.timestamp).toLocaleString()}</small>
-          `;
-          document.getElementById('catalogo').appendChild(div);
+    function caricaCatalogo() {
+      const timestamp = new Date().getTime(); // cache busting
+      fetch(`https://spagocci.github.io/recensioni/data.json?t=${timestamp}`)
+        .then(res => {
+          if (!res.ok) throw new Error('File non trovato o accesso negato');
+          return res.json();
+        })
+        .then(data => {
+          if (!Array.isArray(data)) throw new Error('Formato JSON non valido');
+          const container = document.getElementById('catalogo');
+          container.innerHTML = ''; // pulisce prima di aggiornare
+          data.reverse().forEach(item => {
+            const div = document.createElement('div');
+            div.className = 'item';
+            div.innerHTML = `
+              ${item.link
+                ? `<p><a href="${item.link}" target="_blank">${item.text}</a></p>`
+                : `<p>${item.text}</p>`}
+              ${item.image ? `<img src="${item.image}" alt="Immagine"/>` : ''}
+              <small>${new Date(item.timestamp).toLocaleString()}</small>
+            `;
+            container.appendChild(div);
+          });
+        })
+        .catch(err => {
+          document.getElementById('catalogo').innerHTML = `<p style="color:red;">❌ Errore: ${err.message}</p>`;
+          console.error('Errore nel caricamento:', err);
         });
-      })
-      .catch(err => {
-        document.getElementById('catalogo').innerHTML = `<p style="color:red;">❌ Errore: ${err.message}</p>`;
-        console.error('Errore nel caricamento:', err);
-      });
+    }
+
+    caricaCatalogo(); // prima chiamata
+    setInterval(caricaCatalogo, 15000); // ogni 15 secondi
   </script>
 </body>
 </html>
-
