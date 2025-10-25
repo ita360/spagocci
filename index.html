@@ -44,6 +44,9 @@
     <div class="column" id="canaleDestra">
       <h2>#perpochisecondi</h2>
     </div>
+    <div class="column" id="canaleFiltrati">
+      <h2>#filtrati</h2>
+    </div>
   </div>
 
   <script>
@@ -59,8 +62,11 @@
 
           const sinistra = document.getElementById('canaleSinistra');
           const destra = document.getElementById('canaleDestra');
+          const filtrati = document.getElementById('canaleFiltrati');
+
           sinistra.innerHTML = '<h2>#tutti</h2>';
           destra.innerHTML = '<h2>#perpochisecondi</h2>';
+          filtrati.innerHTML = '<h2>#filtrati</h2>';
 
           data.reverse().forEach(item => {
             const div = document.createElement('div');
@@ -77,12 +83,15 @@
               sinistra.appendChild(div);
             } else if (item.sourceChannel === '1430829927175032954') {
               destra.appendChild(div);
+            } else if (item.sourceChannel === '1431551820509089842') {
+              filtrati.appendChild(div);
             }
           });
         })
         .catch(err => {
           document.getElementById('canaleSinistra').innerHTML = `<p style="color:red;">❌ Errore: ${err.message}</p>`;
           document.getElementById('canaleDestra').innerHTML = `<p style="color:red;">❌ Errore: ${err.message}</p>`;
+          document.getElementById('canaleFiltrati').innerHTML = `<p style="color:red;">❌ Errore: ${err.message}</p>`;
           console.error('Errore nel caricamento:', err);
         });
     }
