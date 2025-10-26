@@ -5,14 +5,14 @@
   <meta charset="UTF-8">
   <title>Spagocci 1.10</title>
   <style>
-#sliders {
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+.slider-label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 1.1em;
+  font-weight: bold;
 }
-#sliders label {
-  font-size: 0.9em;
+.slider-label input[type="range"] {
+  width: 100%;
 }
 
 body {
@@ -111,37 +111,40 @@ small {
   <audio id="soundGenerale" src="https://www.myinstants.com/media/sounds/tutti.wav" preload="auto"></audio>
   <audio id="soundPochiSecondi" src="https://github.com/spagocci/recensioni/blob/main/perte.mp3" preload="auto"></audio>
   
-  <div class="row">
-    <div class="column" id="canaleSinistra">
-      <h2>#tutti</h2>
-    </div>
-    <div class="resizer" id="resizer1"></div>
-    <div class="column" id="canaleDestra">
-      <h2>#perpochisecondi</h2>
-    </div>
-    <div class="resizer" id="resizer2"></div>
-    <div class="column" id="canaleFiltrati">
-      <h2>#filtrati</h2>
-    </div>
+<div class="row">
+  <div class="column" id="canaleSinistra">
+    <label class="slider-label">
+      Larghezza #tutti:
+      <input type="range" id="sliderSinistra" min="100" max="800">
+      <span id="valSinistra"></span>
+    </label>
+    <h2>#tutti</h2>
   </div>
 
-<div id="sliders">
-  <label>
-    Larghezza #tutti:
-    <input type="range" id="sliderSinistra" min="100" max="800">
-    <span id="valSinistra"></span>
-  </label>
-  <label>
-    Larghezza #perpochisecondi:
-    <input type="range" id="sliderDestra" min="100" max="800">
-    <span id="valDestra"></span>
-  </label>
-  <label>
-    Larghezza #filtrati:
-    <input type="range" id="sliderFiltrati" min="100" max="800">
-    <span id="valFiltrati"></span>
-  </label>
+  <div class="resizer" id="resizer1"></div>
+
+  <div class="column" id="canaleDestra">
+    <label class="slider-label">
+      Larghezza #perpochisecondi:
+      <input type="range" id="sliderDestra" min="100" max="800">
+      <span id="valDestra"></span>
+    </label>
+    <h2>#perpochisecondi</h2>
+  </div>
+
+  <div class="resizer" id="resizer2"></div>
+
+  <div class="column" id="canaleFiltrati">
+    <label class="slider-label">
+      Larghezza #filtrati:
+      <input type="range" id="sliderFiltrati" min="100" max="800">
+      <span id="valFiltrati"></span>
+    </label>
+    <h2>#filtrati</h2>
+  </div>
 </div>
+
+
 
 <script>
 const valSinistra = document.getElementById('valSinistra');
