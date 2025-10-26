@@ -3,7 +3,7 @@
 <head>
 <link rel="icon" href="https://github.com/spagocci/recensioni/blob/main/icona.png" type="image/png">
   <meta charset="UTF-8">
-  <title>Spagocci 1.11</title>
+  <title>Spagocci 1.10</title>
   <style>
 .slider-label {
   display: block;
@@ -106,7 +106,7 @@ small {
   </style>
 </head>
 <body>
-  <h1><a href="https://sites.google.com/view/davidespagocci/informazioni">iSTRUZiONi LEGGIMI!</a></h1>
+    <h1><a href="https://sites.google.com/view/davidespagocci/informazioni">iSTRUZiONi LEGGIMI!</a></h1>
   <button id="toggleAudio">🔈 Audio: Attivo</button>
   <audio id="soundGenerale" src="https://www.myinstants.com/media/sounds/tutti.wav" preload="auto"></audio>
   <audio id="soundPochiSecondi" src="https://github.com/spagocci/recensioni/blob/main/perte.mp3" preload="auto"></audio>
@@ -199,7 +199,7 @@ function caricaCatalogo() {
         const soundGenerale = document.getElementById('soundGenerale');
         const soundPochiSecondi = document.getElementById('soundPochiSecondi');
 
-        if (item.sourceChannel === '1431706668881805364') {
+        if (item.sourceChannel === '1432128848534962402') {
           contenutoSinistra.appendChild(div);
           if (!primaVolta && audioAttivo && isNuovo && soundGenerale) soundGenerale.play().catch(() => {});
         } else if (item.sourceChannel === '1430829927175032954') {
@@ -325,6 +325,3 @@ sliderFiltrati.addEventListener('input', e => {
 </script>
 </body>
 </html>
-
-
-
