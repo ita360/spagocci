@@ -183,7 +183,7 @@ function caricaCatalogo() {
       contenutoDestra.innerHTML = '';
       contenutoFiltrati.innerHTML = '';
 
-      data.reverse().forEach(item => {
+      data.forEach(item => {
         const isNuovo = !messaggiVisualizzati.has(item.id);
         messaggiVisualizzati.add(item.id);
         localStorage.setItem('messaggiVisualizzati', JSON.stringify([...messaggiVisualizzati]));
@@ -325,5 +325,6 @@ sliderFiltrati.addEventListener('input', e => {
 </script>
 </body>
 </html>
+
 
 
