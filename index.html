@@ -119,6 +119,7 @@ small {
       <span id="valSinistra"></span>
     </label>
     <h2>#tutti</h2>
+    <div class="contenuto" id="contenutoSinistra"></div>
   </div>
 
   <div class="resizer" id="resizer1"></div>
@@ -130,6 +131,7 @@ small {
       <span id="valDestra"></span>
     </label>
     <h2>#perpochisecondi</h2>
+    <div class="contenuto" id="contenutoDestra"></div>
   </div>
 
   <div class="resizer" id="resizer2"></div>
@@ -141,10 +143,9 @@ small {
       <span id="valFiltrati"></span>
     </label>
     <h2>#filtrati</h2>
+    <div class="contenuto" id="contenutoFiltrati"></div>
   </div>
 </div>
-
-
 
 <script>
 const valSinistra = document.getElementById('valSinistra');
@@ -174,13 +175,13 @@ function caricaCatalogo() {
     .then(data => {
       if (!Array.isArray(data)) throw new Error('Formato JSON non valido');
 
-      const sinistra = document.getElementById('canaleSinistra');
-      const destra = document.getElementById('canaleDestra');
-      const filtrati = document.getElementById('canaleFiltrati');
+      const contenutoSinistra = document.getElementById('contenutoSinistra');
+      const contenutoDestra = document.getElementById('contenutoDestra');
+      const contenutoFiltrati = document.getElementById('contenutoFiltrati');
 
-      sinistra.innerHTML = '<h2>#tutti</h2>';
-      destra.innerHTML = '<h2>#perpochisecondi</h2>';
-      filtrati.innerHTML = '<h2>#filtrati</h2>';
+      contenutoSinistra.innerHTML = '';
+      contenutoDestra.innerHTML = '';
+      contenutoFiltrati.innerHTML = '';
 
       data.reverse().forEach(item => {
         const isNuovo = !messaggiVisualizzati.has(item.id);
@@ -199,21 +200,25 @@ function caricaCatalogo() {
         const soundPochiSecondi = document.getElementById('soundPochiSecondi');
 
         if (item.sourceChannel === '1431706668881805364') {
-          sinistra.appendChild(div);
+          contenutoSinistra.appendChild(div);
           if (!primaVolta && audioAttivo && isNuovo && soundGenerale) soundGenerale.play().catch(() => {});
         } else if (item.sourceChannel === '1430829927175032954') {
-          destra.appendChild(div);
-          if (!primaVolta && audioAttivo && isNuovo && soundPochiSecondi) soundPochiSecondi.play().catch(() => {});
+          contenutoDestra.appendChild(div);
+                   if (!primaVolta && audioAttivo && isNuovo && soundPochiSecondi) {
+            soundPochiSecondi.play().catch(() => {});
+          }
         } else if (item.sourceChannel === '1431551820509089842') {
-          filtrati.appendChild(div);
-          if (!primaVolta && audioAttivo && isNuovo && soundGenerale) soundGenerale.play().catch(() => {});
+          contenutoFiltrati.appendChild(div);
+          if (!primaVolta && audioAttivo && isNuovo && soundGenerale) {
+            soundGenerale.play().catch(() => {});
+          }
         }
       });
     })
     .catch(err => {
-      document.getElementById('canaleSinistra').innerHTML = `<p style="color:red;">❌ Errore: ${err.message}</p>`;
-      document.getElementById('canaleDestra').innerHTML = `<p style="color:red;">❌ Errore: ${err.message}</p>`;
-      document.getElementById('canaleFiltrati').innerHTML = `<p style="color:red;">❌ Errore: ${err.message}</p>`;
+      document.getElementById('contenutoSinistra').innerHTML = `<p style="color:red;">❌ Errore: ${err.message}</p>`;
+      document.getElementById('contenutoDestra').innerHTML = `<p style="color:red;">❌ Errore: ${err.message}</p>`;
+      document.getElementById('contenutoFiltrati').innerHTML = `<p style="color:red;">❌ Errore: ${err.message}</p>`;
       console.error('Errore nel caricamento:', err);
     });
 }
