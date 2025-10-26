@@ -97,8 +97,8 @@
 <body>
   <h1><a href="https://www.spagocci.fun/informazioni">istruzioni Leggi Qui Come Funziona!</a></h1>
   <button id="toggleAudio">🔈 Audio: Attivo</button>
-  <audio id="soundGenerale" src="https://www.myinstants.com/media/sounds/tutti.mp3" preload="auto"></audio>
-  <audio id="soundPochiSecondi" src="https://www.myinstants.com/media/sounds/perte.mp3" preload="auto"></audio>
+  <audio id="soundGenerale" src="https://www.myinstants.com/media/sounds/tutti.wav" preload="auto"></audio>
+  <audio id="soundPochiSecondi" src="https://github.com/spagocci/recensioni/blob/main/perte.mp3" preload="auto"></audio>
   <div class="row">
     <div class="column" id="canaleSinistra">
       <h2>#tutti</h2>
@@ -122,69 +122,64 @@ let primaVolta = messaggiVisualizzati.size === 0;
       audioAttivo = !audioAttivo;
       document.getElementById('toggleAudio').textContent = audioAttivo ? '🔈 Audio: Attivo' : '🔇 Audio: Muto';
     });
+function caricaCatalogo() {
+  const timestamp = new Date().getTime();
+  fetch(`https://spagocci.github.io/recensioni/data.json?t=${timestamp}`)
+    .then(res => {
+      if (!res.ok) throw new Error('File non trovato o accesso negato');
+      return res.json();
+    })
+    .then(data => {
+      if (!Array.isArray(data)) throw new Error('Formato JSON non valido');
 
-    document.body.addEventListener('click', () => {
-      document.getElementById('soundGenerale')?.play().catch(() => {});
-      document.getElementById('soundPochiSecondi')?.play().catch(() => {});
-    }, { once: true });
+      const sinistra = document.getElementById('canaleSinistra');
+      const destra = document.getElementById('canaleDestra');
+      const filtrati = document.getElementById('canaleFiltrati');
 
-    function caricaCatalogo() {
-      const timestamp = new Date().getTime();
-      fetch(`https://spagocci.github.io/recensioni/data.json?t=${timestamp}`)
-        .then(res => {
-          if (!res.ok) throw new Error('File non trovato o accesso negato');
-          return res.json();
-        })
-        .then(data => {
-          if (!Array.isArray(data)) throw new Error('Formato JSON non valido');
+      sinistra.innerHTML = '<h2>#tutti</h2>';
+      destra.innerHTML = '<h2>#perpochisecondi</h2>';
+      filtrati.innerHTML = '<h2>#filtrati</h2>';
 
-          const sinistra = document.getElementById('canaleSinistra');
-          const destra = document.getElementById('canaleDestra');
-          const filtrati = document.getElementById('canaleFiltrati');
+      data.reverse().forEach(item => {
+        const isNuovo = !messaggiVisualizzati.has(item.id);
+        messaggiVisualizzati.add(item.id);
+        localStorage.setItem('messaggiVisualizzati', JSON.stringify([...messaggiVisualizzati]));
 
-          sinistra.innerHTML = '<h2>#tutti</h2>';
-          destra.innerHTML = '<h2>#perpochisecondi</h2>';
-          filtrati.innerHTML = '<h2>#filtrati</h2>';
+        const div = document.createElement('div');
+        div.className = 'item';
+        div.innerHTML = `
+          ${item.link
+            ? `<p><a href="${item.link}" target="_blank">${item.text}</a></p>`
+            : `<p>${item.text}</p>`}
+          ${item.image ? `<img src="${item.image}" alt="Immagine"/>` : ''}
+          <small>${new Date(item.timestamp).toLocaleString()}</small>
+        `;
 
-          data.reverse().forEach(item => {
-            const isNuovo = !messaggiVisualizzati.has(item.id);
-            messaggiVisualizzati.add(item.id);
-localStorage.setItem('messaggiVisualizzati', JSON.stringify([...messaggiVisualizzati]));
+        const soundGenerale = document.getElementById('soundGenerale');
+        const soundPochiSecondi = document.getElementById('soundPochiSecondi');
 
-            const div = document.createElement('div');
-            div.className = 'item';
-            div.innerHTML = `
-              ${item.link
-                ? `<p><a href="${item.link}" target="_blank">${item.text}</a></p>`
-                : `<p>${item.text}</p>`}
-              ${item.image ? `<img src="${item.image}" alt="Immagine"/>` : ''}
-              <small>${new Date(item.timestamp).toLocaleString()}</small>
-            `;
-
-            const soundGenerale = document.getElementById('soundGenerale');
-            const soundPochiSecondi = document.getElementById('soundPochiSecondi');
-
-            if (item.sourceChannel === '1431706668881805364') {
-              sinistra.appendChild(div);
-              if (!primaVolta && audioAttivo && isNuovo && soundGenerale)
- soundGenerale.play().catch(() => {});
-            } else if (item.sourceChannel === '1430829927175032954') {
-              destra.appendChild(div);
-              if (audioAttivo && isNuovo && soundPochiSecondi) soundPochiSecondi.play().catch(() => {});
-            } else if (item.sourceChannel === '1431551820509089842') {
-              filtrati.appendChild(div);
-              if (!primaVolta && audioAttivo && isNuovo && soundGenerale)
- soundGenerale.play().catch(() => {});
-            }
-          });
-        })
-        .catch(err => {
-          document.getElementById('canaleSinistra').innerHTML = `<p style="color:red;">❌ Errore: ${err.message}</p>`;
-          document.getElementById('canaleDestra').innerHTML = `<p style="color:red;">❌ Errore: ${err.message}</p>`;
-          document.getElementById('canaleFiltrati').innerHTML = `<p style="color:red;">❌ Errore: ${err.message}</p>`;
-          console.error('Errore nel caricamento:', err);
-        });
-    }
+        if (item.sourceChannel === '1431706668881805364') {
+          sinistra.appendChild(div);
+          if (!primaVolta && audioAttivo && isNuovo && soundGenerale)
+            soundGenerale.play().catch(() => {});
+        } else if (item.sourceChannel === '1430829927175032954') {
+          destra.appendChild(div);
+          if (!primaVolta && audioAttivo && isNuovo && soundPochiSecondi)
+            soundPochiSecondi.play().catch(() => {});
+        } else if (item.sourceChannel === '1431551820509089842') {
+          filtrati.appendChild(div);
+          if (!primaVolta && audioAttivo && isNuovo && soundGenerale)
+            soundGenerale.play().catch(() => {});
+        }
+      });
+    })
+    .catch(err => {
+      document.getElementById('canaleSinistra').innerHTML = `<p style="color:red;">❌ Errore: ${err.message}</p>`;
+      document.getElementById('canaleDestra').innerHTML = `<p style="color:red;">❌ Errore: ${err.message}</p>`;
+      document.getElementById('canaleFiltrati').innerHTML = `<p style="color:red;">❌ Errore: ${err.message}</p>`;
+      console.error('Errore nel caricamento:', err);
+    });
+}
 
     caricaCatalogo();
     setInterval(caricaCatalogo, 10000);
