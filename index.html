@@ -3,7 +3,7 @@
 <head>
 <link rel="icon" href="https://github.com/spagocci/recensioni/blob/main/icona.png" type="image/png">
   <meta charset="UTF-8">
-  <title>Spagocci 1.8</title>
+  <title>Spagocci 1.9</title>
   <style>
     body {
       font-family: sans-serif;
@@ -21,9 +21,9 @@
     }
     .row {
       display: flex;
-      gap: 20px;
+      gap: 0;
+      height: 80vh;
     }
-
     .column {
       flex: 1;
       background: linear-gradient(to bottom, #fff, #f0f0f0);
@@ -34,17 +34,15 @@
         inset 0 0 10px rgba(0, 0, 0, 0.1),
         0 4px 10px rgba(0, 0, 0, 0.2);
       overflow-y: auto;
-      max-height: 80vh;
       margin-bottom: 10px;
       transition: transform 0.1s ease, box-shadow 0.2s ease;
+      min-width: 100px;
     }
-
     .column:hover {
       box-shadow:
         inset 0 0 10px rgba(0, 0, 0, 0.15),
         0 6px 14px rgba(0, 0, 0, 0.3);
     }
-
     .column:active {
       transform: scale(0.98);
       box-shadow:
@@ -56,43 +54,45 @@
       display: block;
       margin-top: 10px;
     }
-
     small {
       color: #666;
       font-size: 0.9em;
     }
-
     .column a {
       color: #000;
       font-size: 1.1em;
       font-weight: bold;
       text-decoration: none;
     }
-.item {
-  margin-bottom: 20px;
-  padding: 15px;
-  background: linear-gradient(to bottom, #fefefe, #eaeaea);
-  border-radius: 20px;
-  border: 4px solid #b30000;
-  box-shadow:
-    inset 0 0 10px rgba(0, 0, 0, 0.1),
-    0 4px 10px rgba(0, 0, 0, 0.2);
-  transition: transform 0.1s ease, box-shadow 0.2s ease;
-}
-
-
-.item:hover {
-  box-shadow:
-    inset 0 0 10px rgba(0, 0, 0, 0.15),
-    0 6px 14px rgba(0, 0, 0, 0.3);
-}
-
-.item:active {
-  transform: scale(0.98);
-  box-shadow:
-    inset 0 0 6px rgba(0, 0, 0, 0.2),
-    0 2px 6px rgba(0, 0, 0, 0.2);
-}
+    .item {
+      margin-bottom: 20px;
+      padding: 15px;
+      background: linear-gradient(to bottom, #fefefe, #eaeaea);
+      border-radius: 20px;
+      border: 4px solid #b30000;
+      box-shadow:
+        inset 0 0 10px rgba(0, 0, 0, 0.1),
+        0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: transform 0.1s ease, box-shadow 0.2s ease;
+    }
+    .item:hover {
+      box-shadow:
+        inset 0 0 10px rgba(0, 0, 0, 0.15),
+        0 6px 14px rgba(0, 0, 0, 0.3);
+    }
+    .item:active {
+      transform: scale(0.98);
+      box-shadow:
+        inset 0 0 6px rgba(0, 0, 0, 0.2),
+        0 2px 6px rgba(0, 0, 0, 0.2);
+    }
+    .resizer {
+      width: 6px;
+      background: #b30000;
+      cursor: col-resize;
+      user-select: none;
+      touch-action: none;
+    }
   </style>
 </head>
 <body>
@@ -100,93 +100,184 @@
   <button id="toggleAudio">🔈 Audio: Attivo</button>
   <audio id="soundGenerale" src="https://www.myinstants.com/media/sounds/tutti.wav" preload="auto"></audio>
   <audio id="soundPochiSecondi" src="https://github.com/spagocci/recensioni/blob/main/perte.mp3" preload="auto"></audio>
+  
   <div class="row">
     <div class="column" id="canaleSinistra">
       <h2>#tutti</h2>
     </div>
+    <div class="resizer" id="resizer1"></div>
     <div class="column" id="canaleDestra">
       <h2>#perpochisecondi</h2>
     </div>
+    <div class="resizer" id="resizer2"></div>
     <div class="column" id="canaleFiltrati">
       <h2>#filtrati</h2>
     </div>
   </div>
-  <script>
-    let audioAttivo = true;
-let messaggiVisualizzati = new Set(
-  JSON.parse(localStorage.getItem('messaggiVisualizzati') || '[]')
-);
-let primaVolta = messaggiVisualizzati.size === 0;
+<script>
+  let audioAttivo = true;
+  let messaggiVisualizzati = new Set(
+    JSON.parse(localStorage.getItem('messaggiVisualizzati') || '[]')
+  );
+  let primaVolta = messaggiVisualizzati.size === 0;
 
+  document.getElementById('toggleAudio').addEventListener('click', () => {
+    audioAttivo = !audioAttivo;
+    document.getElementById('toggleAudio').textContent = audioAttivo
+      ? '🔈 Audio: Attivo'
+      : '🔇 Audio: Muto';
+  });
 
-    document.getElementById('toggleAudio').addEventListener('click', () => {
-      audioAttivo = !audioAttivo;
-      document.getElementById('toggleAudio').textContent = audioAttivo ? '🔈 Audio: Attivo' : '🔇 Audio: Muto';
-    });
-function caricaCatalogo() {
-  const timestamp = new Date().getTime();
-  fetch(`https://spagocci.github.io/recensioni/data.json?t=${timestamp}`)
-    .then(res => {
-      if (!res.ok) throw new Error('File non trovato o accesso negato');
-      return res.json();
-    })
-    .then(data => {
-      if (!Array.isArray(data)) throw new Error('Formato JSON non valido');
+  function caricaCatalogo() {
+    const timestamp = new Date().getTime();
+    fetch(`https://spagocci.github.io/recensioni/data.json?t=${timestamp}`)
+      .then(res => {
+        if (!res.ok) throw new Error('File non trovato o accesso negato');
+        return res.json();
+      })
+      .then(data => {
+        if (!Array.isArray(data)) throw new Error('Formato JSON non valido');
 
-      const sinistra = document.getElementById('canaleSinistra');
-      const destra = document.getElementById('canaleDestra');
-      const filtrati = document.getElementById('canaleFiltrati');
+        const sinistra = document.getElementById('canaleSinistra');
+        const destra = document.getElementById('canaleDestra');
+        const filtrati = document.getElementById('canaleFiltrati');
 
-      sinistra.innerHTML = '<h2>#tutti</h2>';
-      destra.innerHTML = '<h2>#perpochisecondi</h2>';
-      filtrati.innerHTML = '<h2>#filtrati</h2>';
+        sinistra.innerHTML = '<h2>#tutti</h2>';
+        destra.innerHTML = '<h2>#perpochisecondi</h2>';
+        filtrati.innerHTML = '<h2>#filtrati</h2>';
 
-      data.reverse().forEach(item => {
-        const isNuovo = !messaggiVisualizzati.has(item.id);
-        messaggiVisualizzati.add(item.id);
-        localStorage.setItem('messaggiVisualizzati', JSON.stringify([...messaggiVisualizzati]));
+        data.reverse().forEach(item => {
+          const isNuovo = !messaggiVisualizzati.has(item.id);
+          messaggiVisualizzati.add(item.id);
+          localStorage.setItem(
+            'messaggiVisualizzati',
+            JSON.stringify([...messaggiVisualizzati])
+          );
 
-        const div = document.createElement('div');
-        div.className = 'item';
-        div.innerHTML = `
-          ${item.link
-            ? `<p><a href="${item.link}" target="_blank">${item.text}</a></p>`
-            : `<p>${item.text}</p>`}
-          ${item.image ? `<img src="${item.image}" alt="Immagine"/>` : ''}
-          <small>${new Date(item.timestamp).toLocaleString()}</small>
-        `;
+          const div = document.createElement('div');
+          div.className = 'item';
+          div.innerHTML = `
+            ${item.link
+              ? `<p><a href="${item.link}" target="_blank">${item.text}</a></p>`
+              : `<p>${item.text}</p>`}
+            ${item.image ? `<img src="${item.image}" alt="Immagine"/>` : ''}
+            <small>${new Date(item.timestamp).toLocaleString()}</small>
+          `;
 
-        const soundGenerale = document.getElementById('soundGenerale');
-        const soundPochiSecondi = document.getElementById('soundPochiSecondi');
+          const soundGenerale = document.getElementById('soundGenerale');
+          const soundPochiSecondi = document.getElementById('soundPochiSecondi');
 
-        if (item.sourceChannel === '1431706668881805364') {
-          sinistra.appendChild(div);
-          if (!primaVolta && audioAttivo && isNuovo && soundGenerale)
-            soundGenerale.play().catch(() => {});
-        } else if (item.sourceChannel === '1430829927175032954') {
-          destra.appendChild(div);
-          if (!primaVolta && audioAttivo && isNuovo && soundPochiSecondi)
-            soundPochiSecondi.play().catch(() => {});
-        } else if (item.sourceChannel === '1431551820509089842') {
-          filtrati.appendChild(div);
-          if (!primaVolta && audioAttivo && isNuovo && soundGenerale)
-            soundGenerale.play().catch(() => {});
-        }
+          if (item.sourceChannel === '1431706668881805364') {
+            sinistra.appendChild(div);
+            if (!primaVolta && audioAttivo && isNuovo && soundGenerale)
+              soundGenerale.play().catch(() => {});
+          } else if (item.sourceChannel === '1430829927175032954') {
+            destra.appendChild(div);
+            if (!primaVolta && audioAttivo && isNuovo && soundPochiSecondi)
+              soundPochiSecondi.play().catch(() => {});
+          } else if (item.sourceChannel === '1431551820509089842') {
+            filtrati.appendChild(div);
+            if (!primaVolta && audioAttivo && isNuovo && soundGenerale)
+              soundGenerale.play().catch(() => {});
+          }
+        });
+      })
+      .catch(err => {
+        document.getElementById('canaleSinistra').innerHTML = `<p style="color:red;">❌ Errore: ${err.message}</p>`;
+        document.getElementById('canaleDestra').innerHTML = `<p style="color:red;">❌ Errore: ${err.message}</p>`;
+        document.getElementById('canaleFiltrati').innerHTML = `<p style="color:red;">❌ Errore: ${err.message}</p>`;
+        console.error('Errore nel caricamento:', err);
       });
-    })
-    .catch(err => {
-      document.getElementById('canaleSinistra').innerHTML = `<p style="color:red;">❌ Errore: ${err.message}</p>`;
-      document.getElementById('canaleDestra').innerHTML = `<p style="color:red;">❌ Errore: ${err.message}</p>`;
-      document.getElementById('canaleFiltrati').innerHTML = `<p style="color:red;">❌ Errore: ${err.message}</p>`;
-      console.error('Errore nel caricamento:', err);
-    });
-}
+  }
 
-    caricaCatalogo();
-    setInterval(caricaCatalogo, 10000);
-setTimeout(() => {
-  location.reload();
-}, 60000); // 60 secondi
-  </script>
+  caricaCatalogo();
+  setInterval(caricaCatalogo, 10000);
+  setTimeout(() => {
+    location.reload();
+  }, 60000); // 60 secondi
+
+  // Funzione per rendere resizable le colonne con salvataggio in localStorage
+  function makeResizable(resizer, leftCol, rightCol, keyLeft, keyRight) {
+    let x = 0;
+    let leftWidth = 0;
+
+    const mouseDownHandler = function(e) {
+      x = e.clientX || (e.touches && e.touches[0].clientX);
+      leftWidth = leftCol.getBoundingClientRect().width;
+
+      document.addEventListener('mousemove', mouseMoveHandler);
+      document.addEventListener('mouseup', mouseUpHandler);
+      document.addEventListener('touchmove', mouseMoveHandler);
+      document.addEventListener('touchend', mouseUpHandler);
+    };
+
+    const mouseMoveHandler = function(e) {
+      const clientX = e.clientX || (e.touches && e.touches[0].clientX);
+      const dx = clientX - x;
+      leftCol.style.flex = 'none';
+      rightCol.style.flex = 'none';
+      leftCol.style.width = `${leftWidth + dx}px`;
+    };
+
+    const mouseUpHandler = function() {
+      // Salva le larghezze attuali in localStorage
+      localStorage.setItem(keyLeft, leftCol.offsetWidth);
+      localStorage.setItem(keyRight, rightCol.offsetWidth);
+
+      document.removeEventListener('mousemove', mouseMoveHandler);
+      document.removeEventListener('mouseup', mouseUpHandler);
+      document.removeEventListener('touchmove', mouseMoveHandler);
+      document.removeEventListener('touchend', mouseUpHandler);
+    };
+
+    resizer.addEventListener('mousedown', mouseDownHandler);
+    resizer.addEventListener('touchstart', mouseDownHandler);
+  }
+
+  // Ripristina le larghezze salvate
+  function restoreWidths() {
+    const sinistra = document.getElementById('canaleSinistra');
+    const destra = document.getElementById('canaleDestra');
+    const filtrati = document.getElementById('canaleFiltrati');
+
+    const wSinistra = localStorage.getItem('width_sinistra');
+    const wDestra = localStorage.getItem('width_destra');
+    const wFiltrati = localStorage.getItem('width_filtrati');
+
+    if (wSinistra) {
+      sinistra.style.flex = 'none';
+      sinistra.style.width = wSinistra + 'px';
+    }
+    if (wDestra) {
+      destra.style.flex = 'none';
+      destra.style.width = wDestra + 'px';
+    }
+    if (wFiltrati) {
+      filtrati.style.flex = 'none';
+      filtrati.style.width = wFiltrati + 'px';
+    }
+  }
+
+  // Attiva i due resizer
+  makeResizable(
+    document.getElementById('resizer1'),
+    document.getElementById('canaleSinistra'),
+    document.getElementById('canaleDestra'),
+    'width_sinistra',
+    'width_destra'
+  );
+
+  makeResizable(
+    document.getElementById('resizer2'),
+    document.getElementById('canaleDestra'),
+    document.getElementById('canaleFiltrati'),
+    'width_destra',
+    'width_filtrati'
+  );
+
+  // Ripristina le larghezze al caricamento
+  restoreWidths();
+</script>
+
 </body>
 </html>
