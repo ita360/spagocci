@@ -7,7 +7,6 @@
     body { font-family: sans-serif; padding: 20px; background: #f9f9f9; }
     h1 { margin-bottom: 10px; }
     button { margin-bottom: 20px; padding: 8px 12px; font-size: 1em; cursor: pointer; }
-
     .row {
       display: flex;
       gap: 20px;
@@ -28,13 +27,16 @@
     }
     img { max-width: 200px; display: block; margin-top: 10px; }
     small { color: #666; font-size: 0.9em; }
+.column a {
+  color: #000;           /* nero */
+  font-size: 1.1em;      /* leggermente più grande */
+  font-weight: bold;     /* grassetto */
+  text-decoration: none; /* rimuove la sottolineatura (opzionale) */
   </style>
 </head>
 <body>
   <h1><a href="https://www.spagocci.fun/informazioni">istruzioni Leggi Qui Come Funziona!</a></h1>
-
   <button id="toggleAudio">🔈 Audio: Attivo</button>
-
   <audio id="soundGenerale" src="https://www.myinstants.com/media/sounds/mario-coin.mp3" preload="auto"></audio>
   <audio id="soundPochiSecondi" src="https://www.myinstants.com/media/sounds/smw_coin.mp3" preload="auto"></audio>
 
@@ -49,7 +51,6 @@
       <h2>#filtrati</h2>
     </div>
   </div>
-
   <script>
     let audioAttivo = true;
     let messaggiVisualizzati = new Set();
@@ -118,10 +119,8 @@
           console.error('Errore nel caricamento:', err);
         });
     }
-
     caricaCatalogo();
     setInterval(caricaCatalogo, 10000);
   </script>
 </body>
 </html>
-
