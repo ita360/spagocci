@@ -3,7 +3,7 @@
 <head>
 <link rel="icon" href="https://github.com/spagocci/recensioni/blob/main/icona.png" type="image/png">
 <meta charset="UTF-8">
-<title>Spagocci 1.11</title>
+<title>Spagocci 1.12</title>
 <style>
 body {
   font-family: sans-serif;
@@ -93,11 +93,19 @@ small {
   user-select: none;
   touch-action: none;
 }
-.price {
-  color: #007700;
-  font-size: 1.2em;
+.item-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+.price-big {
+  font-size: 4em;        /* 4 volte più grande */
   font-weight: bold;
-  margin-top: 5px;
+  color: #009900;        /* verde brillante */
+  text-shadow: 1px 1px 2px #0002;
+  min-width: 150px;
+  text-align: right;
 }
 </style>
 </head>
@@ -198,9 +206,14 @@ function caricaCatalogo() {
         const div = document.createElement('div');
         div.className = 'item';
         div.innerHTML = `
-          ${item.link ? `<p><a href="${item.link}" target="_blank">${item.text}</a>${item.price ? `<span class="price"> ${item.price}</span>` : ''}</p>` : `<p>${item.text}</p>`}
-          ${item.image ? `<img src="${item.image}" alt="Immagine"/>` : ''}
-          <small>${new Date(item.timestamp).toLocaleString()}</small>
+          <div class="item-content">
+            <div>
+              ${item.link ? `<p><a href="${item.link}" target="_blank">${item.text}</a></p>` : `<p>${item.text}</p>`}
+              ${item.image ? `<img src="${item.image}" alt="Immagine"/>` : ''}
+              <small>${new Date(item.timestamp).toLocaleString()}</small>
+            </div>
+            ${item.price ? `<div class="price-big">${item.price}</div>` : ''}
+          </div>
         `;
 
         const soundGenerale = document.getElementById('soundGenerale');
