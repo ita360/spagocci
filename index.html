@@ -2,9 +2,9 @@
 <html lang="it">
 <head>
 <link rel="icon" href="https://github.com/spagocci/recensioni/blob/main/icona.png" type="image/png">
-  <meta charset="UTF-8">
-  <title>Spagocci 1.10</title>
-  <style>
+<meta charset="UTF-8">
+<title>Spagocci 1.10</title>
+<style>
 .slider-label {
   display: block;
   margin-bottom: 8px;
@@ -28,6 +28,12 @@ button {
   padding: 8px 12px;
   font-size: 1em;
   cursor: pointer;
+}
+#timer {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #b30000;
+  margin-left: 10px;
 }
 .row {
   display: flex;
@@ -103,55 +109,92 @@ small {
   user-select: none;
   touch-action: none;
 }
-  </style>
+</style>
 </head>
+
 <body>
-    <h1><a href="https://sites.google.com/view/davidespagocci/informazioni">iSTRUZiONi</a>-<a href="https://discord.gg/zE25rQfg">DiSCORD</a>--<a href="https://whatsapp.com/channel/0029Vb6FyJ88qIzyi9nRtV2O">WhatsApp</a>--(in arrivo Telegram e altri)</h1>
+  <h1>
+    <a href="https://sites.google.com/view/davidespagocci/informazioni">iSTRUZiONi</a> -
+    <a href="https://discord.gg/zE25rQfg">DiSCORD</a> -
+    <a href="https://whatsapp.com/channel/0029Vb6FyJ88qIzyi9nRtV2O">WhatsApp</a> -
+    (in arrivo Telegram e altri)
+  </h1>
+
   <button id="toggleAudio">🔈 Audio: Attivo</button>
+  <button id="toggleRefresh">⏸ Stop Refresh</button>
+  <span id="timer">Refresh in: 120s</span>
+
   <audio id="soundGenerale" src="https://www.myinstants.com/media/sounds/tutti.wav" preload="auto"></audio>
   <audio id="soundPochiSecondi" src="https://github.com/spagocci/recensioni/blob/main/perte.mp3" preload="auto"></audio>
-  
-<div class="row">
-  <div class="column" id="canaleSinistra">
-    <label class="slider-label">
-      Larghezza #tutti:
-      <input type="range" id="sliderSinistra" min="100" max="800">
-      <span id="valSinistra"></span>
-    </label>
-    <h2>#tutti</h2>
-    <div class="contenuto" id="contenutoSinistra"></div>
+
+  <div class="row">
+    <div class="column" id="canaleSinistra">
+      <label class="slider-label">
+        Larghezza #tutti:
+        <input type="range" id="sliderSinistra" min="100" max="800">
+        <span id="valSinistra"></span>
+      </label>
+      <h2>#tutti</h2>
+      <div class="contenuto" id="contenutoSinistra"></div>
+    </div>
+
+    <div class="resizer" id="resizer1"></div>
+
+    <div class="column" id="canaleDestra">
+      <label class="slider-label">
+        Larghezza #perpochisecondi:
+        <input type="range" id="sliderDestra" min="100" max="800">
+        <span id="valDestra"></span>
+      </label>
+      <h2>#perpochisecondi</h2>
+      <div class="contenuto" id="contenutoDestra"></div>
+    </div>
+
+    <div class="resizer" id="resizer2"></div>
+
+    <div class="column" id="canaleFiltrati">
+      <label class="slider-label">
+        Larghezza #filtrati:
+        <input type="range" id="sliderFiltrati" min="100" max="800">
+        <span id="valFiltrati"></span>
+      </label>
+      <h2>#filtrati</h2>
+      <div class="contenuto" id="contenutoFiltrati"></div>
+    </div>
   </div>
-
-  <div class="resizer" id="resizer1"></div>
-
-  <div class="column" id="canaleDestra">
-    <label class="slider-label">
-      Larghezza #perpochisecondi:
-      <input type="range" id="sliderDestra" min="100" max="800">
-      <span id="valDestra"></span>
-    </label>
-    <h2>#perpochisecondi</h2>
-    <div class="contenuto" id="contenutoDestra"></div>
-  </div>
-
-  <div class="resizer" id="resizer2"></div>
-
-  <div class="column" id="canaleFiltrati">
-    <label class="slider-label">
-      Larghezza #filtrati:
-      <input type="range" id="sliderFiltrati" min="100" max="800">
-      <span id="valFiltrati"></span>
-    </label>
-    <h2>#filtrati</h2>
-    <div class="contenuto" id="contenutoFiltrati"></div>
-  </div>
-</div>
 
 <script>
+// === TIMER E REFRESH ===
+let refreshInterval = 120; // secondi per il refresh completo
+let timeLeft = refreshInterval;
+let refreshActive = true;
+const timerDisplay = document.getElementById("timer");
+const toggleButton = document.getElementById("toggleRefresh");
+
+function updateTimerDisplay() {
+  timerDisplay.textContent = `Refresh in: ${timeLeft}s`;
+}
+
+// Aggiornamento timer ogni secondo
+setInterval(() => {
+  if (!refreshActive) return;
+  timeLeft--;
+  if (timeLeft <= 0) {
+    location.reload();
+  }
+  updateTimerDisplay();
+}, 1000);
+
+// Toggle Start/Stop solo per il refresh completo
+toggleButton.addEventListener("click", () => {
+  refreshActive = !refreshActive;
+  toggleButton.textContent = refreshActive ? "⏸ Stop Refresh" : "▶️ Riprendi Refresh";
+});
+
+// === VARIABILI E AUDIO ===
 const valSinistra = document.getElementById('valSinistra');
 const valDestra = document.getElementById('valDestra');
 const valFiltrati = document.getElementById('valFiltrati');
-
 const sliderSinistra = document.getElementById('sliderSinistra');
 const sliderDestra = document.getElementById('sliderDestra');
 const sliderFiltrati = document.getElementById('sliderFiltrati');
@@ -165,6 +208,7 @@ document.getElementById('toggleAudio').addEventListener('click', () => {
   document.getElementById('toggleAudio').textContent = audioAttivo ? '🔈 Audio: Attivo' : '🔇 Audio: Muto';
 });
 
+// === CARICAMENTO DATI OGNI 10 SECONDI (sempre attivo) ===
 function caricaCatalogo() {
   const timestamp = new Date().getTime();
   fetch(`https://spagocci.github.io/recensioni/data.json?t=${timestamp}`)
@@ -174,8 +218,7 @@ function caricaCatalogo() {
     })
     .then(data => {
       if (!Array.isArray(data)) throw new Error('Formato JSON non valido');
-// Ordina i messaggi in ordine cronologico crescente (dal più vecchio al più recente)
-data.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+      data.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
 
       const contenutoSinistra = document.getElementById('contenutoSinistra');
       const contenutoDestra = document.getElementById('contenutoDestra');
@@ -206,14 +249,10 @@ data.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
           if (!primaVolta && audioAttivo && isNuovo && soundGenerale) soundGenerale.play().catch(() => {});
         } else if (item.sourceChannel === '1430829927175032954') {
           contenutoDestra.appendChild(div);
-                   if (!primaVolta && audioAttivo && isNuovo && soundPochiSecondi) {
-            soundPochiSecondi.play().catch(() => {});
-          }
+          if (!primaVolta && audioAttivo && isNuovo && soundPochiSecondi) soundPochiSecondi.play().catch(() => {});
         } else if (item.sourceChannel === '1431551820509089842') {
           contenutoFiltrati.appendChild(div);
-          if (!primaVolta && audioAttivo && isNuovo && soundGenerale) {
-            soundGenerale.play().catch(() => {});
-          }
+          if (!primaVolta && audioAttivo && isNuovo && soundGenerale) soundGenerale.play().catch(() => {});
         }
       });
     })
@@ -227,8 +266,8 @@ data.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
 
 caricaCatalogo();
 setInterval(caricaCatalogo, 10000);
-setTimeout(() => location.reload(), 120000);
 
+// === FUNZIONI SLIDER E RESIZE ===
 function makeResizable(resizer, leftCol, rightCol, keyLeft, keyRight) {
   let x = 0;
   let leftWidth = 0;
@@ -327,7 +366,3 @@ sliderFiltrati.addEventListener('input', e => {
 </script>
 </body>
 </html>
-
-
-
-
