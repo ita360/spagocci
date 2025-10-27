@@ -98,7 +98,7 @@ small {
 }
 .resizer {
   width: 14px;
-  background: #000;
+  background: #b000;
   cursor: col-resize;
   user-select: none;
   touch-action: none;
@@ -106,7 +106,7 @@ small {
   </style>
 </head>
 <body>
-    <h1><a href="https://sites.google.com/view/davidespagocci/informazioni">iSTRUZiONi LEGGIMI!</a></h1>
+    <h1><a href="https://sites.google.com/view/davidespagocci/informazioni">iSTRUZiONi LEGGIMI!</a>-Adesso puoi vedere gli oggetti anche su <a href="https://discord.gg/zE25rQfg">DiSCORD!</a>(in arrivo Telegram e altri)</h1>
   <button id="toggleAudio">🔈 Audio: Attivo</button>
   <audio id="soundGenerale" src="https://www.myinstants.com/media/sounds/tutti.wav" preload="auto"></audio>
   <audio id="soundPochiSecondi" src="https://github.com/spagocci/recensioni/blob/main/perte.mp3" preload="auto"></audio>
@@ -176,6 +176,7 @@ function caricaCatalogo() {
       if (!Array.isArray(data)) throw new Error('Formato JSON non valido');
 // Ordina i messaggi in ordine cronologico crescente (dal più vecchio al più recente)
 data.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
+
       const contenutoSinistra = document.getElementById('contenutoSinistra');
       const contenutoDestra = document.getElementById('contenutoDestra');
       const contenutoFiltrati = document.getElementById('contenutoFiltrati');
@@ -326,5 +327,3 @@ sliderFiltrati.addEventListener('input', e => {
 </script>
 </body>
 </html>
-
-
