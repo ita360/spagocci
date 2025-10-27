@@ -7,5 +7,14 @@
     "image": "",
     "price": null,
     "sourceChannel": "1432128848534962402"
+  },
+  {
+    "id": "1432294539913072733",
+    "timestamp": "2025-10-27T09:07:09.061Z",
+    "text": "Test Product 3  + some\"special'characters & stuff - 1 - Test Rule Name",
+    "link": "https://amazon.it/dp/ABCDEFGHIK",
+    "image": "https://ultraviner.com/icon-iphone.png",
+    "price": null,
+    "sourceChannel": "1432128848534962402"
   }
 ]
