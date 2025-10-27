@@ -174,7 +174,8 @@ function caricaCatalogo() {
     })
     .then(data => {
       if (!Array.isArray(data)) throw new Error('Formato JSON non valido');
-
+// Ordina i messaggi in ordine cronologico crescente (dal più vecchio al più recente)
+data.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
       const contenutoSinistra = document.getElementById('contenutoSinistra');
       const contenutoDestra = document.getElementById('contenutoDestra');
       const contenutoFiltrati = document.getElementById('contenutoFiltrati');
@@ -325,4 +326,5 @@ sliderFiltrati.addEventListener('input', e => {
 </script>
 </body>
 </html>
+
 
