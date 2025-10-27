@@ -227,7 +227,7 @@ data.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
 
 caricaCatalogo();
 setInterval(caricaCatalogo, 10000);
-setTimeout(() => location.reload(), 60000);
+setTimeout(() => location.reload(), 120000);
 
 function makeResizable(resizer, leftCol, rightCol, keyLeft, keyRight) {
   let x = 0;
@@ -327,6 +327,7 @@ sliderFiltrati.addEventListener('input', e => {
 </script>
 </body>
 </html>
+
 
 
 
