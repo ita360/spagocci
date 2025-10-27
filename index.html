@@ -3,18 +3,8 @@
 <head>
 <link rel="icon" href="https://github.com/spagocci/recensioni/blob/main/icona.png" type="image/png">
 <meta charset="UTF-8">
-<title>Spagocci 1.10</title>
+<title>Spagocci 1.11</title>
 <style>
-.slider-label {
-  display: block;
-  margin-bottom: 8px;
-  font-size: 1.1em;
-  font-weight: bold;
-}
-.slider-label input[type="range"] {
-  width: 100%;
-}
-
 body {
   font-family: sans-serif;
   padding: 20px;
@@ -96,18 +86,18 @@ small {
     inset 0 0 10px rgba(0, 0, 0, 0.15),
     0 6px 14px rgba(0, 0, 0, 0.3);
 }
-.item:active {
-  transform: scale(0.98);
-  box-shadow:
-    inset 0 0 6px rgba(0, 0, 0, 0.2),
-    0 2px 6px rgba(0, 0, 0, 0.2);
-}
 .resizer {
   width: 14px;
   background: #b000;
   cursor: col-resize;
   user-select: none;
   touch-action: none;
+}
+.price {
+  color: #007700;
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-top: 5px;
 }
 </style>
 </head>
@@ -122,18 +112,13 @@ small {
 
   <button id="toggleAudio">🔈 Audio: Attivo</button>
   <button id="toggleRefresh">⏸ Stop Refresh</button>
-  <span id="timer">Questa pagina si aggiorna automaticamente tra: 120s</span>
+  <span id="timer">Aggiornamento automatico Pagina tra: 60s</span>
 
   <audio id="soundGenerale" src="https://www.myinstants.com/media/sounds/tutti.wav" preload="auto"></audio>
   <audio id="soundPochiSecondi" src="https://github.com/spagocci/recensioni/blob/main/perte.mp3" preload="auto"></audio>
 
   <div class="row">
     <div class="column" id="canaleSinistra">
-      <label class="slider-label">
-        Larghezza #tutti:
-        <input type="range" id="sliderSinistra" min="100" max="800">
-        <span id="valSinistra"></span>
-      </label>
       <h2>#tutti</h2>
       <div class="contenuto" id="contenutoSinistra"></div>
     </div>
@@ -141,11 +126,6 @@ small {
     <div class="resizer" id="resizer1"></div>
 
     <div class="column" id="canaleDestra">
-      <label class="slider-label">
-        Larghezza #perpochisecondi:
-        <input type="range" id="sliderDestra" min="100" max="800">
-        <span id="valDestra"></span>
-      </label>
       <h2>#perpochisecondi</h2>
       <div class="contenuto" id="contenutoDestra"></div>
     </div>
@@ -153,11 +133,6 @@ small {
     <div class="resizer" id="resizer2"></div>
 
     <div class="column" id="canaleFiltrati">
-      <label class="slider-label">
-        Larghezza #filtrati:
-        <input type="range" id="sliderFiltrati" min="100" max="800">
-        <span id="valFiltrati"></span>
-      </label>
       <h2>#filtrati</h2>
       <div class="contenuto" id="contenutoFiltrati"></div>
     </div>
@@ -165,17 +140,16 @@ small {
 
 <script>
 // === TIMER E REFRESH ===
-let refreshInterval = 120; // secondi per il refresh completo
+let refreshInterval = 60; // 🔁 refresh pagina ogni 60 secondi
 let timeLeft = refreshInterval;
 let refreshActive = true;
 const timerDisplay = document.getElementById("timer");
 const toggleButton = document.getElementById("toggleRefresh");
 
 function updateTimerDisplay() {
-  timerDisplay.textContent = `Refresh in: ${timeLeft}s`;
+  timerDisplay.textContent = `Aggiornamento automatico Pagina tra: ${timeLeft}s`;
 }
 
-// Aggiornamento timer ogni secondo
 setInterval(() => {
   if (!refreshActive) return;
   timeLeft--;
@@ -185,20 +159,12 @@ setInterval(() => {
   updateTimerDisplay();
 }, 1000);
 
-// Toggle Start/Stop solo per il refresh completo
 toggleButton.addEventListener("click", () => {
   refreshActive = !refreshActive;
   toggleButton.textContent = refreshActive ? "⏸ Stop Refresh" : "▶️ Riprendi Refresh";
 });
 
-// === VARIABILI E AUDIO ===
-const valSinistra = document.getElementById('valSinistra');
-const valDestra = document.getElementById('valDestra');
-const valFiltrati = document.getElementById('valFiltrati');
-const sliderSinistra = document.getElementById('sliderSinistra');
-const sliderDestra = document.getElementById('sliderDestra');
-const sliderFiltrati = document.getElementById('sliderFiltrati');
-
+// === AUDIO E VISUALIZZAZIONE ===
 let audioAttivo = true;
 let messaggiVisualizzati = new Set(JSON.parse(localStorage.getItem('messaggiVisualizzati') || '[]'));
 let primaVolta = messaggiVisualizzati.size === 0;
@@ -208,16 +174,12 @@ document.getElementById('toggleAudio').addEventListener('click', () => {
   document.getElementById('toggleAudio').textContent = audioAttivo ? '🔈 Audio: Attivo' : '🔇 Audio: Muto';
 });
 
-// === CARICAMENTO DATI OGNI 10 SECONDI (sempre attivo) ===
+// === CARICAMENTO DATI OGNI 10s ===
 function caricaCatalogo() {
   const timestamp = new Date().getTime();
   fetch(`https://spagocci.github.io/recensioni/data.json?t=${timestamp}`)
-    .then(res => {
-      if (!res.ok) throw new Error('File non trovato o accesso negato');
-      return res.json();
-    })
+    .then(res => res.json())
     .then(data => {
-      if (!Array.isArray(data)) throw new Error('Formato JSON non valido');
       data.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
 
       const contenutoSinistra = document.getElementById('contenutoSinistra');
@@ -236,7 +198,7 @@ function caricaCatalogo() {
         const div = document.createElement('div');
         div.className = 'item';
         div.innerHTML = `
-          ${item.link ? `<p><a href="${item.link}" target="_blank">${item.text}</a></p>` : `<p>${item.text}</p>`}
+          ${item.link ? `<p><a href="${item.link}" target="_blank">${item.text}</a>${item.price ? `<span class="price"> ${item.price}</span>` : ''}</p>` : `<p>${item.text}</p>`}
           ${item.image ? `<img src="${item.image}" alt="Immagine"/>` : ''}
           <small>${new Date(item.timestamp).toLocaleString()}</small>
         `;
@@ -246,13 +208,13 @@ function caricaCatalogo() {
 
         if (item.sourceChannel === '1432128848534962402') {
           contenutoSinistra.appendChild(div);
-          if (!primaVolta && audioAttivo && isNuovo && soundGenerale) soundGenerale.play().catch(() => {});
+          if (!primaVolta && audioAttivo && isNuovo) soundGenerale.play().catch(() => {});
         } else if (item.sourceChannel === '1430829927175032954') {
           contenutoDestra.appendChild(div);
-          if (!primaVolta && audioAttivo && isNuovo && soundPochiSecondi) soundPochiSecondi.play().catch(() => {});
+          if (!primaVolta && audioAttivo && isNuovo) soundPochiSecondi.play().catch(() => {});
         } else if (item.sourceChannel === '1431551820509089842') {
           contenutoFiltrati.appendChild(div);
-          if (!primaVolta && audioAttivo && isNuovo && soundGenerale) soundGenerale.play().catch(() => {});
+          if (!primaVolta && audioAttivo && isNuovo) soundGenerale.play().catch(() => {});
         }
       });
     })
@@ -260,110 +222,11 @@ function caricaCatalogo() {
       document.getElementById('contenutoSinistra').innerHTML = `<p style="color:red;">❌ Errore: ${err.message}</p>`;
       document.getElementById('contenutoDestra').innerHTML = `<p style="color:red;">❌ Errore: ${err.message}</p>`;
       document.getElementById('contenutoFiltrati').innerHTML = `<p style="color:red;">❌ Errore: ${err.message}</p>`;
-      console.error('Errore nel caricamento:', err);
     });
 }
 
 caricaCatalogo();
 setInterval(caricaCatalogo, 10000);
-
-// === FUNZIONI SLIDER E RESIZE ===
-function makeResizable(resizer, leftCol, rightCol, keyLeft, keyRight) {
-  let x = 0;
-  let leftWidth = 0;
-
-  const mouseDownHandler = function(e) {
-    x = e.clientX || (e.touches && e.touches[0].clientX);
-    leftWidth = leftCol.getBoundingClientRect().width;
-
-    document.addEventListener('mousemove', mouseMoveHandler);
-    document.addEventListener('mouseup', mouseUpHandler);
-    document.addEventListener('touchmove', mouseMoveHandler);
-    document.addEventListener('touchend', mouseUpHandler);
-  };
-
-  const mouseMoveHandler = function(e) {
-    const clientX = e.clientX || (e.touches && e.touches[0].clientX);
-    const dx = clientX - x;
-    leftCol.style.flex = 'none';
-    rightCol.style.flex = 'none';
-    leftCol.style.width = `${leftWidth + dx}px`;
-  };
-
-  const mouseUpHandler = function() {
-    localStorage.setItem(keyLeft, leftCol.offsetWidth);
-    localStorage.setItem(keyRight, rightCol.offsetWidth);
-
-    document.removeEventListener('mousemove', mouseMoveHandler);
-    document.removeEventListener('mouseup', mouseUpHandler);
-    document.removeEventListener('touchmove', mouseMoveHandler);
-    document.removeEventListener('touchend', mouseUpHandler);
-  };
-
-  resizer.addEventListener('mousedown', mouseDownHandler);
-  resizer.addEventListener('touchstart', mouseDownHandler);
-}
-
-function restoreWidths() {
-  const sinistra = document.getElementById('canaleSinistra');
-  const destra = document.getElementById('canaleDestra');
-  const filtrati = document.getElementById('canaleFiltrati');
-
-  const wSinistra = localStorage.getItem('width_sinistra');
-  const wDestra = localStorage.getItem('width_destra');
-  const wFiltrati = localStorage.getItem('width_filtrati');
-
-  if (wSinistra) {
-    sinistra.style.flex = 'none';
-    sinistra.style.width = wSinistra + 'px';
-    sliderSinistra.value = wSinistra;
-    valSinistra.textContent = wSinistra + 'px';
-  }
-  if (wDestra) {
-    destra.style.flex = 'none';
-    destra.style.width = wDestra + 'px';
-    sliderDestra.value = wDestra;
-    valDestra.textContent = wDestra + 'px';
-  }
-  if (wFiltrati) {
-    filtrati.style.flex = 'none';
-    filtrati.style.width = wFiltrati + 'px';
-    sliderFiltrati.value = wFiltrati;
-    valFiltrati.textContent = wFiltrati + 'px';
-  }
-}
-
-makeResizable(document.getElementById('resizer1'), document.getElementById('canaleSinistra'), document.getElementById('canaleDestra'), 'width_sinistra', 'width_destra');
-makeResizable(document.getElementById('resizer2'), document.getElementById('canaleDestra'), document.getElementById('canaleFiltrati'), 'width_destra', 'width_filtrati');
-restoreWidths();
-
-sliderSinistra.addEventListener('input', e => {
-  const val = e.target.value;
-  valSinistra.textContent = val + 'px';
-  const col = document.getElementById('canaleSinistra');
-  col.style.flex = 'none';
-  col.style.width = val + 'px';
-  localStorage.setItem('width_sinistra', val);
-});
-
-sliderDestra.addEventListener('input', e => {
-  const val = e.target.value;
-  valDestra.textContent = val + 'px';
-  const col = document.getElementById('canaleDestra');
-  col.style.flex = 'none';
-  col.style.width = val + 'px';
-  localStorage.setItem('width_destra', val);
-});
-
-sliderFiltrati.addEventListener('input', e => {
-  const val = e.target.value;
-  valFiltrati.textContent = val + 'px';
-  const col = document.getElementById('canaleFiltrati');
-  col.style.flex = 'none';
-  col.style.width = val + 'px';
-  localStorage.setItem('width_filtrati', val);
-});
 </script>
 </body>
 </html>
-
