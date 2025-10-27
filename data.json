@@ -25,5 +25,14 @@
     "image": "https://m.media-amazon.com/images/I/41iqmmVrCNL._SS210_.jpg",
     "price": null,
     "sourceChannel": "1431551820509089842"
+  },
+  {
+    "id": "1432306349861109791",
+    "timestamp": "2025-10-27T09:54:04.772Z",
+    "text": "Test Product 3  + some\"special'characters & stuff - 1 - Test Rule Name",
+    "link": "https://amazon.it/dp/ABCDEFGHIK",
+    "image": "https://ultraviner.com/icon-iphone.png",
+    "price": null,
+    "sourceChannel": "1432128848534962402"
   }
 ]
