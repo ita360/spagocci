@@ -4,7 +4,7 @@
 <link rel="icon" href="https://github.com/spagocci/recensioni/blob/main/icona.png" type="image/png">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Spagocci 1.16</title>
+<title>Spagocci 1.18</title>
 <style>
 body {
   font-family: sans-serif;
@@ -117,8 +117,8 @@ small { color:#666;font-size:.9em; }
 <button id="toggleRefresh">⏸ Ferma aggiornamento</button>
 <span id="timer">Aggiornamento automatico Pagina tra: 60 s</span>
 
-<audio id="soundGenerale" src="https://github.com/spagocci/recensioni/blob/main/tutti.wav" preload="auto"></audio>
-<audio id="soundPochiSecondi" src="https://github.com/spagocci/recensioni/blob/main/perte.mp3" preload="auto"></audio>
+<audio id="soundGenerale" src="https://raw.githubusercontent.com/spagocci/recensioni/main/tutti.mp3" preload="auto"></audio>
+<audio id="soundPochiSecondi" src="https://raw.githubusercontent.com/spagocci/recensioni/main/perte.mp3" preload="auto"></audio>
 
 <div class="row">
   <div class="column" id="canaleSinistra">
@@ -159,9 +159,8 @@ toggleButton.addEventListener("click",()=>{
   toggleButton.textContent=refreshActive?"⏸ Ferma aggiornamento":"▶️ Riprendi aggiornamento";
 });
 
-// === AUDIO: ATTIVA/DISATTIVA CON MEMORIA + SUONO DI CONFERMA ===
+// === AUDIO: ATTIVA/DISATTIVA CON MEMORIA + SUONO DI CONFERMA OGNI ATTIVAZIONE ===
 let audioAttivo = localStorage.getItem('audioAttivo') === 'true';
-let audioConfermato = localStorage.getItem('audioConfermato') === 'true'; // 👈 nuovo flag
 let messaggiVisualizzati = new Set(JSON.parse(localStorage.getItem('messaggiVisualizzati') || '[]'));
 let primaVolta = messaggiVisualizzati.size === 0;
 
@@ -183,24 +182,18 @@ toggleAudioBtn.addEventListener('click', async () => {
 
   if (audioAttivo) {
     try {
-      // 🔊 Sblocca l’audio
+      // 🔊 Sblocca l’audio (autorizzazione browser)
       await soundGenerale.play();
       soundGenerale.pause();
       soundGenerale.currentTime = 0;
       await soundPochiSecondi.play();
       soundPochiSecondi.pause();
       soundPochiSecondi.currentTime = 0;
-    } catch {}
 
-    // 🔔 Suono di conferma solo la prima volta
-    if (!audioConfermato) {
-      try {
-        await soundGenerale.play();
-        audioConfermato = true;
-        localStorage.setItem('audioConfermato', 'true');
-      } catch (e) {
-        console.warn('⚠️ Impossibile riprodurre suono di conferma:', e.message);
-      }
+      // 🔔 Suono di conferma ogni volta che si attiva
+      await soundGenerale.play();
+    } catch (e) {
+      console.warn('⚠️ Impossibile riprodurre suono di conferma:', e.message);
     }
   }
 });
@@ -285,4 +278,3 @@ aggiungiResizer(document.getElementById('resizer2'),
 </script>
 </body>
 </html>
-
