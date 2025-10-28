@@ -4,8 +4,7 @@
 <link rel="icon" href="https://github.com/spagocci/recensioni/blob/main/icona.png" type="image/png">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Spagocci 1.21 - Se Lo Vuoi con Forza Non è un Sogno</title>
-<style>
+<title>Spagocci 1.21 - Se Lo Vuoi con Forza Non è un Sogno</title><style>
 body {
   font-family: sans-serif;
   padding: 20px;
@@ -24,6 +23,8 @@ button {
   color: #b30000;
   margin-left: 10px;
 }
+
+/* === LAYOUT GENERALE === */
 .row {
   display: flex;
   gap: 0;
@@ -54,54 +55,80 @@ button {
     inset 0 0 6px rgba(0,0,0,0.2),
     0 2px 6px rgba(0,0,0,0.2);
 }
-img {
-  max-width: 200px;
-  display: block;
-  margin-top: 10px;
-}
-small { color:#666;font-size:.9em; }
-.column a {
-  color:#000;font-size:1.1em;font-weight:bold;text-decoration:none;
+
+/* === STRUTTURA OGGETTI === */
+.contenuto {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 15px;
+  align-items: stretch;
 }
 .item {
-  margin-bottom:20px;
-  padding:15px;
   background:linear-gradient(to bottom,#fefefe,#eaeaea);
   border-radius:20px;
   border:4px solid #b30000;
   box-shadow:
     inset 0 0 10px rgba(0,0,0,0.1),
     0 4px 10px rgba(0,0,0,0.2);
+  padding:12px;
   transition:transform .1s ease,box-shadow .2s ease;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
 }
 .item:hover {
   box-shadow:
     inset 0 0 10px rgba(0,0,0,0.15),
     0 6px 14px rgba(0,0,0,0.3);
 }
-.resizer {
-  width:14px;background:#000;cursor:col-resize;user-select:none;touch-action:none;
-  transition:background .2s ease;
-}
 .item-content {
-  display:flex;align-items:center;justify-content:flex-start;gap:20px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+  gap:10px;
+}
+
+/* === IMMAGINI E TESTO === */
+img {
+  max-width: 90%;
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
 .price-big {
-  font-size:1em;font-weight:bold;color:#009900;
+  font-size:1.3em;
+  font-weight:bold;
+  color:#009900;
   text-shadow:1px 1px 2px #0002;
-  min-width:150px;text-align:left;
+  margin-top:5px;
 }
-/* === VERSIONE MOBILE === */
-@media (max-width:900px){
-  .row{flex-direction:column;height:auto;}
-  .column{width:100%;margin-bottom:20px;}
-  .resizer{display:none;}
-  .item-content{flex-direction:column;align-items:flex-start;gap:10px;}
-  img{max-width:100%;height:auto;}
-  .price-big{font-size:1.5em;text-align:left;}
-  h2{text-align:center;}
-  body{padding:10px;}
+.column a {
+  color:#000;
+  font-size:1em;
+  font-weight:bold;
+  text-decoration:none;
 }
+.column a:hover {
+  text-decoration:underline;
+}
+small {
+  color:#555;
+  font-size:0.85em;
+}
+
+/* === RESIZER === */
+.resizer {
+  width:14px;
+  background:#000;
+  cursor:col-resize;
+  user-select:none;
+  touch-action:none;
+  transition:background .2s ease;
+}
+
+/* === LINK BAR === */
 .link-bar {
   font-size: 1em;
   margin-bottom: 15px;
@@ -115,6 +142,41 @@ small { color:#666;font-size:.9em; }
 }
 .link-bar a:hover {
   text-decoration: underline;
+}
+
+/* === VERSIONE MOBILE === */
+@media (max-width:900px){
+  .row {
+    flex-direction:column;
+    height:auto;
+  }
+  .column {
+    width:100%;
+    margin-bottom:20px;
+  }
+  .resizer {
+    display:none;
+  }
+  .contenuto {
+    grid-template-columns: repeat(2, 1fr);
+    gap:12px;
+  }
+  .item-content {
+    gap:8px;
+  }
+  img {
+    max-width: 100%;
+    height:auto;
+  }
+  .price-big {
+    font-size:1.2em;
+  }
+  h2 {
+    text-align:center;
+  }
+  body {
+    padding:10px;
+  }
 }
 </style>
 </head>
@@ -323,3 +385,4 @@ aggiungiResizer(document.getElementById('resizer2'),
 </script>
 </body>
 </html>
+
