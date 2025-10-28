@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<link rel="icon" href="https://raw.githubusercontent.com/spagocci/recensioni/main/icona.png" type="image/png">
+<link rel="icon" href="https://github.com/spagocci/recensioni/blob/main/icona.png" type="image/png">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Spagocci 1.21 - Se Lo Vuoi con Forza Non è un Sogno</title><style>
@@ -151,34 +151,49 @@ small {
     height:auto;
   }
   .column {
-    width:100%;
-    margin-bottom:20px;
+    width:96%;
+    margin:0 auto 18px auto;
+    padding:12px;
   }
   .resizer {
     display:none;
   }
+
+  /* 🔹 Griglia ottimizzata per 2 colonne su mobile */
   .contenuto {
-    grid-template-columns: repeat(2, 1fr);
-    gap:12px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap:8px; /* meno spazio tra le card */
   }
+
+  .item {
+    padding:8px;
+  }
+
   .item-content {
-    gap:8px;
+    gap:6px;
   }
+
+  /* 🔹 Immagine più compatta ma proporzionata */
   img {
-    max-width: 100%;
+    max-width:78%;
     height:auto;
+    margin:0 auto;
   }
+
   .price-big {
-    font-size:1.2em;
+    font-size:1.1em;
   }
   h2 {
     text-align:center;
   }
   body {
-    padding:10px;
+    padding:8px;
   }
 }
+
 </style>
+
+
 </head>
 
 <body>
@@ -385,6 +400,3 @@ aggiungiResizer(document.getElementById('resizer2'),
 </script>
 </body>
 </html>
-
-
-
