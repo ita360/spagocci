@@ -4,7 +4,7 @@
 <link rel="icon" href="https://github.com/spagocci/recensioni/blob/main/icona.png" type="image/png">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Spagocci 1.18 Se Lo Vuoi con Forza Non è un Sogno</title>
+<title>Spagocci 1.20 - Se Lo Vuoi con Forza Non è un Sogno</title>
 <style>
 body {
   font-family: sans-serif;
@@ -119,6 +119,8 @@ small { color:#666;font-size:.9em; }
 
 <audio id="soundGenerale" src="https://raw.githubusercontent.com/spagocci/recensioni/main/tutti.mp3" preload="auto"></audio>
 <audio id="soundPochiSecondi" src="https://raw.githubusercontent.com/spagocci/recensioni/main/perte.mp3" preload="auto"></audio>
+<audio id="soundAttivate" src="https://raw.githubusercontent.com/spagocci/recensioni/main/attivate.mp3" preload="auto"></audio>
+<audio id="soundDisattivate" src="https://raw.githubusercontent.com/spagocci/recensioni/main/disattivate.mp3" preload="auto"></audio>
 
 <div class="row">
   <div class="column" id="canaleSinistra">
@@ -159,7 +161,7 @@ toggleButton.addEventListener("click",()=>{
   toggleButton.textContent=refreshActive?"⏸ Ferma aggiornamento":"▶️ Riprendi aggiornamento";
 });
 
-// === AUDIO: ATTIVA/DISATTIVA CON MEMORIA + SUONO DI CONFERMA OGNI ATTIVAZIONE ===
+// === AUDIO: ATTIVA/DISATTIVA CON MEMORIA + SUONO DI CONFERMA PERSONALIZZATO ===
 let audioAttivo = localStorage.getItem('audioAttivo') === 'true';
 let messaggiVisualizzati = new Set(JSON.parse(localStorage.getItem('messaggiVisualizzati') || '[]'));
 let primaVolta = messaggiVisualizzati.size === 0;
@@ -167,6 +169,8 @@ let primaVolta = messaggiVisualizzati.size === 0;
 const toggleAudioBtn = document.getElementById('toggleAudio');
 const soundGenerale = document.getElementById('soundGenerale');
 const soundPochiSecondi = document.getElementById('soundPochiSecondi');
+const soundAttivate = document.getElementById('soundAttivate');
+const soundDisattivate = document.getElementById('soundDisattivate');
 
 function aggiornaBottoneAudio() {
   toggleAudioBtn.textContent = audioAttivo
@@ -180,21 +184,21 @@ toggleAudioBtn.addEventListener('click', async () => {
   localStorage.setItem('audioAttivo', audioAttivo);
   aggiornaBottoneAudio();
 
-  if (audioAttivo) {
-    try {
-      // 🔊 Sblocca l’audio (autorizzazione browser)
-      await soundGenerale.play();
-      soundGenerale.pause();
-      soundGenerale.currentTime = 0;
-      await soundPochiSecondi.play();
-      soundPochiSecondi.pause();
-      soundPochiSecondi.currentTime = 0;
+  try {
+    // 🔊 Sblocca l’audio su browser
+    await soundGenerale.play();
+    soundGenerale.pause(); soundGenerale.currentTime = 0;
+    await soundPochiSecondi.play();
+    soundPochiSecondi.pause(); soundPochiSecondi.currentTime = 0;
 
-      // 🔔 Suono di conferma ogni volta che si attiva
-      await soundGenerale.play();
-    } catch (e) {
-      console.warn('⚠️ Impossibile riprodurre suono di conferma:', e.message);
+    // 🔔 Suono di conferma personalizzato
+    if (audioAttivo) {
+      await soundAttivate.play();
+    } else {
+      await soundDisattivate.play();
     }
+  } catch (e) {
+    console.warn('⚠️ Errore durante riproduzione suono di conferma:', e.message);
   }
 });
 
@@ -278,4 +282,3 @@ aggiungiResizer(document.getElementById('resizer2'),
 </script>
 </body>
 </html>
-
