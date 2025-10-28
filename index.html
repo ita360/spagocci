@@ -13,7 +13,7 @@ body {
 }
 h1 { margin-bottom: 10px; }
 button {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   padding: 8px 12px;
   font-size: 1em;
   cursor: pointer;
@@ -108,13 +108,11 @@ small { color:#666;font-size:.9em; }
   text-align: left;
   color: #000;
 }
-
 .link-bar a {
   color: #b30000;
   text-decoration: none;
   font-weight: bold;
 }
-
 .link-bar a:hover {
   text-decoration: underline;
 }
@@ -126,11 +124,12 @@ small { color:#666;font-size:.9em; }
   <a href="https://discord.gg/zE25rQfg">🤖DiSCORD</a> -
   <a href="https://sites.google.com/view/davidespagocci/informazioni">📘iSTRUZiONi</a> -
   <a href="https://whatsapp.com/channel/0029Vb6FyJ88qIzyi9nRtV2O">📦WHATSAPP Oggetti Disponibili Subito</a> -
-<a href="https://www.ebay.it/sch/i.html?_dkr=1&_ssn=davidespagocci">🛍️EBAY</a>
+  <a href="https://www.ebay.it/sch/i.html?_dkr=1&_ssn=davidespagocci">🛍️EBAY</a>
 </p>
 
 <button id="toggleAudio">🔈 Attiva Notifiche Audio</button>
 <button id="toggleRefresh">⏸ Ferma aggiornamento</button>
+<button id="btnValle">😭 ValleDiLacrime</button>
 <span id="timer">Aggiornamento Pagina tra: 60 s</span>
 
 <audio id="soundGenerale" src="https://raw.githubusercontent.com/spagocci/recensioni/main/tutti.mp3" preload="auto"></audio>
@@ -139,6 +138,7 @@ small { color:#666;font-size:.9em; }
 <audio id="soundDisattivate" src="https://raw.githubusercontent.com/spagocci/recensioni/main/disattivate.mp3" preload="auto"></audio>
 <audio id="soundAggAttivato" src="https://raw.githubusercontent.com/spagocci/recensioni/main/aggattivato.mp3" preload="auto"></audio>
 <audio id="soundAggDisattivato" src="https://raw.githubusercontent.com/spagocci/recensioni/main/aggdisattivato.mp3" preload="auto"></audio>
+<audio id="soundValle" src="https://raw.githubusercontent.com/spagocci/recensioni/main/valledilacrime.mp3" preload="auto"></audio>
 
 <div class="row">
   <div class="column" id="canaleSinistra">
@@ -203,6 +203,8 @@ const soundGenerale = document.getElementById('soundGenerale');
 const soundPochiSecondi = document.getElementById('soundPochiSecondi');
 const soundAttivate = document.getElementById('soundAttivate');
 const soundDisattivate = document.getElementById('soundDisattivate');
+const soundValle = document.getElementById('soundValle');
+const btnValle = document.getElementById('btnValle');
 
 function aggiornaBottoneAudio() {
   toggleAudioBtn.textContent = audioAttivo
@@ -229,6 +231,15 @@ toggleAudioBtn.addEventListener('click', async () => {
     }
   } catch (e) {
     console.warn('⚠️ Errore durante riproduzione suono di conferma:', e.message);
+  }
+});
+
+// === BOTTONE VALLEDILACRIME ===
+btnValle.addEventListener('click', async ()=>{
+  try {
+    await soundValle.play();
+  } catch (e) {
+    console.warn('⚠️ Errore riproduzione ValleDiLacrime:', e.message);
   }
 });
 
