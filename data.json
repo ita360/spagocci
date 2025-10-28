@@ -5,8 +5,9 @@
     "text": "Fuhesgu Caraffa in Vetro da 1,8L/63OZ, Brocca Acqua Vetro Borosilicato Caraffa di Vetro Caldo Freddo Brocca per Acqua con 304 Acciaio Inossidabile Coperchio per il Tè Freddo, Vino, Latte e Succo - 5561 - tutto",
     "link": "https://amazon.com/dp/B0FP2GPM4C",
     "image": "https://m.media-amazon.com/images/I/51aEjhBbkeL._SS210_.jpg",
-    "price": null,
-    "sourceChannel": "1432128848534962402"
+    "price": "<span style=\"color:red;font-weight:bold;font-size:2em;\">AM: 19€</span> <span style=\"color:green;font-weight:bold;font-size:3em;\"> Mio: 10€</span>",
+    "sourceChannel": "1432128848534962402",
+    "priceChecked": false
   },
   {
     "id": "1432708250050101301",
@@ -15,7 +16,8 @@
     "link": "https://amazon.com/dp/B0FRMDWGPL",
     "image": "https://m.media-amazon.com/images/I/41dXIBK1ToL._SS210_.jpg",
     "price": null,
-    "sourceChannel": "1432128848534962402"
+    "sourceChannel": "1432128848534962402",
+    "priceChecked": true
   },
   {
     "id": "1432708074614816878",
