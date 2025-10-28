@@ -96,7 +96,7 @@ small {
 .item-content {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 20px;
 }
 .price-big {
@@ -105,7 +105,7 @@ small {
   color: #009900;        /* verde brillante */
   text-shadow: 1px 1px 2px #0002;
   min-width: 150px;
-  text-align: right;
+  text-align: left;      /* 🔄 spostato a sinistra accanto all’immagine */
 }
 </style>
 </head>
@@ -119,7 +119,7 @@ small {
   </h1>
 
   <button id="toggleAudio">🔈 Audio: Attivo</button>
-  <button id="toggleRefresh">⏸ Stop Refresh</button>
+  <button id="toggleRefresh">⏸ Ferma aggiornamento</button>
   <span id="timer">Aggiornamento automatico Pagina tra: 60s</span>
 
   <audio id="soundGenerale" src="https://www.myinstants.com/media/sounds/tutti.wav" preload="auto"></audio>
@@ -148,7 +148,7 @@ small {
 
 <script>
 // === TIMER E REFRESH ===
-let refreshInterval = 60; // 🔁 refresh pagina ogni 60 secondi
+let refreshInterval = 60;
 let timeLeft = refreshInterval;
 let refreshActive = true;
 const timerDisplay = document.getElementById("timer");
@@ -169,7 +169,7 @@ setInterval(() => {
 
 toggleButton.addEventListener("click", () => {
   refreshActive = !refreshActive;
-  toggleButton.textContent = refreshActive ? "⏸ Stop Refresh" : "▶️ Riprendi Refresh";
+  toggleButton.textContent = refreshActive ? "⏸ Ferma aggiornamento" : "▶️ Riprendi aggiornamento";
 });
 
 // === AUDIO E VISUALIZZAZIONE ===
@@ -207,12 +207,12 @@ function caricaCatalogo() {
         div.className = 'item';
         div.innerHTML = `
           <div class="item-content">
+            ${item.image ? `<img src="${item.image}" alt="Immagine"/>` : ''}
+            ${item.price ? `<div class="price-big">${item.price}</div>` : ''}
             <div>
               ${item.link ? `<p><a href="${item.link}" target="_blank">${item.text}</a></p>` : `<p>${item.text}</p>`}
-              ${item.image ? `<img src="${item.image}" alt="Immagine"/>` : ''}
               <small>${new Date(item.timestamp).toLocaleString()}</small>
             </div>
-            ${item.price ? `<div class="price-big">${item.price}</div>` : ''}
           </div>
         `;
 
@@ -243,4 +243,3 @@ setInterval(caricaCatalogo, 10000);
 </script>
 </body>
 </html>
-
