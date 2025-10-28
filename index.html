@@ -4,7 +4,7 @@
 <link rel="icon" href="https://github.com/spagocci/recensioni/blob/main/icona.png" type="image/png">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Spagocci 1.20 - Se Lo Vuoi con Forza Non è un Sogno</title>
+<title>Spagocci 1.21 - Se Lo Vuoi con Forza Non è un Sogno</title>
 <style>
 body {
   font-family: sans-serif;
@@ -102,25 +102,43 @@ small { color:#666;font-size:.9em; }
   h2{text-align:center;}
   body{padding:10px;}
 }
+.link-bar {
+  font-size: 1em;
+  margin-bottom: 15px;
+  text-align: left;
+  color: #000;
+}
+
+.link-bar a {
+  color: #b30000;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.link-bar a:hover {
+  text-decoration: underline;
+}
 </style>
 </head>
 
 <body>
-<h1>
-  <a href="https://sites.google.com/view/davidespagocci/informazioni">iSTRUZiONi</a> -
-  <a href="https://discord.gg/zE25rQfg">DiSCORD</a> -
-  <a href="https://whatsapp.com/channel/0029Vb6FyJ88qIzyi9nRtV2O">WhatsApp</a> -
-  (in arrivo Telegram e altri)
-</h1>
+<p class="link-bar">
+  <a href="https://sites.google.com/view/davidespagocci/informazioni">📘iSTRUZiONi</a> -
+  <a href="https://discord.gg/zE25rQfg">🤖DiSCORD</a> -
+  <a href="https://whatsapp.com/channel/0029Vb6FyJ88qIzyi9nRtV2O">🎁WhatsApp</a> -
+<a href="https://www.ebay.it/sch/i.html?_dkr=1&_ssn=davidespagocci">🛍️Ebay</a> 
+</p>
 
-<button id="toggleAudio">🔇 Attiva Notifiche Audio</button>
+<button id="toggleAudio">🔈 Attiva Notifiche Audio</button>
 <button id="toggleRefresh">⏸ Ferma aggiornamento</button>
-<span id="timer">Aggiornamento automatico Pagina tra: 60 s</span>
+<span id="timer">Aggiornamento Pagina tra: 60 s</span>
 
 <audio id="soundGenerale" src="https://raw.githubusercontent.com/spagocci/recensioni/main/tutti.mp3" preload="auto"></audio>
 <audio id="soundPochiSecondi" src="https://raw.githubusercontent.com/spagocci/recensioni/main/perte.mp3" preload="auto"></audio>
 <audio id="soundAttivate" src="https://raw.githubusercontent.com/spagocci/recensioni/main/attivate.mp3" preload="auto"></audio>
 <audio id="soundDisattivate" src="https://raw.githubusercontent.com/spagocci/recensioni/main/disattivate.mp3" preload="auto"></audio>
+<audio id="soundAggAttivato" src="https://raw.githubusercontent.com/spagocci/recensioni/main/aggattivato.mp3" preload="auto"></audio>
+<audio id="soundAggDisattivato" src="https://raw.githubusercontent.com/spagocci/recensioni/main/aggdisattivato.mp3" preload="auto"></audio>
 
 <div class="row">
   <div class="column" id="canaleSinistra">
@@ -147,8 +165,11 @@ let refreshActive = true;
 const timerDisplay = document.getElementById("timer");
 const toggleButton = document.getElementById("toggleRefresh");
 
+const soundAggAttivato = document.getElementById("soundAggAttivato");
+const soundAggDisattivato = document.getElementById("soundAggDisattivato");
+
 function updateTimerDisplay(){
-  timerDisplay.textContent=`Aggiornamento automatico Pagina tra: ${timeLeft}s`;
+  timerDisplay.textContent=`Aggiornamento Pagina tra: ${timeLeft}s`;
 }
 setInterval(()=>{
   if(!refreshActive)return;
@@ -156,9 +177,20 @@ setInterval(()=>{
   if(timeLeft<=0){location.reload();}
   updateTimerDisplay();
 },1000);
-toggleButton.addEventListener("click",()=>{
+
+toggleButton.addEventListener("click", async ()=>{
   refreshActive=!refreshActive;
   toggleButton.textContent=refreshActive?"⏸ Ferma aggiornamento":"▶️ Riprendi aggiornamento";
+
+  try {
+    if (refreshActive) {
+      await soundAggAttivato.play();
+    } else {
+      await soundAggDisattivato.play();
+    }
+  } catch (e) {
+    console.warn("⚠️ Errore audio aggiornamento:", e.message);
+  }
 });
 
 // === AUDIO: ATTIVA/DISATTIVA CON MEMORIA + SUONO DI CONFERMA PERSONALIZZATO ===
@@ -185,13 +217,11 @@ toggleAudioBtn.addEventListener('click', async () => {
   aggiornaBottoneAudio();
 
   try {
-    // 🔊 Sblocca l’audio su browser
     await soundGenerale.play();
     soundGenerale.pause(); soundGenerale.currentTime = 0;
     await soundPochiSecondi.play();
     soundPochiSecondi.pause(); soundPochiSecondi.currentTime = 0;
 
-    // 🔔 Suono di conferma personalizzato
     if (audioAttivo) {
       await soundAttivate.play();
     } else {
@@ -282,4 +312,3 @@ aggiungiResizer(document.getElementById('resizer2'),
 </script>
 </body>
 </html>
-
