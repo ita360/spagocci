@@ -240,9 +240,45 @@ function caricaCatalogo() {
 
 caricaCatalogo();
 setInterval(caricaCatalogo, 10000);
+  // === RIDIMENSIONAMENTO COLONNE ===
+function aggiungiResizer(resizer, colonnaSinistra, colonnaDestra) {
+  let x = 0;
+  let colonnaSinistraWidth = 0;
+
+  const mouseDownHandler = function(e) {
+    x = e.clientX;
+    colonnaSinistraWidth = colonnaSinistra.getBoundingClientRect().width;
+    document.addEventListener('mousemove', mouseMoveHandler);
+    document.addEventListener('mouseup', mouseUpHandler);
+    resizer.style.background = '#b30000';
+  };
+
+  const mouseMoveHandler = function(e) {
+    const dx = e.clientX - x;
+    colonnaSinistra.style.flex = `0 0 ${colonnaSinistraWidth + dx}px`;
+  };
+
+  const mouseUpHandler = function() {
+    document.removeEventListener('mousemove', mouseMoveHandler);
+    document.removeEventListener('mouseup', mouseUpHandler);
+    resizer.style.background = '#000';
+  };
+
+  resizer.addEventListener('mousedown', mouseDownHandler);
+}
+
+// Attiva i 2 resizer
+aggiungiResizer(document.getElementById('resizer1'),
+                document.getElementById('canaleSinistra'),
+                document.getElementById('canaleDestra'));
+
+aggiungiResizer(document.getElementById('resizer2'),
+                document.getElementById('canaleDestra'),
+                document.getElementById('canaleFiltrati'));
 </script>
 </body>
 </html>
+
 
 
 
