@@ -4,7 +4,7 @@
 <link rel="icon" href="https://github.com/spagocci/recensioni/blob/main/icona.png" type="image/png">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Spagocci 1.15</title>
+<title>Spagocci 1.16</title>
 <style>
 body {
   font-family: sans-serif;
@@ -159,28 +159,49 @@ toggleButton.addEventListener("click",()=>{
   toggleButton.textContent=refreshActive?"⏸ Ferma aggiornamento":"▶️ Riprendi aggiornamento";
 });
 
-// === AUDIO: ATTIVA/DISATTIVA CON MEMORIA ===
+// === AUDIO: ATTIVA/DISATTIVA CON MEMORIA + SUONO DI CONFERMA ===
 let audioAttivo = localStorage.getItem('audioAttivo') === 'true';
+let audioConfermato = localStorage.getItem('audioConfermato') === 'true'; // 👈 nuovo flag
 let messaggiVisualizzati = new Set(JSON.parse(localStorage.getItem('messaggiVisualizzati') || '[]'));
 let primaVolta = messaggiVisualizzati.size === 0;
 
-const toggleAudioBtn=document.getElementById('toggleAudio');
-const soundGenerale=document.getElementById('soundGenerale');
-const soundPochiSecondi=document.getElementById('soundPochiSecondi');
+const toggleAudioBtn = document.getElementById('toggleAudio');
+const soundGenerale = document.getElementById('soundGenerale');
+const soundPochiSecondi = document.getElementById('soundPochiSecondi');
 
-function aggiornaBottoneAudio(){
-  toggleAudioBtn.textContent = audioAttivo ? "🔈 Disattiva Notifiche Audio" : "🔇 Attiva Notifiche Audio";
+function aggiornaBottoneAudio() {
+  toggleAudioBtn.textContent = audioAttivo
+    ? "🔈 Disattiva Notifiche Audio"
+    : "🔇 Attiva Notifiche Audio";
 }
 aggiornaBottoneAudio();
 
-toggleAudioBtn.addEventListener('click',()=>{
-  audioAttivo=!audioAttivo;
-  localStorage.setItem('audioAttivo',audioAttivo);
+toggleAudioBtn.addEventListener('click', async () => {
+  audioAttivo = !audioAttivo;
+  localStorage.setItem('audioAttivo', audioAttivo);
   aggiornaBottoneAudio();
-  if(audioAttivo){
-    // sblocca audio al primo click
-    soundGenerale.play().then(()=>soundGenerale.pause()).catch(()=>{});
-    soundPochiSecondi.play().then(()=>soundPochiSecondi.pause()).catch(()=>{});
+
+  if (audioAttivo) {
+    try {
+      // 🔊 Sblocca l’audio
+      await soundGenerale.play();
+      soundGenerale.pause();
+      soundGenerale.currentTime = 0;
+      await soundPochiSecondi.play();
+      soundPochiSecondi.pause();
+      soundPochiSecondi.currentTime = 0;
+    } catch {}
+
+    // 🔔 Suono di conferma solo la prima volta
+    if (!audioConfermato) {
+      try {
+        await soundGenerale.play();
+        audioConfermato = true;
+        localStorage.setItem('audioConfermato', 'true');
+      } catch (e) {
+        console.warn('⚠️ Impossibile riprodurre suono di conferma:', e.message);
+      }
+    }
   }
 });
 
