@@ -4,7 +4,9 @@
 <link rel="icon" href="https://github.com/spagocci/recensioni/blob/main/icona.png" type="image/png">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Spagocci 1.21 - Se Lo Vuoi con Forza Non è un Sogno</title><style>
+<title>Spagocci 1.21 - Se Lo Vuoi con Forza Non è un Sogno</title>
+<style>
+<style>
 body {
   font-family: sans-serif;
   padding: 20px;
@@ -89,6 +91,17 @@ button {
   gap:10px;
 }
 
+/* === LIMITAZIONE VISIVA DEL TITOLO (link <a>) === */
+.item-content a {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;        /* massimo 2 righe visibili */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  word-break: break-word;
+}
+
 /* === IMMAGINI E TESTO === */
 img {
   max-width: 90%;
@@ -98,7 +111,7 @@ img {
   box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
 .price-big {
-  font-size:1.3em;
+  font-size:1em;
   font-weight:bold;
   color:#009900;
   text-shadow:1px 1px 2px #0002;
@@ -158,30 +171,23 @@ small {
   .resizer {
     display:none;
   }
-
-  /* 🔹 Griglia ottimizzata per 2 colonne su mobile */
   .contenuto {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap:8px; /* meno spazio tra le card */
+    gap:8px;
   }
-
   .item {
     padding:8px;
   }
-
   .item-content {
     gap:6px;
   }
-
-  /* 🔹 Immagine più compatta ma proporzionata */
   img {
     max-width:78%;
     height:auto;
     margin:0 auto;
   }
-
   .price-big {
-    font-size:1.1em;
+    font-size:1em;
   }
   h2 {
     text-align:center;
@@ -190,10 +196,7 @@ small {
     padding:8px;
   }
 }
-
 </style>
-
-
 </head>
 
 <body>
@@ -397,6 +400,15 @@ aggiungiResizer(document.getElementById('resizer1'),
 aggiungiResizer(document.getElementById('resizer2'),
                 document.getElementById('canaleDestra'),
                 document.getElementById('canaleFiltrati'));
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.item-content a').forEach(el => {
+    const fullText = el.textContent.trim();
+    if (fullText.length > 32) {
+      el.textContent = fullText.substring(0, 32) + '…';
+    }
+  });
+});
 </script>
 </body>
 </html>
+
