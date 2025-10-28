@@ -4,16 +4,14 @@
 <link rel="icon" href="https://github.com/spagocci/recensioni/blob/main/icona.png" type="image/png">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Spagocci 1.14</title>
+<title>Spagocci 1.15</title>
 <style>
 body {
   font-family: sans-serif;
   padding: 20px;
   background: #f9f9f9;
 }
-h1 {
-  margin-bottom: 10px;
-}
+h1 { margin-bottom: 10px; }
 button {
   margin-bottom: 20px;
   padding: 8px 12px;
@@ -33,162 +31,111 @@ button {
 }
 .column {
   flex: 1;
-  background: linear-gradient(to bottom, #fff, #f0f0f0);
+  background: linear-gradient(to bottom,#fff,#f0f0f0);
   padding: 20px;
   border-radius: 20px;
   border: 4px solid #b30000;
   box-shadow:
-    inset 0 0 10px rgba(0, 0, 0, 0.1),
-    0 4px 10px rgba(0, 0, 0, 0.2);
+    inset 0 0 10px rgba(0,0,0,0.1),
+    0 4px 10px rgba(0,0,0,0.2);
   overflow-y: auto;
   margin-bottom: 10px;
-  transition: transform 0.1s ease, box-shadow 0.2s ease;
+  transition: transform .1s ease,box-shadow .2s ease;
   min-width: 100px;
 }
 .column:hover {
   box-shadow:
-    inset 0 0 10px rgba(0, 0, 0, 0.15),
-    0 6px 14px rgba(0, 0, 0, 0.3);
+    inset 0 0 10px rgba(0,0,0,0.15),
+    0 6px 14px rgba(0,0,0,0.3);
 }
 .column:active {
   transform: scale(0.98);
   box-shadow:
-    inset 0 0 6px rgba(0, 0, 0, 0.2),
-    0 2px 6px rgba(0, 0, 0, 0.2);
+    inset 0 0 6px rgba(0,0,0,0.2),
+    0 2px 6px rgba(0,0,0,0.2);
 }
 img {
   max-width: 200px;
   display: block;
   margin-top: 10px;
 }
-small {
-  color: #666;
-  font-size: 0.9em;
-}
+small { color:#666;font-size:.9em; }
 .column a {
-  color: #000;
-  font-size: 1.1em;
-  font-weight: bold;
-  text-decoration: none;
+  color:#000;font-size:1.1em;font-weight:bold;text-decoration:none;
 }
 .item {
-  margin-bottom: 20px;
-  padding: 15px;
-  background: linear-gradient(to bottom, #fefefe, #eaeaea);
-  border-radius: 20px;
-  border: 4px solid #b30000;
+  margin-bottom:20px;
+  padding:15px;
+  background:linear-gradient(to bottom,#fefefe,#eaeaea);
+  border-radius:20px;
+  border:4px solid #b30000;
   box-shadow:
-    inset 0 0 10px rgba(0, 0, 0, 0.1),
-    0 4px 10px rgba(0, 0, 0, 0.2);
-  transition: transform 0.1s ease, box-shadow 0.2s ease;
+    inset 0 0 10px rgba(0,0,0,0.1),
+    0 4px 10px rgba(0,0,0,0.2);
+  transition:transform .1s ease,box-shadow .2s ease;
 }
 .item:hover {
   box-shadow:
-    inset 0 0 10px rgba(0, 0, 0, 0.15),
-    0 6px 14px rgba(0, 0, 0, 0.3);
+    inset 0 0 10px rgba(0,0,0,0.15),
+    0 6px 14px rgba(0,0,0,0.3);
 }
 .resizer {
-  width: 14px;
-  background: #000;
-  cursor: col-resize;
-  user-select: none;
-  touch-action: none;
-  transition: background 0.2s ease;
+  width:14px;background:#000;cursor:col-resize;user-select:none;touch-action:none;
+  transition:background .2s ease;
 }
 .item-content {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 20px;
+  display:flex;align-items:center;justify-content:flex-start;gap:20px;
 }
 .price-big {
-  font-size: 1em;
-  font-weight: bold;
-  color: #009900;
-  text-shadow: 1px 1px 2px #0002;
-  min-width: 150px;
-  text-align: left;
+  font-size:1em;font-weight:bold;color:#009900;
+  text-shadow:1px 1px 2px #0002;
+  min-width:150px;text-align:left;
 }
-
-/* === VERSIONE MOBILE RESPONSIVE === */
-@media (max-width: 900px) {
-  .row {
-    flex-direction: column;
-    height: auto;
-  }
-
-  .column {
-    min-width: auto;
-    width: 100%;
-    margin-bottom: 20px;
-  }
-
-  .resizer {
-    display: none; /* 🔇 disattiva i divisori su mobile */
-  }
-
-  .item-content {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-  }
-
-  img {
-    max-width: 100%;
-    height: auto;
-  }
-
-  .price-big {
-    font-size: 1.5em;
-    text-align: left;
-  }
-
-  h2 {
-    text-align: center;
-  }
-
-  body {
-    padding: 10px;
-  }
+/* === VERSIONE MOBILE === */
+@media (max-width:900px){
+  .row{flex-direction:column;height:auto;}
+  .column{width:100%;margin-bottom:20px;}
+  .resizer{display:none;}
+  .item-content{flex-direction:column;align-items:flex-start;gap:10px;}
+  img{max-width:100%;height:auto;}
+  .price-big{font-size:1.5em;text-align:left;}
+  h2{text-align:center;}
+  body{padding:10px;}
 }
 </style>
 </head>
 
 <body>
-  <h1>
-    <a href="https://sites.google.com/view/davidespagocci/informazioni">iSTRUZiONi</a> -
-    <a href="https://discord.gg/zE25rQfg">DiSCORD</a> -
-    <a href="https://whatsapp.com/channel/0029Vb6FyJ88qIzyi9nRtV2O">WhatsApp</a> -
-    (in arrivo Telegram e altri)
-  </h1>
+<h1>
+  <a href="https://sites.google.com/view/davidespagocci/informazioni">iSTRUZiONi</a> -
+  <a href="https://discord.gg/zE25rQfg">DiSCORD</a> -
+  <a href="https://whatsapp.com/channel/0029Vb6FyJ88qIzyi9nRtV2O">WhatsApp</a> -
+  (in arrivo Telegram e altri)
+</h1>
 
-  <button id="toggleAudio">🔈 Audio: Attivo</button>
-  <button id="toggleRefresh">⏸ Ferma aggiornamento</button>
-  <span id="timer">Aggiornamento automatico Pagina tra: 60s</span>
+<button id="toggleAudio">🔇 Attiva Notifiche Audio</button>
+<button id="toggleRefresh">⏸ Ferma aggiornamento</button>
+<span id="timer">Aggiornamento automatico Pagina tra: 60 s</span>
 
-  <audio id="soundGenerale" src="https://www.myinstants.com/media/sounds/tutti.wav" preload="auto"></audio>
-  <audio id="soundPochiSecondi" src="https://github.com/spagocci/recensioni/blob/main/perte.mp3" preload="auto"></audio>
+<audio id="soundGenerale" src="https://www.myinstants.com/media/sounds/tutti.wav" preload="auto"></audio>
+<audio id="soundPochiSecondi" src="https://github.com/spagocci/recensioni/blob/main/perte.mp3" preload="auto"></audio>
 
-  <div class="row">
-    <div class="column" id="canaleSinistra">
-      <h2>#tutti</h2>
-      <div class="contenuto" id="contenutoSinistra"></div>
-    </div>
-
-    <div class="resizer" id="resizer1"></div>
-
-    <div class="column" id="canaleDestra">
-      <h2>#perpochisecondi</h2>
-      <div class="contenuto" id="contenutoDestra"></div>
-    </div>
-
-    <div class="resizer" id="resizer2"></div>
-
-    <div class="column" id="canaleFiltrati">
-      <h2>#filtrati</h2>
-      <div class="contenuto" id="contenutoFiltrati"></div>
-    </div>
+<div class="row">
+  <div class="column" id="canaleSinistra">
+    <h2>#tutti</h2>
+    <div class="contenuto" id="contenutoSinistra"></div>
   </div>
+  <div class="resizer" id="resizer1"></div>
+  <div class="column" id="canaleDestra">
+    <h2>#perpochisecondi</h2>
+    <div class="contenuto" id="contenutoDestra"></div>
+  </div>
+  <div class="resizer" id="resizer2"></div>
+  <div class="column" id="canaleFiltrati">
+    <h2>#filtrati</h2>
+    <div class="contenuto" id="contenutoFiltrati"></div>
+  </div>
+</div>
 
 <script>
 // === TIMER E REFRESH ===
@@ -198,120 +145,116 @@ let refreshActive = true;
 const timerDisplay = document.getElementById("timer");
 const toggleButton = document.getElementById("toggleRefresh");
 
-function updateTimerDisplay() {
-  timerDisplay.textContent = `Aggiornamento automatico Pagina tra: ${timeLeft}s`;
+function updateTimerDisplay(){
+  timerDisplay.textContent=`Aggiornamento automatico Pagina tra: ${timeLeft}s`;
 }
-
-setInterval(() => {
-  if (!refreshActive) return;
+setInterval(()=>{
+  if(!refreshActive)return;
   timeLeft--;
-  if (timeLeft <= 0) {
-    location.reload();
-  }
+  if(timeLeft<=0){location.reload();}
   updateTimerDisplay();
-}, 1000);
-
-toggleButton.addEventListener("click", () => {
-  refreshActive = !refreshActive;
-  toggleButton.textContent = refreshActive ? "⏸ Ferma aggiornamento" : "▶️ Riprendi aggiornamento";
+},1000);
+toggleButton.addEventListener("click",()=>{
+  refreshActive=!refreshActive;
+  toggleButton.textContent=refreshActive?"⏸ Ferma aggiornamento":"▶️ Riprendi aggiornamento";
 });
 
-// === AUDIO E VISUALIZZAZIONE ===
-let audioAttivo = true;
+// === AUDIO: ATTIVA/DISATTIVA CON MEMORIA ===
+let audioAttivo = localStorage.getItem('audioAttivo') === 'true';
 let messaggiVisualizzati = new Set(JSON.parse(localStorage.getItem('messaggiVisualizzati') || '[]'));
 let primaVolta = messaggiVisualizzati.size === 0;
 
-document.getElementById('toggleAudio').addEventListener('click', () => {
-  audioAttivo = !audioAttivo;
-  document.getElementById('toggleAudio').textContent = audioAttivo ? '🔈 Audio: Attivo' : '🔇 Audio: Muto';
+const toggleAudioBtn=document.getElementById('toggleAudio');
+const soundGenerale=document.getElementById('soundGenerale');
+const soundPochiSecondi=document.getElementById('soundPochiSecondi');
+
+function aggiornaBottoneAudio(){
+  toggleAudioBtn.textContent = audioAttivo ? "🔈 Disattiva Notifiche Audio" : "🔇 Attiva Notifiche Audio";
+}
+aggiornaBottoneAudio();
+
+toggleAudioBtn.addEventListener('click',()=>{
+  audioAttivo=!audioAttivo;
+  localStorage.setItem('audioAttivo',audioAttivo);
+  aggiornaBottoneAudio();
+  if(audioAttivo){
+    // sblocca audio al primo click
+    soundGenerale.play().then(()=>soundGenerale.pause()).catch(()=>{});
+    soundPochiSecondi.play().then(()=>soundPochiSecondi.pause()).catch(()=>{});
+  }
 });
 
 // === CARICAMENTO DATI OGNI 10s ===
-function caricaCatalogo() {
-  const timestamp = new Date().getTime();
+function caricaCatalogo(){
+  const timestamp=new Date().getTime();
   fetch(`https://spagocci.github.io/recensioni/data.json?t=${timestamp}`)
-    .then(res => res.json())
-    .then(data => {
-      data.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+  .then(res=>res.json())
+  .then(data=>{
+    data.sort((a,b)=>new Date(b.timestamp)-new Date(a.timestamp));
+    const sinistra=document.getElementById('contenutoSinistra');
+    const destra=document.getElementById('contenutoDestra');
+    const filtrati=document.getElementById('contenutoFiltrati');
+    sinistra.innerHTML=destra.innerHTML=filtrati.innerHTML='';
 
-      const contenutoSinistra = document.getElementById('contenutoSinistra');
-      const contenutoDestra = document.getElementById('contenutoDestra');
-      const contenutoFiltrati = document.getElementById('contenutoFiltrati');
+    data.forEach(item=>{
+      const isNuovo=!messaggiVisualizzati.has(item.id);
+      messaggiVisualizzati.add(item.id);
+      localStorage.setItem('messaggiVisualizzati',JSON.stringify([...messaggiVisualizzati]));
 
-      contenutoSinistra.innerHTML = '';
-      contenutoDestra.innerHTML = '';
-      contenutoFiltrati.innerHTML = '';
-
-      data.forEach(item => {
-        const isNuovo = !messaggiVisualizzati.has(item.id);
-        messaggiVisualizzati.add(item.id);
-        localStorage.setItem('messaggiVisualizzati', JSON.stringify([...messaggiVisualizzati]));
-
-        const div = document.createElement('div');
-        div.className = 'item';
-        div.innerHTML = `
-          <div class="item-content">
-            ${item.image ? `<img src="${item.image}" alt="Immagine"/>` : ''}
-            ${item.price ? `<div class="price-big">${item.price}</div>` : ''}
-            <div>
-              ${item.link ? `<p><a href="${item.link}" target="_blank">${item.text}</a></p>` : `<p>${item.text}</p>`}
-              <small>${new Date(item.timestamp).toLocaleString()}</small>
-            </div>
+      const div=document.createElement('div');
+      div.className='item';
+      div.innerHTML=`
+        <div class="item-content">
+          ${item.image?`<img src="${item.image}" alt="Immagine">`:''}
+          ${item.price?`<div class="price-big">${item.price}</div>`:''}
+          <div>
+            ${item.link?`<p><a href="${item.link}" target="_blank">${item.text}</a></p>`:`<p>${item.text}</p>`}
+            <small>${new Date(item.timestamp).toLocaleString()}</small>
           </div>
-        `;
+        </div>`;
 
-        const soundGenerale = document.getElementById('soundGenerale');
-        const soundPochiSecondi = document.getElementById('soundPochiSecondi');
-
-        if (item.sourceChannel === '1432128848534962402') {
-          contenutoSinistra.appendChild(div);
-          if (!primaVolta && audioAttivo && isNuovo) soundGenerale.play().catch(() => {});
-        } else if (item.sourceChannel === '1430829927175032954') {
-          contenutoDestra.appendChild(div);
-          if (!primaVolta && audioAttivo && isNuovo) soundPochiSecondi.play().catch(() => {});
-        } else if (item.sourceChannel === '1431551820509089842') {
-          contenutoFiltrati.appendChild(div);
-          if (!primaVolta && audioAttivo && isNuovo) soundGenerale.play().catch(() => {});
-        }
-      });
-    })
-    .catch(err => {
-      document.getElementById('contenutoSinistra').innerHTML = `<p style="color:red;">❌ Errore: ${err.message}</p>`;
-      document.getElementById('contenutoDestra').innerHTML = `<p style="color:red;">❌ Errore: ${err.message}</p>`;
-      document.getElementById('contenutoFiltrati').innerHTML = `<p style="color:red;">❌ Errore: ${err.message}</p>`;
+      if(item.sourceChannel==='1432128848534962402'){
+        sinistra.appendChild(div);
+        if(!primaVolta&&audioAttivo&&isNuovo)soundGenerale.play().catch(()=>{});
+      }else if(item.sourceChannel==='1430829927175032954'){
+        destra.appendChild(div);
+        if(!primaVolta&&audioAttivo&&isNuovo)soundPochiSecondi.play().catch(()=>{});
+      }else if(item.sourceChannel==='1431551820509089842'){
+        filtrati.appendChild(div);
+        if(!primaVolta&&audioAttivo&&isNuovo)soundGenerale.play().catch(()=>{});
+      }
     });
+  })
+  .catch(err=>{
+    ['contenutoSinistra','contenutoDestra','contenutoFiltrati'].forEach(id=>{
+      document.getElementById(id).innerHTML=`<p style="color:red;">❌ Errore: ${err.message}</p>`;
+    });
+  });
 }
-
 caricaCatalogo();
-setInterval(caricaCatalogo, 10000);
+setInterval(caricaCatalogo,10000);
 
 // === RIDIMENSIONAMENTO COLONNE ===
-function aggiungiResizer(resizer, colonnaSinistra, colonnaDestra) {
-  let x = 0;
-  let colonnaSinistraWidth = 0;
-
-  const mouseDownHandler = function(e) {
-    x = e.clientX;
-    colonnaSinistraWidth = colonnaSinistra.getBoundingClientRect().width;
-    document.addEventListener('mousemove', mouseMoveHandler);
-    document.addEventListener('mouseup', mouseUpHandler);
-    resizer.style.background = '#b30000';
+function aggiungiResizer(resizer,colSX,colDX){
+  let x=0,colSXWidth=0;
+  const down=e=>{
+    x=e.clientX;
+    colSXWidth=colSX.getBoundingClientRect().width;
+    document.addEventListener('mousemove',move);
+    document.addEventListener('mouseup',up);
+    resizer.style.background='#b30000';
   };
-
-  const mouseMoveHandler = function(e) {
-    const dx = e.clientX - x;
-    colonnaSinistra.style.flex = `0 0 ${colonnaSinistraWidth + dx}px`;
+  const move=e=>{
+    const dx=e.clientX-x;
+    colSX.style.flex=`0 0 ${colSXWidth+dx}px`;
   };
-
-  const mouseUpHandler = function() {
-    document.removeEventListener('mousemove', mouseMoveHandler);
-    document.removeEventListener('mouseup', mouseUpHandler);
-    resizer.style.background = '#000';
+  const up=()=>{
+    document.removeEventListener('mousemove',move);
+    document.removeEventListener('mouseup',up);
+    resizer.style.background='#000';
   };
-
-  resizer.addEventListener('mousedown', mouseDownHandler);
+  resizer.addEventListener('mousedown',down);
 }
-
 aggiungiResizer(document.getElementById('resizer1'),
                 document.getElementById('canaleSinistra'),
                 document.getElementById('canaleDestra'));
