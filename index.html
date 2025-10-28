@@ -3,7 +3,8 @@
 <head>
 <link rel="icon" href="https://github.com/spagocci/recensioni/blob/main/icona.png" type="image/png">
 <meta charset="UTF-8">
-<title>Spagocci 1.13</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spagocci 1.14</title>
 <style>
 body {
   font-family: sans-serif;
@@ -92,6 +93,7 @@ small {
   cursor: col-resize;
   user-select: none;
   touch-action: none;
+  transition: background 0.2s ease;
 }
 .item-content {
   display: flex;
@@ -100,12 +102,54 @@ small {
   gap: 20px;
 }
 .price-big {
-  font-size: 1em;        /* 2 volte più grande */
+  font-size: 1em;
   font-weight: bold;
-  color: #009900;        /* verde brillante */
+  color: #009900;
   text-shadow: 1px 1px 2px #0002;
   min-width: 150px;
-  text-align: left;      /* 🔄 spostato a sinistra accanto all’immagine */
+  text-align: left;
+}
+
+/* === VERSIONE MOBILE RESPONSIVE === */
+@media (max-width: 900px) {
+  .row {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .column {
+    min-width: auto;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .resizer {
+    display: none; /* 🔇 disattiva i divisori su mobile */
+  }
+
+  .item-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .price-big {
+    font-size: 1.5em;
+    text-align: left;
+  }
+
+  h2 {
+    text-align: center;
+  }
+
+  body {
+    padding: 10px;
+  }
 }
 </style>
 </head>
@@ -240,7 +284,8 @@ function caricaCatalogo() {
 
 caricaCatalogo();
 setInterval(caricaCatalogo, 10000);
-  // === RIDIMENSIONAMENTO COLONNE ===
+
+// === RIDIMENSIONAMENTO COLONNE ===
 function aggiungiResizer(resizer, colonnaSinistra, colonnaDestra) {
   let x = 0;
   let colonnaSinistraWidth = 0;
@@ -267,18 +312,12 @@ function aggiungiResizer(resizer, colonnaSinistra, colonnaDestra) {
   resizer.addEventListener('mousedown', mouseDownHandler);
 }
 
-// Attiva i 2 resizer
 aggiungiResizer(document.getElementById('resizer1'),
                 document.getElementById('canaleSinistra'),
                 document.getElementById('canaleDestra'));
-
 aggiungiResizer(document.getElementById('resizer2'),
                 document.getElementById('canaleDestra'),
                 document.getElementById('canaleFiltrati'));
 </script>
 </body>
 </html>
-
-
-
-
