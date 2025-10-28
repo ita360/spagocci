@@ -5,8 +5,9 @@
     "text": "TUKNN Fiocco di Rosso, Fiocco di Natale, Fiocchi Nastro di Natalizio, Fiocchi di Nastro di Natale Rossi, 24 Pezzi - 5561 - tutto",
     "link": "https://amazon.com/dp/B0FLQ8KDRW",
     "image": "https://m.media-amazon.com/images/I/51quCGa+8fL._SS210_.jpg",
-    "price": null,
-    "sourceChannel": "1432128848534962402"
+    "price": "<span style=\"color:red;font-weight:bold;font-size:2em;\">AM: 10€</span> <span style=\"color:green;font-weight:bold;font-size:3em;\"> Mio: 5€</span>",
+    "sourceChannel": "1432128848534962402",
+    "priceChecked": false
   },
   {
     "id": "1432708380169994372",
