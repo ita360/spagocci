@@ -94,7 +94,7 @@ button {
 /* === LIMITAZIONE VISIVA DEL TITOLO (link <a>) === */
 .item-content a {
   display: -webkit-box;
-  -webkit-line-clamp: 2;        /* massimo 2 righe visibili */
+  -webkit-line-clamp: 3;        /* massimo 3 righe visibili */
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -210,7 +210,7 @@ small {
 <button id="toggleAudio">🔈 Attiva Notifiche Audio</button>
 <button id="toggleRefresh">⏸ Ferma aggiornamento</button>
 <button id="btnValle">😭 ValleDiLacrime</button>
-<span id="timer">Aggiornamento Pagina tra: 60 s</span>
+<span id="timer">Agg. tra: 60 s</span>
 
 <audio id="soundGenerale" src="https://raw.githubusercontent.com/spagocci/recensioni/main/tutti.mp3" preload="auto"></audio>
 <audio id="soundPochiSecondi" src="https://raw.githubusercontent.com/spagocci/recensioni/main/perte.mp3" preload="auto"></audio>
@@ -249,7 +249,7 @@ const soundAggAttivato = document.getElementById("soundAggAttivato");
 const soundAggDisattivato = document.getElementById("soundAggDisattivato");
 
 function updateTimerDisplay(){
-  timerDisplay.textContent=`Aggiornamento Pagina tra: ${timeLeft}s`;
+  timerDisplay.textContent=`Agg tra: ${timeLeft}s`;
 }
 setInterval(()=>{
   if(!refreshActive)return;
@@ -403,7 +403,7 @@ aggiungiResizer(document.getElementById('resizer2'),
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.item-content a').forEach(el => {
     const fullText = el.textContent.trim();
-    if (fullText.length > 32) {
+    if (fullText.length > 60) {
       el.textContent = fullText.substring(0, 32) + '…';
     }
   });
