@@ -6,7 +6,8 @@
     "link": "https://amazon.com/dp/B0D8W5VP3S",
     "image": "https://m.media-amazon.com/images/I/31F7POdD0aL._SS210_.jpg",
     "price": null,
-    "sourceChannel": "1432128848534962402"
+    "sourceChannel": "1432128848534962402",
+    "priceChecked": true
   },
   {
     "id": "1432708046013989016",
@@ -15,7 +16,8 @@
     "link": "https://amazon.com/dp/B0FNMVXW11",
     "image": "https://m.media-amazon.com/images/I/51sGXlgNPfL._SS210_.jpg",
     "price": null,
-    "sourceChannel": "1432128848534962402"
+    "sourceChannel": "1432128848534962402",
+    "priceChecked": true
   },
   {
     "id": "1432708037596155914",
@@ -23,8 +25,9 @@
     "text": "2 Pezzi Paraspruzzi in INOX, Paraspruzzi a Maglia Fine per Ninja Foodi Max Dual Zone AF400EU/AF451EU Riutilizzabili Accessorio per Friggitrice ad Aria Antispruzzo Silicio per Ninja Air Fryer DZ401 - 5561 - tutto",
     "link": "https://amazon.com/dp/B0FVXZHHM1",
     "image": "https://m.media-amazon.com/images/I/51OLJrcjoeL._SS210_.jpg",
-    "price": null,
-    "sourceChannel": "1432128848534962402"
+    "price": "<span style=\"color:red;font-weight:bold;font-size:2em;\">AM: 12€</span> <span style=\"color:green;font-weight:bold;font-size:3em;\"> Mio: 6€</span>",
+    "sourceChannel": "1432128848534962402",
+    "priceChecked": false
   },
   {
     "id": "1432707962849333330",
