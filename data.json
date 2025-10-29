@@ -5,8 +5,9 @@
     "text": "DT770 MMX300 PRO - Cuscinetti auricolari di ricambio compatibili con Beyerdynamic MMX300, DT770, DT990, DT 990 PRO, DT880, DT 880 PRO, Custom One Pro Plus, cuscinetti auricolari in memory foam e - 5561 - tutto",
     "link": "https://amazon.it/dp/B0FR42YJYV",
     "image": "https://m.media-amazon.com/images/I/419XuG3m2TL._SS210_.jpg",
-    "price": null,
-    "sourceChannel": "1432128848534962402"
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\"> Mio: 8€</span><br><span style=\"color:red;font-weight:bold;font-size:1em;\">AM: 15€</span>",
+    "sourceChannel": "1432128848534962402",
+    "priceChecked": false
   },
   {
     "id": "1433003724812587103",
@@ -15,7 +16,8 @@
     "link": "https://amazon.it/dp/B0FR4VMJ6N",
     "image": "https://m.media-amazon.com/images/I/41V7qek7gTL._SS210_.jpg",
     "price": null,
-    "sourceChannel": "1432128848534962402"
+    "sourceChannel": "1432128848534962402",
+    "priceChecked": true
   },
   {
     "id": "1433002049376751626",
