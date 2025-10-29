@@ -132,6 +132,7 @@ img { max-width:90%; border-radius:12px; }
 <button id="btnGestisciParole">✏️ Gestisci Parole Nascoste</button>
 <button id="toggleAudio">🔈 Attiva Notifiche Audio</button>
 <button id="btnSoloMigliori">⭐Solo i <b>Migliori oggetti</b></button>
+<button id="btnAdulti">🔞Nascondi Sesso</button> 
 
 <!-- ✅ Timer accanto a oggetti nascosti -->
 <div id="statusBar">
@@ -170,6 +171,10 @@ img { max-width:90%; border-radius:12px; }
     <h2>#filtrati</h2>
     <div class="contenuto" id="contenutoFiltrati"></div>
   </div>
+</div>
+<div class="column" id="canaleAdulti">
+  <h2>#adulti</h2>
+  <div class="contenuto" id="contenutoAdulti"></div>
 </div>
 <div class="column" id="canaleDestra">
   <h2>#perpochisecondi</h2>
@@ -238,7 +243,8 @@ function caricaCatalogo(){
     const sinistra=document.getElementById('contenutoSinistra');
     const destra=document.getElementById('contenutoDestra');
     const filtrati=document.getElementById('contenutoFiltrati');
-    sinistra.innerHTML=destra.innerHTML=filtrati.innerHTML='';
+    const adulti=document.getElementById('contenutoAdulti');
+    sinistra.innerHTML=destra.innerHTML=filtrati.innerHTML=adulti.innerHTML='';
 
     data.forEach(item=>{
       const isNuovo=!messaggiVisualizzati.has(item.id);
@@ -263,16 +269,20 @@ function caricaCatalogo(){
       }else if(item.sourceChannel==='1431551820509089842'){
         filtrati.appendChild(div);
         if(!primaVolta&&audioAttivo&&isNuovo)audioGenerale.play().catch(()=>{});
+      }else if(item.sourceChannel==='1433144661186318630'){
+        adulti.appendChild(div);
+        if(!primaVolta&&audioAttivo&&isNuovo)audioGenerale.play().catch(()=>{});
       }
     });
     applicaFiltro();
   })
   .catch(err=>{
-    ['contenutoSinistra','contenutoDestra','contenutoFiltrati'].forEach(id=>{
+    ['contenutoSinistra','contenutoDestra','contenutoFiltrati','contenutoAdulti'].forEach(id=>{
       document.getElementById(id).innerHTML=`<p style="color:red;">❌ Errore: ${err.message}</p>`;
     });
   });
 }
+
 caricaCatalogo();
 setInterval(caricaCatalogo,10000);
 
@@ -349,6 +359,19 @@ btnSoloMigliori.addEventListener('click', ()=>{
     btnSoloMigliori.textContent = '⭐ Solo i Migliori oggetti';
   }
 });
+// === TOGGLE ADULTi ===
+const btnAdulti = document.getElementById('btnAdulti');
+const canaleAdulti = document.getElementById('canaleAdulti');
+let adultiVisibili = true; // 👈 adesso è visibile di default
+
+btnAdulti.addEventListener('click', () => {
+  adultiVisibili = !adultiVisibili;
+  canaleAdulti.style.display = adultiVisibili ? 'block' : 'none';
+  btnAdulti.textContent = adultiVisibili
+    ? '🚫 Nascondi Sesso'
+    : '🔞 Mostra Sesso';
+});
 </script>
 </body>
 </html>
+
