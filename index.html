@@ -4,8 +4,7 @@
 <link rel="icon" href="https://github.com/spagocci/recensioni/blob/main/icona.png" type="image/png">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Spagocci 1.21 - Se Lo Vuoi con Forza Non è un Sogno</title>
-<style>
+<title>Spagocci 1.23 - Filtrati a Sinistra</title>
 <style>
 body {
   font-family: sans-serif;
@@ -26,10 +25,10 @@ button {
   margin-left: 10px;
 }
 
-/* === LAYOUT GENERALE === */
+/* === LAYOUT === */
 .row {
   display: flex;
-  gap: 0;
+  gap: 10px;
   height: 80vh;
 }
 .column {
@@ -38,50 +37,29 @@ button {
   padding: 20px;
   border-radius: 20px;
   border: 4px solid #b30000;
-  box-shadow:
-    inset 0 0 10px rgba(0,0,0,0.1),
-    0 4px 10px rgba(0,0,0,0.2);
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.1), 0 4px 10px rgba(0,0,0,0.2);
   overflow-y: auto;
   margin-bottom: 10px;
   transition: transform .1s ease,box-shadow .2s ease;
-  min-width: 100px;
 }
 .column:hover {
-  box-shadow:
-    inset 0 0 10px rgba(0,0,0,0.15),
-    0 6px 14px rgba(0,0,0,0.3);
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.15), 0 6px 14px rgba(0,0,0,0.3);
 }
-.column:active {
-  transform: scale(0.98);
-  box-shadow:
-    inset 0 0 6px rgba(0,0,0,0.2),
-    0 2px 6px rgba(0,0,0,0.2);
-}
+.column:active { transform: scale(0.98); }
 
-/* === STRUTTURA OGGETTI === */
 .contenuto {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 15px;
-  align-items: stretch;
 }
 .item {
   background:linear-gradient(to bottom,#fefefe,#eaeaea);
   border-radius:20px;
   border:4px solid #b30000;
-  box-shadow:
-    inset 0 0 10px rgba(0,0,0,0.1),
-    0 4px 10px rgba(0,0,0,0.2);
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.1), 0 4px 10px rgba(0,0,0,0.2);
   padding:12px;
-  transition:transform .1s ease,box-shadow .2s ease;
   display:flex;
   flex-direction:column;
-  justify-content:space-between;
-}
-.item:hover {
-  box-shadow:
-    inset 0 0 10px rgba(0,0,0,0.15),
-    0 6px 14px rgba(0,0,0,0.3);
 }
 .item-content {
   display:flex;
@@ -90,111 +68,21 @@ button {
   text-align:center;
   gap:10px;
 }
-
-/* === LIMITAZIONE VISIVA DEL TITOLO (link <a>) === */
-.item-content a {
-  display: -webkit-box;
-  -webkit-line-clamp: 3;        /* massimo 3 righe visibili */
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 100%;
-  word-break: break-word;
-}
-
-/* === IMMAGINI E TESTO === */
 img {
-  max-width: 90%;
-  height: auto;
-  border-radius: 12px;
-  object-fit: cover;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  max-width:90%;
+  border-radius:12px;
 }
 .price-big {
   font-size:1em;
   font-weight:bold;
   color:#009900;
-  text-shadow:1px 1px 2px #0002;
-  margin-top:5px;
 }
-.column a {
-  color:#000;
-  font-size:1em;
-  font-weight:bold;
-  text-decoration:none;
-}
-.column a:hover {
-  text-decoration:underline;
-}
-small {
-  color:#555;
-  font-size:0.85em;
-}
+.column a { color:#000; text-decoration:none; font-weight:bold; }
+.column a:hover { text-decoration:underline; }
 
-/* === RESIZER === */
-.resizer {
-  width:14px;
-  background:#000;
-  cursor:col-resize;
-  user-select:none;
-  touch-action:none;
-  transition:background .2s ease;
-}
-
-/* === LINK BAR === */
-.link-bar {
-  font-size: 1em;
-  margin-bottom: 15px;
-  text-align: left;
-  color: #000;
-}
-.link-bar a {
-  color: #b30000;
-  text-decoration: none;
-  font-weight: bold;
-}
-.link-bar a:hover {
-  text-decoration: underline;
-}
-
-/* === VERSIONE MOBILE === */
+/* === MOBILE === */
 @media (max-width:900px){
-  .row {
-    flex-direction:column;
-    height:auto;
-  }
-  .column {
-    width:96%;
-    margin:0 auto 18px auto;
-    padding:12px;
-  }
-  .resizer {
-    display:none;
-  }
-  .contenuto {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap:8px;
-  }
-  .item {
-    padding:8px;
-  }
-  .item-content {
-    gap:6px;
-  }
-  img {
-    max-width:78%;
-    height:auto;
-    margin:0 auto;
-  }
-  .price-big {
-    font-size:1em;
-  }
-  h2 {
-    text-align:center;
-  }
-  body {
-    padding:8px;
-  }
+  .row { flex-direction:column; height:auto; }
 }
 </style>
 </head>
@@ -203,93 +91,75 @@ small {
 <p class="link-bar">
   <a href="https://discord.gg/zE25rQfg">🤖DiSCORD</a> -
   <a href="https://sites.google.com/view/davidespagocci/informazioni">📘iSTRUZiONi</a> -
-  <a href="https://whatsapp.com/channel/0029Vb6FyJ88qIzyi9nRtV2O">📦WHATSAPP Oggetti Disponibili Subito</a> -
+  <a href="https://whatsapp.com/channel/0029Vb6FyJ88qIzyi9nRtV2O">📦WHATSAPP</a> -
   <a href="https://www.ebay.it/sch/i.html?_dkr=1&_ssn=davidespagocci">🛍️EBAY</a>
 </p>
 
 <button id="toggleAudio">🔈 Attiva Notifiche Audio</button>
 <button id="toggleRefresh">⏸ Ferma aggiornamento</button>
+<button id="btnSoloMigliori">⭐ Stufo di vedere MERDA? Premi qui guarda solo i Migliori oggetti</button>
 <button id="btnValle">😭 ValleDiLacrime</button>
 <span id="timer">Agg. tra: 60 s</span>
 
-<audio id="soundGenerale" src="https://raw.githubusercontent.com/spagocci/recensioni/main/tutti.mp3" preload="auto"></audio>
-<audio id="soundPochiSecondi" src="https://raw.githubusercontent.com/spagocci/recensioni/main/perte.mp3" preload="auto"></audio>
-<audio id="soundAttivate" src="https://raw.githubusercontent.com/spagocci/recensioni/main/attivate.mp3" preload="auto"></audio>
-<audio id="soundDisattivate" src="https://raw.githubusercontent.com/spagocci/recensioni/main/disattivate.mp3" preload="auto"></audio>
-<audio id="soundAggAttivato" src="https://raw.githubusercontent.com/spagocci/recensioni/main/aggattivato.mp3" preload="auto"></audio>
-<audio id="soundAggDisattivato" src="https://raw.githubusercontent.com/spagocci/recensioni/main/aggdisattivato.mp3" preload="auto"></audio>
-<audio id="soundValle" src="https://raw.githubusercontent.com/spagocci/recensioni/main/valledilacrime.mp3" preload="auto"></audio>
+<audio id="audioGenerale" src="https://raw.githubusercontent.com/spagocci/recensioni/main/tutti.mp3" preload="auto"></audio>
+<audio id="audioPochiSecondi" src="https://raw.githubusercontent.com/spagocci/recensioni/main/perte.mp3" preload="auto"></audio>
+<audio id="audioAttivate" src="https://raw.githubusercontent.com/spagocci/recensioni/main/attivate.mp3" preload="auto"></audio>
+<audio id="audioDisattivate" src="https://raw.githubusercontent.com/spagocci/recensioni/main/disattivate.mp3" preload="auto"></audio>
+<audio id="audioAggAttivato" src="https://raw.githubusercontent.com/spagocci/recensioni/main/aggattivato.mp3" preload="auto"></audio>
+<audio id="audioAggDisattivato" src="https://raw.githubusercontent.com/spagocci/recensioni/main/aggdisattivato.mp3" preload="auto"></audio>
+<audio id="audioValle" src="https://raw.githubusercontent.com/spagocci/recensioni/main/valledilacrime.mp3" preload="auto"></audio>
 
 <div class="row">
-  <div class="column" id="canaleSinistra">
-    <h2>#tutti</h2>
-    <div class="contenuto" id="contenutoSinistra"></div>
-  </div>
-  <div class="resizer" id="resizer1"></div>
-  <div class="column" id="canaleDestra">
-    <h2>#perpochisecondi</h2>
-    <div class="contenuto" id="contenutoDestra"></div>
-  </div>
-  <div class="resizer" id="resizer2"></div>
   <div class="column" id="canaleFiltrati">
     <h2>#filtrati</h2>
     <div class="contenuto" id="contenutoFiltrati"></div>
   </div>
+
+  <div class="column" id="canaleSinistra">
+    <h2>#tutti</h2>
+    <div class="contenuto" id="contenutoSinistra"></div>
+  </div>
+
+  <div class="column" id="canaleDestra">
+    <h2>#perpochisecondi</h2>
+    <div class="contenuto" id="contenutoDestra"></div>
+  </div>
 </div>
 
 <script>
-// === TIMER E REFRESH ===
 let refreshInterval = 60;
 let timeLeft = refreshInterval;
 let refreshActive = true;
 const timerDisplay = document.getElementById("timer");
 const toggleButton = document.getElementById("toggleRefresh");
+const audioAggAttivato = document.getElementById("audioAggAttivato");
+const audioAggDisattivato = document.getElementById("audioAggDisattivato");
 
-const soundAggAttivato = document.getElementById("soundAggAttivato");
-const soundAggDisattivato = document.getElementById("soundAggDisattivato");
-
-function updateTimerDisplay(){
-  timerDisplay.textContent=`Agg tra: ${timeLeft}s`;
-}
-setInterval(()=>{
-  if(!refreshActive)return;
-  timeLeft--;
-  if(timeLeft<=0){location.reload();}
-  updateTimerDisplay();
-},1000);
+function updateTimerDisplay(){ timerDisplay.textContent=`Agg tra: ${timeLeft}s`; }
+setInterval(()=>{ if(!refreshActive)return; timeLeft--; if(timeLeft<=0)location.reload(); updateTimerDisplay(); },1000);
 
 toggleButton.addEventListener("click", async ()=>{
   refreshActive=!refreshActive;
   toggleButton.textContent=refreshActive?"⏸ Ferma aggiornamento":"▶️ Riprendi aggiornamento";
-
   try {
-    if (refreshActive) {
-      await soundAggAttivato.play();
-    } else {
-      await soundAggDisattivato.play();
-    }
-  } catch (e) {
-    console.warn("⚠️ Errore audio aggiornamento:", e.message);
-  }
+    if (refreshActive) await audioAggAttivato.play(); else await audioAggDisattivato.play();
+  } catch (e) { console.warn("⚠️ Errore audio aggiornamento:", e.message); }
 });
 
-// === AUDIO: ATTIVA/DISATTIVA CON MEMORIA + SUONO DI CONFERMA PERSONALIZZATO ===
 let audioAttivo = localStorage.getItem('audioAttivo') === 'true';
 let messaggiVisualizzati = new Set(JSON.parse(localStorage.getItem('messaggiVisualizzati') || '[]'));
 let primaVolta = messaggiVisualizzati.size === 0;
 
 const toggleAudioBtn = document.getElementById('toggleAudio');
-const soundGenerale = document.getElementById('soundGenerale');
-const soundPochiSecondi = document.getElementById('soundPochiSecondi');
-const soundAttivate = document.getElementById('soundAttivate');
-const soundDisattivate = document.getElementById('soundDisattivate');
-const soundValle = document.getElementById('soundValle');
+const audioGenerale = document.getElementById('audioGenerale');
+const audioPochiSecondi = document.getElementById('audioPochiSecondi');
+const audioAttivate = document.getElementById('audioAttivate');
+const audioDisattivate = document.getElementById('audioDisattivate');
+const audioValle = document.getElementById('audioValle');
 const btnValle = document.getElementById('btnValle');
 
 function aggiornaBottoneAudio() {
-  toggleAudioBtn.textContent = audioAttivo
-    ? "🔇 Disattiva Notifiche Audio"
-    : "🔈 Attiva Notifiche Audio";
+  toggleAudioBtn.textContent = audioAttivo ? "🔇 Disattiva Notifiche Audio" : "🔈 Attiva Notifiche Audio";
 }
 aggiornaBottoneAudio();
 
@@ -297,33 +167,15 @@ toggleAudioBtn.addEventListener('click', async () => {
   audioAttivo = !audioAttivo;
   localStorage.setItem('audioAttivo', audioAttivo);
   aggiornaBottoneAudio();
-
   try {
-    await soundGenerale.play();
-    soundGenerale.pause(); soundGenerale.currentTime = 0;
-    await soundPochiSecondi.play();
-    soundPochiSecondi.pause(); soundPochiSecondi.currentTime = 0;
-
-    if (audioAttivo) {
-      await soundAttivate.play();
-    } else {
-      await soundDisattivate.play();
-    }
-  } catch (e) {
-    console.warn('⚠️ Errore durante riproduzione suono di conferma:', e.message);
-  }
+    await audioGenerale.play(); audioGenerale.pause(); audioGenerale.currentTime = 0;
+    await audioPochiSecondi.play(); audioPochiSecondi.pause(); audioPochiSecondi.currentTime = 0;
+    if (audioAttivo) await audioAttivate.play(); else await audioDisattivate.play();
+  } catch (e) { console.warn('⚠️ Errore durante riproduzione suono di conferma:', e.message); }
 });
 
-// === BOTTONE VALLEDILACRIME ===
-btnValle.addEventListener('click', async ()=>{
-  try {
-    await soundValle.play();
-  } catch (e) {
-    console.warn('⚠️ Errore riproduzione ValleDiLacrime:', e.message);
-  }
-});
+btnValle.addEventListener('click', async ()=>{ try { await audioValle.play(); } catch (e) { console.warn('⚠️ Errore riproduzione ValleDiLacrime:', e.message); } });
 
-// === CARICAMENTO DATI OGNI 10s ===
 function caricaCatalogo(){
   const timestamp=new Date().getTime();
   fetch(`https://spagocci.github.io/recensioni/data.json?t=${timestamp}`)
@@ -342,25 +194,22 @@ function caricaCatalogo(){
 
       const div=document.createElement('div');
       div.className='item';
-      div.innerHTML=`
-        <div class="item-content">
-          ${item.image?`<img src="${item.image}" alt="Immagine">`:''}
-          ${item.price?`<div class="price-big">${item.price}</div>`:''}
-          <div>
-            ${item.link?`<p><a href="${item.link}" target="_blank">${item.text}</a></p>`:`<p>${item.text}</p>`}
-            <small>${new Date(item.timestamp).toLocaleString()}</small>
-          </div>
-        </div>`;
+      div.innerHTML=`<div class="item-content">
+        ${item.image?`<img src="${item.image}" alt="Immagine">`:''}
+        ${item.price?`<div class="price-big">${item.price}</div>`:''}
+        <div>${item.link?`<p><a href="${item.link}" target="_blank">${item.text}</a></p>`:`<p>${item.text}</p>`}
+        <small>${new Date(item.timestamp).toLocaleString()}</small></div>
+      </div>`;
 
       if(item.sourceChannel==='1432128848534962402'){
         sinistra.appendChild(div);
-        if(!primaVolta&&audioAttivo&&isNuovo)soundGenerale.play().catch(()=>{});
+        if(!primaVolta&&audioAttivo&&isNuovo)audioGenerale.play().catch(()=>{});
       }else if(item.sourceChannel==='1430829927175032954'){
         destra.appendChild(div);
-        if(!primaVolta&&audioAttivo&&isNuovo)soundPochiSecondi.play().catch(()=>{});
+        if(!primaVolta&&audioAttivo&&isNuovo)audioPochiSecondi.play().catch(()=>{});
       }else if(item.sourceChannel==='1431551820509089842'){
         filtrati.appendChild(div);
-        if(!primaVolta&&audioAttivo&&isNuovo)soundGenerale.play().catch(()=>{});
+        if(!primaVolta&&audioAttivo&&isNuovo)audioGenerale.play().catch(()=>{});
       }
     });
   })
@@ -373,42 +222,26 @@ function caricaCatalogo(){
 caricaCatalogo();
 setInterval(caricaCatalogo,10000);
 
-// === RIDIMENSIONAMENTO COLONNE ===
-function aggiungiResizer(resizer,colSX,colDX){
-  let x=0,colSXWidth=0;
-  const down=e=>{
-    x=e.clientX;
-    colSXWidth=colSX.getBoundingClientRect().width;
-    document.addEventListener('mousemove',move);
-    document.addEventListener('mouseup',up);
-    resizer.style.background='#b30000';
-  };
-  const move=e=>{
-    const dx=e.clientX-x;
-    colSX.style.flex=`0 0 ${colSXWidth+dx}px`;
-  };
-  const up=()=>{
-    document.removeEventListener('mousemove',move);
-    document.removeEventListener('mouseup',up);
-    resizer.style.background='#000';
-  };
-  resizer.addEventListener('mousedown',down);
-}
-aggiungiResizer(document.getElementById('resizer1'),
-                document.getElementById('canaleSinistra'),
-                document.getElementById('canaleDestra'));
-aggiungiResizer(document.getElementById('resizer2'),
-                document.getElementById('canaleDestra'),
-                document.getElementById('canaleFiltrati'));
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('.item-content a').forEach(el => {
-    const fullText = el.textContent.trim();
-    if (fullText.length > 60) {
-      el.textContent = fullText.substring(0, 32) + '…';
-    }
-  });
+const btnSoloMigliori = document.getElementById('btnSoloMigliori');
+let soloMiglioriAttivo = false;
+btnSoloMigliori.addEventListener('click', ()=>{
+  soloMiglioriAttivo = !soloMiglioriAttivo;
+  const canaleSinistra = document.getElementById('canaleSinistra');
+  const canaleDestra   = document.getElementById('canaleDestra');
+  const canaleFiltrati = document.getElementById('canaleFiltrati');
+
+  if (soloMiglioriAttivo) {
+    canaleSinistra.style.display = 'none';
+    canaleDestra.style.display = 'block';
+    canaleFiltrati.style.display = 'block';
+    btnSoloMigliori.textContent = '🌍 Torna a vedere TUTTi gli oggetti';
+  } else {
+    canaleSinistra.style.display = 'block';
+    canaleDestra.style.display = 'block';
+    canaleFiltrati.style.display = 'block';
+    btnSoloMigliori.textContent = '⭐ Stufo di vedere MERDA? Premi qui guarda solo i Migliori oggetti';
+  }
 });
 </script>
 </body>
 </html>
-
