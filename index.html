@@ -183,7 +183,7 @@ const toggleButton = document.getElementById("toggleRefresh");
 const conteggioNascosti = document.getElementById('conteggioNascosti');
 const audioAggAttivato = document.getElementById("audioAggAttivato");
 const audioAggDisattivato = document.getElementById("audioAggDisattivato");
-function updateTimerDisplay(){ timerDisplay.textContent=`<br>Agg: ${timeLeft}s`; }
+function updateTimerDisplay(){ timerDisplay.textContent=`Agg: ${timeLeft}s`; }
 setInterval(()=>{ if(!refreshActive)return; timeLeft--; if(timeLeft<=0)location.reload(); updateTimerDisplay(); },1000);
 
 toggleButton.addEventListener("click", async ()=>{
@@ -347,6 +347,7 @@ btnSoloMigliori.addEventListener('click', ()=>{
 </script>
 </body>
 </html>
+
 
 
 
