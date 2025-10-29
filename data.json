@@ -5,8 +5,9 @@
     "text": "Pawfly Frontale LED Ricaricabile Super Luminosa 4 Modalità IPX4 Leggera Impermeabile Mini Luce Frontale per Jogging, Campeggio, Pesca [Classe Energetica A+++] - 5561 - tutto",
     "link": "https://amazon.it/dp/B0FRFRWPSS",
     "image": "https://m.media-amazon.com/images/I/51HuthKqBdL._SS210_.jpg",
-    "price": null,
-    "sourceChannel": "1432128848534962402"
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\"> Mio: 9€</span><br><span style=\"color:red;font-weight:bold;font-size:1em;\">AM: 18€</span>",
+    "sourceChannel": "1432128848534962402",
+    "priceChecked": false
   },
   {
     "id": "1432968955449970738",
@@ -14,8 +15,19 @@
     "text": "10 Pz Manopola Stella, Dadi a Stella con Filettatura Interna M8, Manopola di Bloccaggio, Dado di Serraggio per Macchine Utensili, Sistemi, Mobili, Attrezzature per Fitness - 5561 - tutto",
     "link": "https://amazon.it/dp/B0FLPQSWV4",
     "image": "https://m.media-amazon.com/images/I/4103Wu1waCL._SS210_.jpg",
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\"> Mio: 6€</span><br><span style=\"color:red;font-weight:bold;font-size:1em;\">AM: 12€</span>",
+    "sourceChannel": "1432128848534962402",
+    "priceChecked": false
+  },
+  {
+    "id": "1432968892216774668",
+    "timestamp": "2025-10-29T05:46:47.179Z",
+    "text": "10 Pz Staffe Angolari Regolabile, Staffe a L, Staffa Angolare per Legno Mobili in Legno, Squadretta di Giunzione in Metallo 90 Gradi - 5561 - tutto",
+    "link": "https://amazon.it/dp/B0FMP1GLG2",
+    "image": "https://m.media-amazon.com/images/I/41LP4SPlOCL._SS210_.jpg",
     "price": null,
-    "sourceChannel": "1432128848534962402"
+    "sourceChannel": "1432128848534962402",
+    "priceChecked": true
   },
   {
     "id": "1432968840031244369",
