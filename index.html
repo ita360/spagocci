@@ -272,7 +272,7 @@ const audioAttivate=document.getElementById('audioAttivate');
 const audioDisattivate=document.getElementById('audioDisattivate');
 const audioValle=document.getElementById('audioValle');
 const btnValle=document.getElementById('btnValle');
-function aggiornaBottoneAudio(){toggleAudioBtn.textContent=audioAttivo?"🔇 Disattiva Notifiche Audio":"🔈 Attiva Notifiche Audio";}
+function aggiornaBottoneAudio(){toggleAudioBtn.textContent=audioAttivo?"🔊Audio":"🔇Audio";}
 aggiornaBottoneAudio();
 btnValle.addEventListener('click',async()=>{try{await audioValle.play();}catch(e){console.warn("Errore audio:",e.message);}});
 toggleAudioBtn.addEventListener('click',async()=>{
