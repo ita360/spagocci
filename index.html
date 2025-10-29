@@ -129,7 +129,6 @@ img { max-width:90%; border-radius:12px; }
 <div id="conteggioNascosti">🔕 Oggetti nascosti: 0</div>
 
 <button id="toggleAudio">🔈 Attiva Notifiche Audio</button>
-<button id="toggleRefresh">⏸ Ferma aggiornamento</button>
 <button id="btnSoloMigliori">⭐Solo i <b>Migliori oggetti</b></button>
 <span id="timer">Agg. tra: 60 s</span>
 
@@ -169,6 +168,7 @@ img { max-width:90%; border-radius:12px; }
     <h2>#perpochisecondi</h2>
     <div class="contenuto" id="contenutoDestra"></div>
   </div>
+<button id="toggleRefresh">⏸ Ferma aggiornamento</button>
 <button id="btnValle">😭Valle Di Lacrime</button>
 <script>
 let refreshInterval = 60;
@@ -179,7 +179,7 @@ const toggleButton = document.getElementById("toggleRefresh");
 const conteggioNascosti = document.getElementById('conteggioNascosti');
 const audioAggAttivato = document.getElementById("audioAggAttivato");
 const audioAggDisattivato = document.getElementById("audioAggDisattivato");
-function updateTimerDisplay(){ timerDisplay.textContent=`<br>Agg tra: ${timeLeft}s`; }
+function updateTimerDisplay(){ timerDisplay.textContent=`<br>Agg: ${timeLeft}s`; }
 setInterval(()=>{ if(!refreshActive)return; timeLeft--; if(timeLeft<=0)location.reload(); updateTimerDisplay(); },1000);
 
 toggleButton.addEventListener("click", async ()=>{
@@ -343,6 +343,7 @@ btnSoloMigliori.addEventListener('click', ()=>{
 </script>
 </body>
 </html>
+
 
 
 
