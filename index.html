@@ -119,7 +119,42 @@ img{max-width:90%;border-radius:12px;}
 .price-big{font-weight:bold;color:#009900;}
 .column a{color:#000;text-decoration:none;font-weight:bold;}
 .column a:hover{text-decoration:underline;}
-@media(max-width:900px){.row{flex-direction:column;height:auto;}}
+/* === RESPONSIVE MOBILE === */
+@media (max-width: 900px) {
+  .row {
+    flex-direction: column;
+    height: auto;
+  }
+
+  /* 🔹 Mostra 4 oggetti per riga su smartphone */
+  .contenuto {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
+
+  .item {
+    padding: 6px;
+    border-width: 2px;
+  }
+
+  .item-content img {
+    max-width: 100%;
+    border-radius: 8px;
+  }
+
+  .price-big {
+    font-size: 0.9em;
+  }
+
+  .item-content p {
+    font-size: 0.8em;
+    line-height: 1.1em;
+  }
+
+  .column {
+    padding: 10px;
+  }
+}
 
 /* === MODALE === */
 #modaleParole{
