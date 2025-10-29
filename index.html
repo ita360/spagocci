@@ -130,7 +130,7 @@ img { max-width:90%; border-radius:12px; }
 
 <button id="toggleAudio">🔈 Attiva Notifiche Audio</button>
 <button id="toggleRefresh">⏸ Ferma aggiornamento</button>
-<button id="btnSoloMigliori">⭐ Stufo di vedere MERDA? Premi qui guarda solo i Migliori oggetti</button>
+<button id="btnSoloMigliori">⭐Solo i <b>Migliori oggetti</b></button>
 <button id="btnValle">😭 ValleDiLacrime</button>
 <span id="timer">Agg. tra: 60 s</span>
 
@@ -161,15 +161,16 @@ img { max-width:90%; border-radius:12px; }
     <h2>#tutti</h2>
     <div class="contenuto" id="contenutoSinistra"></div>
   </div>
-  <div class="column" id="canaleDestra">
-    <h2>#perpochisecondi</h2>
-    <div class="contenuto" id="contenutoDestra"></div>
-  </div>
   <div class="column" id="canaleFiltrati">
     <h2>#filtrati</h2>
     <div class="contenuto" id="contenutoFiltrati"></div>
   </div>
 </div>
+  <div class="column" id="canaleDestra">
+    <h2>#perpochisecondi</h2>
+    <div class="contenuto" id="contenutoDestra"></div>
+  </div>
+
 
 <script>
 let refreshInterval = 60;
@@ -334,12 +335,12 @@ btnSoloMigliori.addEventListener('click', ()=>{
     canaleSinistra.style.display = 'none';
     canaleDestra.style.display = 'block';
     canaleFiltrati.style.display = 'block';
-    btnSoloMigliori.textContent = '🌍 Torna a vedere TUTTi gli oggetti';
+    btnSoloMigliori.textContent = '🌍 TUTTi gli oggetti';
   } else {
     canaleSinistra.style.display = 'block';
     canaleDestra.style.display = 'block';
     canaleFiltrati.style.display = 'block';
-    btnSoloMigliori.textContent = '⭐ Stufo di vedere MERDA? Premi qui guarda solo i Migliori oggetti';
+    btnSoloMigliori.textContent = '⭐ Solo i Migliori oggetti';
   }
 });
 </script>
