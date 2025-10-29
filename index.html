@@ -4,7 +4,7 @@
 <link rel="icon" href="https://github.com/spagocci/recensioni/blob/main/icona.png" type="image/png">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Spagocci 1.24.1 - Filtro Parole Fixato</title>
+<title>Spagocci 1.27 - Frasi con spazi + Ordine colonne</title>
 <style>
 body {
   font-family: sans-serif;
@@ -27,10 +27,17 @@ button {
   width: 100%;
   max-width: 400px;
   padding: 8px 10px;
-  margin: 10px 0 20px 0;
+  margin: 10px 0 10px 0;
   font-size: 1em;
   border: 2px solid #b30000;
   border-radius: 10px;
+}
+#conteggioNascosti {
+  display: inline-block;
+  margin-bottom: 15px;
+  font-size: 1em;
+  font-weight: bold;
+  color: #b30000;
 }
 .row {
   display: flex;
@@ -73,6 +80,39 @@ img { max-width:90%; border-radius:12px; }
 .column a { color:#000; text-decoration:none; font-weight:bold; }
 .column a:hover { text-decoration:underline; }
 @media (max-width:900px){ .row { flex-direction:column; height:auto; } }
+
+/* === MODALE EDIT PAROLE === */
+#modaleParole {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+#modaleContenuto {
+  background: #fff;
+  padding: 20px;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+}
+#modaleContenuto textarea {
+  width: 100%;
+  height: 120px;
+  font-size: 1em;
+  padding: 8px;
+  border-radius: 8px;
+  border: 2px solid #b30000;
+  resize: none;
+}
+#modaleContenuto button {
+  margin-top: 10px;
+  margin-right: 10px;
+}
 </style>
 </head>
 
@@ -84,8 +124,9 @@ img { max-width:90%; border-radius:12px; }
   <a href="https://www.ebay.it/sch/i.html?_dkr=1&_ssn=davidespagocci">🛍️EBAY</a>
 </p>
 
-<!-- 🔎 Nuovo filtro -->
-<input id="filtroParole" type="text" placeholder="Nascondi ParoLe (es: torta tazza adesivi)">
+<input id="filtroParole" type="text" placeholder="Scrivi parole o FRASI da NASCONDERE (es: lampada,per finestre,torta)">
+<button id="btnGestisciParole">✏️ Gestisci Parole Nascoste</button>
+<div id="conteggioNascosti">🔕 Oggetti nascosti: 0</div>
 
 <button id="toggleAudio">🔈 Attiva Notifiche Audio</button>
 <button id="toggleRefresh">⏸ Ferma aggiornamento</button>
@@ -93,7 +134,19 @@ img { max-width:90%; border-radius:12px; }
 <button id="btnValle">😭 ValleDiLacrime</button>
 <span id="timer">Agg. tra: 60 s</span>
 
-<!-- Audio -->
+<!-- === MODALE === -->
+<div id="modaleParole">
+  <div id="modaleContenuto">
+    <h3>✏️ Parole Nascoste</h3>
+    <p>Inserisci parole o frasi separate da virgole o punti e virgola:</p>
+    <textarea id="modaleTextarea"></textarea><br>
+    <button id="salvaParole">💾 Salva</button>
+    <button id="cancellaParole">🗑️ Cancella Tutto</button>
+    <button id="chiudiModale">❌ Chiudi</button>
+  </div>
+</div>
+
+<!-- === AUDIO === -->
 <audio id="audioGenerale" src="https://raw.githubusercontent.com/spagocci/recensioni/main/tutti.mp3" preload="auto"></audio>
 <audio id="audioPochiSecondi" src="https://raw.githubusercontent.com/spagocci/recensioni/main/perte.mp3" preload="auto"></audio>
 <audio id="audioAttivate" src="https://raw.githubusercontent.com/spagocci/recensioni/main/attivate.mp3" preload="auto"></audio>
@@ -102,11 +155,8 @@ img { max-width:90%; border-radius:12px; }
 <audio id="audioAggDisattivato" src="https://raw.githubusercontent.com/spagocci/recensioni/main/aggdisattivato.mp3" preload="auto"></audio>
 <audio id="audioValle" src="https://raw.githubusercontent.com/spagocci/recensioni/main/valledilacrime.mp3" preload="auto"></audio>
 
+<!-- === ORDINE COLONNE: tutti -> perpochisecondi -> filtrati === -->
 <div class="row">
-  <div class="column" id="canaleFiltrati">
-    <h2>#filtrati</h2>
-    <div class="contenuto" id="contenutoFiltrati"></div>
-  </div>
   <div class="column" id="canaleSinistra">
     <h2>#tutti</h2>
     <div class="contenuto" id="contenutoSinistra"></div>
@@ -114,6 +164,10 @@ img { max-width:90%; border-radius:12px; }
   <div class="column" id="canaleDestra">
     <h2>#perpochisecondi</h2>
     <div class="contenuto" id="contenutoDestra"></div>
+  </div>
+  <div class="column" id="canaleFiltrati">
+    <h2>#filtrati</h2>
+    <div class="contenuto" id="contenutoFiltrati"></div>
   </div>
 </div>
 
@@ -123,6 +177,7 @@ let timeLeft = refreshInterval;
 let refreshActive = true;
 const timerDisplay = document.getElementById("timer");
 const toggleButton = document.getElementById("toggleRefresh");
+const conteggioNascosti = document.getElementById('conteggioNascosti');
 const audioAggAttivato = document.getElementById("audioAggAttivato");
 const audioAggDisattivato = document.getElementById("audioAggDisattivato");
 
@@ -203,35 +258,68 @@ function caricaCatalogo(){
         if(!primaVolta&&audioAttivo&&isNuovo)audioGenerale.play().catch(()=>{});
       }
     });
-    applicaFiltro(); // 🔹 Applica subito il filtro dopo il caricamento
+    applicaFiltro();
   })
   .catch(err=>{
     ['contenutoSinistra','contenutoDestra','contenutoFiltrati'].forEach(id=>{
-      document.getElementById(id).innerHTML=`<p style=\"color:red;\">❌ Errore: ${err.message}</p>`;
+      document.getElementById(id).innerHTML=`<p style="color:red;">❌ Errore: ${err.message}</p>`;
     });
   });
 }
 caricaCatalogo();
 setInterval(caricaCatalogo,10000);
 
-// === 🔍 FILTRO PAROLE MIGLIORATO ===
+// === 🔍 FILTRO PAROLE PERSISTENTE con FRASI ===
 const filtroInput = document.getElementById('filtroParole');
-filtroInput.addEventListener('input', applicaFiltro);
+const paroleSalvate = localStorage.getItem('paroleNascondi') || '';
+filtroInput.value = paroleSalvate;
+if (paroleSalvate.trim().length > 0) applicaFiltro();
+
+filtroInput.addEventListener('input', () => {
+  localStorage.setItem('paroleNascondi', filtroInput.value.trim());
+  applicaFiltro();
+});
 
 function applicaFiltro() {
-  const parole = filtroInput.value
-    .toLowerCase()
-    .split(/[,\s]+/)
-    .filter(p => p.trim().length > 0);
+  const testoFiltro = filtroInput.value.trim().toLowerCase();
+  const frasi = testoFiltro.split(/[;,]+/).map(p => p.trim()).filter(p => p.length > 0);
 
+  let nascosti = 0;
   document.querySelectorAll('.item').forEach(el => {
-    // controlla solo titolo e prezzo
     const testo = ((el.querySelector('p')?.innerText || '') + ' ' +
                    (el.querySelector('.price-big')?.innerText || '')).toLowerCase();
-    const contiene = parole.some(p => testo.includes(p));
+    const contiene = frasi.some(frase => testo.includes(frase));
     el.style.display = contiene ? 'none' : '';
+    if (contiene) nascosti++;
   });
+  conteggioNascosti.textContent = `🔕 Oggetti nascosti: ${nascosti}`;
 }
+
+// === ✏️ MODALE GESTIONE PAROLE ===
+const modale = document.getElementById('modaleParole');
+const textarea = document.getElementById('modaleTextarea');
+const btnGestisci = document.getElementById('btnGestisciParole');
+const btnSalva = document.getElementById('salvaParole');
+const btnChiudi = document.getElementById('chiudiModale');
+const btnCancella = document.getElementById('cancellaParole');
+
+btnGestisci.addEventListener('click', () => {
+  textarea.value = localStorage.getItem('paroleNascondi') || '';
+  modale.style.display = 'flex';
+});
+btnChiudi.addEventListener('click', ()=> modale.style.display='none');
+btnSalva.addEventListener('click', ()=>{
+  localStorage.setItem('paroleNascondi', textarea.value.trim());
+  filtroInput.value = textarea.value.trim();
+  applicaFiltro();
+  modale.style.display='none';
+});
+btnCancella.addEventListener('click', ()=>{
+  localStorage.removeItem('paroleNascondi');
+  filtroInput.value = '';
+  applicaFiltro();
+  modale.style.display='none';
+});
 
 // === TOGGLE SOLO I MIGLIORI ===
 const btnSoloMigliori = document.getElementById('btnSoloMigliori');
