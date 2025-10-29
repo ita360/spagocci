@@ -4,7 +4,7 @@
 <link rel="icon" href="https://github.com/spagocci/recensioni/blob/main/icona.png" type="image/png">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Spagocci 1.36</title>
+<title>Spagocci 1.37</title>
 <style>
 body {
   font-family:sans-serif;
@@ -187,10 +187,10 @@ small{color:#666;font-size:0.8em;}
   <button id="clearMostra">❌</button>
 </div>
 <input id="filtroParole" type="text" placeholder="Nascondi Parole (es: Custodia, per finestre)🚫">
-<button id="btnGestisciParole">✏️Parole Nascoste🫣</button>
+<button id="btnGestisciParole">✏️Nascoste🫣</button>
 <button id="toggleAudio">📢Notifiche</button>
 <button id="btnSoloMigliori">i <b>Migli⭐ri</b></button>
-<button id="btnAdulti">🚫 Nascondi Sesso</button>
+<button id="btnAdulti">🚫No Sesso</button>
 
 <div id="statusBar">
   <span id="conteggioNascosti">🔕 Oggetti nascosti: 0</span>
@@ -300,18 +300,27 @@ function caricaCatalogo(){
     const a=document.getElementById('contenutoAdulti');
     s.innerHTML=d.innerHTML=f.innerHTML=a.innerHTML='';
 
+
+
     data.forEach(item=>{
+// Rende cliccabili le immagini con link Amazon
+document.querySelectorAll('.clickable-img').forEach(img => {
+  img.addEventListener('click', () => {
+    const url = img.dataset.link;
+    if (url) window.open(url, '_blank');
+  });
+});
       const isNuovo=!messaggiVisualizzati.has(item.id);
       messaggiVisualizzati.add(item.id);
       localStorage.setItem('messaggiVisualizzati',JSON.stringify([...messaggiVisualizzati]));
       const div=document.createElement('div');
       div.className='item';
-      div.innerHTML=`<div class="item-content">
-        ${item.image?`<img src="${item.image}" alt="">`:''}
-        ${item.price?`<div class="price-big">${item.price}</div>`:''}
-        <p>${item.link?`<a href="${item.link}" target="_blank">${item.text}</a>`:item.text}</p>
-        <small>${new Date(item.timestamp).toLocaleString()}</small>
-      </div>`;
+div.innerHTML=`<div class="item-content">
+  ${item.image && item.link ? `<img src="${item.image}" alt="" class="clickable-img" data-link="${item.link}">` : item.image ? `<img src="${item.image}" alt="">` : ''}
+  ${item.price?`<div class="price-big">${item.price}</div>`:''}
+  <p>${item.link?`<a href="${item.link}" target="_blank">${item.text}</a>`:item.text}</p>
+  <small>${new Date(item.timestamp).toLocaleString()}</small>
+</div>`;
 
       if(item.sourceChannel==='1432128848534962402'){ // #tutti
         s.appendChild(div); if(!primaVolta&&audioAttivo&&isNuovo)audioGenerale.play().catch(()=>{});
