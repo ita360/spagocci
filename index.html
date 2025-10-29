@@ -4,7 +4,7 @@
 <link rel="icon" href="https://github.com/spagocci/recensioni/blob/main/icona.png" type="image/png">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Spagocci 1.31</title>
+<title>Spagocci 1.34</title>
 <style>
 body {
   font-family:sans-serif;
@@ -90,8 +90,9 @@ button {
   background:linear-gradient(to bottom,#fff,#f0f0f0);
   padding:20px;
   border-radius:20px;
-  border:4px solid #b30000;
-  box-shadow:inset 0 0 10px rgba(0,0,0,0.1),0 4px 10px rgba(0,0,0,0.2);
+  /* 🔸 BORDI ROSSI RIMOSSI 🔸 */
+  border:none;
+  box-shadow:inset 0 0 10px rgba(0,0,0,0.05),0 4px 10px rgba(0,0,0,0.1);
   overflow-y:auto;
 }
 .contenuto {
@@ -102,8 +103,9 @@ button {
 .item {
   background:linear-gradient(to bottom,#fefefe,#eaeaea);
   border-radius:20px;
-  border:4px solid #b30000;
-  box-shadow:inset 0 0 10px rgba(0,0,0,0.1),0 4px 10px rgba(0,0,0,0.2);
+  /* 🔸 BORDI ROSSI RIMOSSI 🔸 */
+  border:none;
+  box-shadow:inset 0 0 10px rgba(0,0,0,0.05),0 4px 8px rgba(0,0,0,0.1);
   padding:12px;
   display:flex;
   flex-direction:column;
@@ -119,49 +121,7 @@ img{max-width:90%;border-radius:12px;}
 .price-big{font-weight:bold;color:#009900;}
 .column a{color:#000;text-decoration:none;font-weight:bold;}
 .column a:hover{text-decoration:underline;}
-/* === RESPONSIVE MOBILE === */
-/* === RESPONSIVE MOBILE === */
-@media (max-width: 900px) {
-  .row {
-    flex-direction: column;
-    height: auto;
-  }
-
-  /* 🔹 Mostra 4 oggetti per riga su smartphone */
-  .contenuto {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 8px;
-  }
-
-  .item {
-    padding: 6px;
-    border-width: 2px;
-  }
-
-  .item-content img {
-    max-width: 100%;
-    border-radius: 8px;
-  }
-
-  .price-big {
-    font-size: 0.9em;
-  }
-
-  .item-content p {
-    font-size: 0.75em;
-    line-height: 1.1em;
-    height: 4.4em; /* altezza massima visibile (~4 righe) */
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 4;  /* massimo 4 righe */
-    -webkit-box-orient: vertical;
-    text-overflow: ellipsis;
-  }
-
-  .column {
-    padding: 10px;
-  }
-}
+@media(max-width:900px){.row{flex-direction:column;height:auto;}}
 
 /* === MODALE === */
 #modaleParole{
@@ -180,7 +140,6 @@ img{max-width:90%;border-radius:12px;}
 #modaleContenuto button{margin-top:10px;margin-right:10px;}
 </style>
 </head>
-
 <body>
 <p class="link-bar">
   <b><a href="https://discord.gg/zE25rQfg">🤖DiSCORD</a> -
@@ -188,18 +147,15 @@ img{max-width:90%;border-radius:12px;}
   <a href="https://whatsapp.com/channel/0029Vb6FyJ88qIzyi9nRtV2O">📦WHATSAPP</a> -
   <a href="https://www.ebay.it/sch/i.html?_dkr=1&_ssn=davidespagocci">🛍️EBAY</a></b>
 </p>
-
-<h3>🔍 Cerca ParoLa</h3>
 <div id="mostraBox">
-  <input id="mostraParole" type="text" placeholder="Cerca parola (es: Per Lamborghini, Cane, Cucina)">
+  <input id="mostraParole" type="text" placeholder="Cerca Parole (es: Cane, Per Lamborghini)🔍">
   <button id="clearMostra">❌</button>
 </div>
-
-<input id="filtroParole" type="text" placeholder="Nascondi Parola (es: custodia, per finestre, torta)">
-<button id="btnGestisciParole">✏️ Parole Nascoste</button>
-<button id="toggleAudio">🔈 Notifiche</button>
-<button id="btnSoloMigliori">i <b>Migli⭐ri oggetti</b></button>
-<button id="btnAdulti">🔞No Sesso🍓</button>
+<input id="filtroParole" type="text" placeholder="Nascondi Parole (es: Custodia, per finestre)🚫">
+<button id="btnGestisciParole">✏️ Gestisci Parole Nascoste</button>
+<button id="toggleAudio">🔈 Attiva Notifiche Audio</button>
+<button id="btnSoloMigliori">⭐ Solo i <b>Migliori oggetti</b></button>
+<button id="btnAdulti">🚫 Nascondi Sesso</button>
 
 <div id="statusBar">
   <span id="conteggioNascosti">🔕 Oggetti nascosti: 0</span>
@@ -409,4 +365,3 @@ function aggiornaStatoAdulti(){
 </script>
 </body>
 </html>
-
