@@ -120,6 +120,7 @@ img{max-width:90%;border-radius:12px;}
 .column a{color:#000;text-decoration:none;font-weight:bold;}
 .column a:hover{text-decoration:underline;}
 /* === RESPONSIVE MOBILE === */
+/* === RESPONSIVE MOBILE === */
 @media (max-width: 900px) {
   .row {
     flex-direction: column;
@@ -147,8 +148,14 @@ img{max-width:90%;border-radius:12px;}
   }
 
   .item-content p {
-    font-size: 0.8em;
+    font-size: 0.75em;
     line-height: 1.1em;
+    height: 4.4em; /* altezza massima visibile (~4 righe) */
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;  /* massimo 4 righe */
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
   }
 
   .column {
@@ -402,3 +409,4 @@ function aggiornaStatoAdulti(){
 </script>
 </body>
 </html>
+
