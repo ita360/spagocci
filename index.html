@@ -17,12 +17,6 @@ button {
   font-size: 1em;
   cursor: pointer;
 }
-#timer {
-  font-size: 1.2em;
-  font-weight: bold;
-  color: #b30000;
-  margin-left: 10px;
-}
 #filtroParole {
   width: 100%;
   max-width: 400px;
@@ -32,12 +26,22 @@ button {
   border: 2px solid #b30000;
   border-radius: 10px;
 }
+#statusBar {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
 #conteggioNascosti {
   display: inline-block;
-  margin-bottom: 15px;
   font-size: 1em;
   font-weight: bold;
   color: #b30000;
+}
+#timer {
+  font-size: 1em;
+  font-weight: bold;
+  color: #009900; /* verde */
 }
 .row {
   display: flex;
@@ -113,10 +117,6 @@ img { max-width:90%; border-radius:12px; }
   margin-top: 10px;
   margin-right: 10px;
 }
-  #timer {
-  display: block;      /* va a capo */
-  margin-bottom: 20px; /* spazio sotto (puoi aumentare) */
-}
 </style>
 </head>
 
@@ -130,11 +130,15 @@ img { max-width:90%; border-radius:12px; }
 
 <input id="filtroParole" type="text" placeholder="Scrivi parole o FRASI da NASCONDERE (es: lampada,per finestre,torta)">
 <button id="btnGestisciParole">✏️ Gestisci Parole Nascoste</button>
-<div id="conteggioNascosti">🔕 Oggetti nascosti: 0</div>
+
+<!-- ✅ Timer accanto a oggetti nascosti -->
+<div id="statusBar">
+  <span id="conteggioNascosti">🔕 Oggetti nascosti: 0</span>
+  <span id="timer">Agg. tra: 60 s</span>
+</div>
 
 <button id="toggleAudio">🔈 Attiva Notifiche Audio</button>
 <button id="btnSoloMigliori">⭐Solo i <b>Migliori oggetti</b></button>
-<span id="timer">Agg. tra: 60 s</span>
 
 <!-- === MODALE === -->
 <div id="modaleParole">
@@ -157,7 +161,7 @@ img { max-width:90%; border-radius:12px; }
 <audio id="audioAggDisattivato" src="https://raw.githubusercontent.com/spagocci/recensioni/main/aggdisattivato.mp3" preload="auto"></audio>
 <audio id="audioValle" src="https://raw.githubusercontent.com/spagocci/recensioni/main/valledilacrime.mp3" preload="auto"></audio>
 
-<!-- === ORDINE COLONNE: tutti -> perpochisecondi -> filtrati === -->
+<!-- === ORDINE COLONNE === -->
 <div class="row">
   <div class="column" id="canaleSinistra">
     <h2>#tutti</h2>
@@ -168,12 +172,14 @@ img { max-width:90%; border-radius:12px; }
     <div class="contenuto" id="contenutoFiltrati"></div>
   </div>
 </div>
-  <div class="column" id="canaleDestra">
-    <h2>#perpochisecondi</h2>
-    <div class="contenuto" id="contenutoDestra"></div>
-  </div>
+<div class="column" id="canaleDestra">
+  <h2>#perpochisecondi</h2>
+  <div class="contenuto" id="contenutoDestra"></div>
+</div>
+
 <button id="toggleRefresh">⏸ Ferma aggiornamento</button>
 <button id="btnValle">😭Valle Di Lacrime</button>
+
 <script>
 let refreshInterval = 60;
 let timeLeft = refreshInterval;
@@ -271,7 +277,7 @@ function caricaCatalogo(){
 caricaCatalogo();
 setInterval(caricaCatalogo,10000);
 
-// === 🔍 FILTRO PAROLE PERSISTENTE con FRASI ===
+// === 🔍 FILTRO PAROLE ===
 const filtroInput = document.getElementById('filtroParole');
 const paroleSalvate = localStorage.getItem('paroleNascondi') || '';
 filtroInput.value = paroleSalvate;
@@ -347,9 +353,3 @@ btnSoloMigliori.addEventListener('click', ()=>{
 </script>
 </body>
 </html>
-
-
-
-
-
-
