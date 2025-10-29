@@ -4,7 +4,7 @@
 <link rel="icon" href="https://github.com/spagocci/recensioni/blob/main/icona.png" type="image/png">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Spagocci 1.34</title>
+<title>Spagocci 1.35</title>
 <style>
 body {
   font-family:sans-serif;
@@ -90,20 +90,32 @@ button {
   background:linear-gradient(to bottom,#fff,#f0f0f0);
   padding:20px;
   border-radius:20px;
-  /* 🔸 BORDI ROSSI RIMOSSI 🔸 */
   border:none;
   box-shadow:inset 0 0 10px rgba(0,0,0,0.05),0 4px 10px rgba(0,0,0,0.1);
   overflow-y:auto;
 }
+
+/* === GRIGLIA OGGETTI === */
 .contenuto {
   display:grid;
   grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
   gap:15px;
 }
+
+/* 🔹 3 OGGETTI PER RIGA SU MOBILE 🔹 */
+@media(max-width:900px){
+  .row{flex-direction:column;height:auto;}
+}
+@media(max-width:768px){
+  .contenuto{
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+  }
+}
+
 .item {
   background:linear-gradient(to bottom,#fefefe,#eaeaea);
   border-radius:20px;
-  /* 🔸 BORDI ROSSI RIMOSSI 🔸 */
   border:none;
   box-shadow:inset 0 0 10px rgba(0,0,0,0.05),0 4px 8px rgba(0,0,0,0.1);
   padding:12px;
@@ -121,7 +133,6 @@ img{max-width:90%;border-radius:12px;}
 .price-big{font-weight:bold;color:#009900;}
 .column a{color:#000;text-decoration:none;font-weight:bold;}
 .column a:hover{text-decoration:underline;}
-@media(max-width:900px){.row{flex-direction:column;height:auto;}}
 
 /* === MODALE === */
 #modaleParole{
@@ -152,9 +163,9 @@ img{max-width:90%;border-radius:12px;}
   <button id="clearMostra">❌</button>
 </div>
 <input id="filtroParole" type="text" placeholder="Nascondi Parole (es: Custodia, per finestre)🚫">
-<button id="btnGestisciParole">✏️ Gestisci Parole Nascoste</button>
-<button id="toggleAudio">🔈 Attiva Notifiche Audio</button>
-<button id="btnSoloMigliori">⭐ Solo i <b>Migliori oggetti</b></button>
+<button id="btnGestisciParole">✏️Parole Nascoste🫣</button>
+<button id="toggleAudio">📢Notifiche</button>
+<button id="btnSoloMigliori">i <b>Migli⭐ri</b></button>
 <button id="btnAdulti">🚫 Nascondi Sesso</button>
 
 <div id="statusBar">
