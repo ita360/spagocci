@@ -4,7 +4,7 @@
 <link rel="icon" href="https://github.com/spagocci/recensioni/blob/main/icona.png" type="image/png">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Spagocci 1.28 Se Lo Vuoi con Forza non è un sogno </title>
+<title>Spagocci 1.29 - Ricerca visiva migliorata</title>
 <style>
 body {
   font-family: sans-serif;
@@ -17,7 +17,7 @@ button {
   font-size: 1em;
   cursor: pointer;
 }
-#filtroParole {
+#filtroParole, #mostraParole {
   width: 100%;
   max-width: 400px;
   padding: 8px 10px;
@@ -26,6 +26,29 @@ button {
   border: 2px solid #b30000;
   border-radius: 10px;
 }
+
+/* 🔍 CASSELLA "CERCA" con X */
+#mostraBox {
+  position: relative;
+  display: inline-block;
+}
+#clearMostra {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #b30000;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+  font-weight: bold;
+  display: none;
+}
+#clearMostra:hover { background: darkred; }
+
 #statusBar {
   display: flex;
   align-items: center;
@@ -41,7 +64,7 @@ button {
 #timer {
   font-size: 1em;
   font-weight: bold;
-  color: #009900; /* verde */
+  color: #009900;
 }
 .row {
   display: flex;
@@ -84,84 +107,33 @@ img { max-width:90%; border-radius:12px; }
 .column a { color:#000; text-decoration:none; font-weight:bold; }
 .column a:hover { text-decoration:underline; }
 @media (max-width:900px){ .row { flex-direction:column; height:auto; } }
-
-/* === MODALE EDIT PAROLE === */
-#modaleParole {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.5);
-  display: none;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-#modaleContenuto {
-  background: #fff;
-  padding: 20px;
-  border-radius: 15px;
-  width: 90%;
-  max-width: 500px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.3);
-}
-#modaleContenuto textarea {
-  width: 100%;
-  height: 120px;
-  font-size: 1em;
-  padding: 8px;
-  border-radius: 8px;
-  border: 2px solid #b30000;
-  resize: none;
-}
-#modaleContenuto button {
-  margin-top: 10px;
-  margin-right: 10px;
-}
 </style>
 </head>
 
 <body>
 <p class="link-bar">
-  <b></b><a href="https://discord.gg/zE25rQfg">🤖DiSCORD</a> -
+  <b><a href="https://discord.gg/zE25rQfg">🤖DiSCORD</a> -
   <a href="https://sites.google.com/view/davidespagocci/informazioni">📘iSTRUZiONi</a> -
   <a href="https://whatsapp.com/channel/0029Vb6FyJ88qIzyi9nRtV2O">📦WHATSAPP</a> -
   <a href="https://www.ebay.it/sch/i.html?_dkr=1&_ssn=davidespagocci">🛍️EBAY</a></b>
 </p>
 
-<input id="filtroParole" type="text" placeholder="Nascondi oggetti con parola (es: custodia, per torta)">
+<!-- CASELLA NASCONDI -->
+<input id="filtroParole" type="text" placeholder="Nascondi oggetti con parola (es: custodia, cover)">
 <button id="btnGestisciParole">✏️ Gestisci Parole Nascoste</button>
 <button id="toggleAudio">🔈 Attiva Notifiche Audio</button>
 <button id="btnSoloMigliori">⭐Solo i <b>Migliori oggetti</b></button>
 <button id="btnAdulti">🔞Nascondi Sesso</button> 
-
-<!-- ✅ Timer accanto a oggetti nascosti -->
+<!-- 🔍 NUOVA CASELLA "CERCA" -->
+<div id="mostraBox">
+  <input id="mostraParole" type="text" placeholder="Cerca Oggetto con parola (es: Cane, Cucina, Per Lamborghini)">
+  <button id="clearMostra">❌</button>
+</div>
 <div id="statusBar">
   <span id="conteggioNascosti">🔕 Oggetti nascosti: 0</span>
   <span id="timer">Agg. tra: 60 s</span>
 </div>
 
-<!-- === MODALE === -->
-<div id="modaleParole">
-  <div id="modaleContenuto">
-    <h3>✏️ Parole Nascoste</h3>
-    <p>Inserisci parole o frasi separate da virgole o punti e virgola:</p>
-    <textarea id="modaleTextarea"></textarea><br>
-    <button id="salvaParole">💾 Salva</button>
-    <button id="cancellaParole">🗑️ Cancella Tutto</button>
-    <button id="chiudiModale">❌ Chiudi</button>
-  </div>
-</div>
-
-<!-- === AUDIO === -->
-<audio id="audioGenerale" src="https://raw.githubusercontent.com/spagocci/recensioni/main/tutti.mp3" preload="auto"></audio>
-<audio id="audioPochiSecondi" src="https://raw.githubusercontent.com/spagocci/recensioni/main/perte.mp3" preload="auto"></audio>
-<audio id="audioAttivate" src="https://raw.githubusercontent.com/spagocci/recensioni/main/attivate.mp3" preload="auto"></audio>
-<audio id="audioDisattivate" src="https://raw.githubusercontent.com/spagocci/recensioni/main/disattivate.mp3" preload="auto"></audio>
-<audio id="audioAggAttivato" src="https://raw.githubusercontent.com/spagocci/recensioni/main/aggattivato.mp3" preload="auto"></audio>
-<audio id="audioAggDisattivato" src="https://raw.githubusercontent.com/spagocci/recensioni/main/aggdisattivato.mp3" preload="auto"></audio>
-<audio id="audioValle" src="https://raw.githubusercontent.com/spagocci/recensioni/main/valledilacrime.mp3" preload="auto"></audio>
-
-<!-- === ORDINE COLONNE === -->
 <div class="row">
   <div class="column" id="canaleSinistra">
     <h2>#tutti</h2>
@@ -172,68 +144,17 @@ img { max-width:90%; border-radius:12px; }
     <div class="contenuto" id="contenutoFiltrati"></div>
   </div>
 </div>
-<div class="column" id="canaleAdulti">
-  <h2>#adulti</h2>
-  <div class="contenuto" id="contenutoAdulti"></div>
-</div>
-<div class="column" id="canaleDestra">
-  <h2>#perpochisecondi</h2>
-  <div class="contenuto" id="contenutoDestra"></div>
-</div>
-
-<button id="toggleRefresh">⏸ Ferma aggiornamento</button>
-<button id="btnValle">😭Valle Di Lacrime</button>
 
 <script>
+// ==================== TIMER RICARICA ====================
 let refreshInterval = 60;
 let timeLeft = refreshInterval;
 let refreshActive = true;
 const timerDisplay = document.getElementById("timer");
-const toggleButton = document.getElementById("toggleRefresh");
-const conteggioNascosti = document.getElementById('conteggioNascosti');
-const audioAggAttivato = document.getElementById("audioAggAttivato");
-const audioAggDisattivato = document.getElementById("audioAggDisattivato");
-function updateTimerDisplay(){ timerDisplay.textContent=`Agg: ${timeLeft}s`; }
+function updateTimerDisplay(){ timerDisplay.textContent=`Agg. tra: ${timeLeft}s`; }
 setInterval(()=>{ if(!refreshActive)return; timeLeft--; if(timeLeft<=0)location.reload(); updateTimerDisplay(); },1000);
 
-toggleButton.addEventListener("click", async ()=>{
-  refreshActive=!refreshActive;
-  toggleButton.textContent=refreshActive?"⏸ Ferma aggiornamento":"▶️ Riprendi aggiornamento";
-  try {
-    if (refreshActive) await audioAggAttivato.play(); else await audioAggDisattivato.play();
-  } catch (e) { console.warn("⚠️ Errore audio aggiornamento:", e.message); }
-});
-
-let audioAttivo = localStorage.getItem('audioAttivo') === 'true';
-let messaggiVisualizzati = new Set(JSON.parse(localStorage.getItem('messaggiVisualizzati') || '[]'));
-let primaVolta = messaggiVisualizzati.size === 0;
-
-const toggleAudioBtn = document.getElementById('toggleAudio');
-const audioGenerale = document.getElementById('audioGenerale');
-const audioPochiSecondi = document.getElementById('audioPochiSecondi');
-const audioAttivate = document.getElementById('audioAttivate');
-const audioDisattivate = document.getElementById('audioDisattivate');
-const audioValle = document.getElementById('audioValle');
-const btnValle = document.getElementById('btnValle');
-
-function aggiornaBottoneAudio() {
-  toggleAudioBtn.textContent = audioAttivo ? "🔇 Disattiva Notifiche Audio" : "🔈 Attiva Notifiche Audio";
-}
-aggiornaBottoneAudio();
-
-toggleAudioBtn.addEventListener('click', async () => {
-  audioAttivo = !audioAttivo;
-  localStorage.setItem('audioAttivo', audioAttivo);
-  aggiornaBottoneAudio();
-  try {
-    await audioGenerale.play(); audioGenerale.pause(); audioGenerale.currentTime = 0;
-    await audioPochiSecondi.play(); audioPochiSecondi.pause(); audioPochiSecondi.currentTime = 0;
-    if (audioAttivo) await audioAttivate.play(); else await audioDisattivate.play();
-  } catch (e) { console.warn('⚠️ Errore durante riproduzione suono di conferma:', e.message); }
-});
-
-btnValle.addEventListener('click', async ()=>{ try { await audioValle.play(); } catch (e) { console.warn('⚠️ Errore riproduzione ValleDiLacrime:', e.message); } });
-
+// ==================== CARICAMENTO OGGETTI ====================
 function caricaCatalogo(){
   const timestamp=new Date().getTime();
   fetch(`https://spagocci.github.io/recensioni/data.json?t=${timestamp}`)
@@ -241,16 +162,10 @@ function caricaCatalogo(){
   .then(data=>{
     data.sort((a,b)=>new Date(b.timestamp)-new Date(a.timestamp));
     const sinistra=document.getElementById('contenutoSinistra');
-    const destra=document.getElementById('contenutoDestra');
     const filtrati=document.getElementById('contenutoFiltrati');
-    const adulti=document.getElementById('contenutoAdulti');
-    sinistra.innerHTML=destra.innerHTML=filtrati.innerHTML=adulti.innerHTML='';
+    sinistra.innerHTML=filtrati.innerHTML='';
 
     data.forEach(item=>{
-      const isNuovo=!messaggiVisualizzati.has(item.id);
-      messaggiVisualizzati.add(item.id);
-      localStorage.setItem('messaggiVisualizzati',JSON.stringify([...messaggiVisualizzati]));
-
       const div=document.createElement('div');
       div.className='item';
       div.innerHTML=`<div class="item-content">
@@ -259,120 +174,58 @@ function caricaCatalogo(){
         <div>${item.link?`<p><a href="${item.link}" target="_blank">${item.text}</a></p>`:`<p>${item.text}</p>`}
         <small>${new Date(item.timestamp).toLocaleString()}</small></div>
       </div>`;
-
-      if(item.sourceChannel==='1432128848534962402'){
-        sinistra.appendChild(div);
-        if(!primaVolta&&audioAttivo&&isNuovo)audioGenerale.play().catch(()=>{});
-      }else if(item.sourceChannel==='1430829927175032954'){
-        destra.appendChild(div);
-        if(!primaVolta&&audioAttivo&&isNuovo)audioPochiSecondi.play().catch(()=>{});
-      }else if(item.sourceChannel==='1431551820509089842'){
-        filtrati.appendChild(div);
-        if(!primaVolta&&audioAttivo&&isNuovo)audioGenerale.play().catch(()=>{});
-      }else if(item.sourceChannel==='1433144661186318630'){
-        adulti.appendChild(div);
-        if(!primaVolta&&audioAttivo&&isNuovo)audioGenerale.play().catch(()=>{});
-      }
+      if(item.sourceChannel==='1431551820509089842') filtrati.appendChild(div);
+      else sinistra.appendChild(div);
     });
-    applicaFiltro();
+    applicaFiltriCombinati();
   })
-  .catch(err=>{
-    ['contenutoSinistra','contenutoDestra','contenutoFiltrati','contenutoAdulti'].forEach(id=>{
-      document.getElementById(id).innerHTML=`<p style="color:red;">❌ Errore: ${err.message}</p>`;
-    });
-  });
+  .catch(err=>console.error("Errore:",err));
 }
-
 caricaCatalogo();
 setInterval(caricaCatalogo,10000);
 
-// === 🔍 FILTRO PAROLE ===
+// ==================== FILTRI COMBINATI ====================
 const filtroInput = document.getElementById('filtroParole');
-const paroleSalvate = localStorage.getItem('paroleNascondi') || '';
-filtroInput.value = paroleSalvate;
-if (paroleSalvate.trim().length > 0) applicaFiltro();
+const mostraInput = document.getElementById('mostraParole');
+const clearMostra = document.getElementById('clearMostra');
+const conteggioNascosti = document.getElementById('conteggioNascosti');
 
-filtroInput.addEventListener('input', () => {
+// ✅ Mantiene parola "Cerca" anche dopo refresh
+mostraInput.value = localStorage.getItem('mostraParole') || '';
+filtroInput.value = localStorage.getItem('paroleNascondi') || '';
+
+if (mostraInput.value.trim()) clearMostra.style.display = 'inline-block';
+
+mostraInput.addEventListener('input', ()=>{
+  localStorage.setItem('mostraParole', mostraInput.value.trim());
+  clearMostra.style.display = mostraInput.value.trim() ? 'inline-block' : 'none';
+  applicaFiltriCombinati();
+});
+clearMostra.addEventListener('click', ()=>{
+  mostraInput.value = '';
+  localStorage.removeItem('mostraParole');
+  clearMostra.style.display = 'none';
+  applicaFiltriCombinati();
+});
+filtroInput.addEventListener('input', ()=>{
   localStorage.setItem('paroleNascondi', filtroInput.value.trim());
-  applicaFiltro();
+  applicaFiltriCombinati();
 });
 
-function applicaFiltro() {
-  const testoFiltro = filtroInput.value.trim().toLowerCase();
-  const frasi = testoFiltro.split(/[;,]+/).map(p => p.trim()).filter(p => p.length > 0);
-
+function applicaFiltriCombinati() {
+  const nascondiFrasi = filtroInput.value.trim().toLowerCase().split(/[;,]+/).map(p=>p.trim()).filter(Boolean);
+  const mostraFrasi = mostraInput.value.trim().toLowerCase().split(/[;,]+/).map(p=>p.trim()).filter(Boolean);
   let nascosti = 0;
-  document.querySelectorAll('.item').forEach(el => {
-    const testo = ((el.querySelector('p')?.innerText || '') + ' ' +
-                   (el.querySelector('.price-big')?.innerText || '')).toLowerCase();
-    const contiene = frasi.some(frase => testo.includes(frase));
-    el.style.display = contiene ? 'none' : '';
-    if (contiene) nascosti++;
+  document.querySelectorAll('.item').forEach(el=>{
+    const testo=((el.querySelector('p')?.innerText||'')+' '+(el.querySelector('.price-big')?.innerText||'')).toLowerCase();
+    const contieneNascondi = nascondiFrasi.some(f=>testo.includes(f));
+    const contieneMostra = mostraFrasi.length===0 || mostraFrasi.some(f=>testo.includes(f));
+    const visibile = !contieneNascondi && contieneMostra;
+    el.style.display = visibile ? '' : 'none';
+    if (!visibile) nascosti++;
   });
   conteggioNascosti.textContent = `🔕 Oggetti nascosti: ${nascosti}`;
 }
-
-// === ✏️ MODALE GESTIONE PAROLE ===
-const modale = document.getElementById('modaleParole');
-const textarea = document.getElementById('modaleTextarea');
-const btnGestisci = document.getElementById('btnGestisciParole');
-const btnSalva = document.getElementById('salvaParole');
-const btnChiudi = document.getElementById('chiudiModale');
-const btnCancella = document.getElementById('cancellaParole');
-
-btnGestisci.addEventListener('click', () => {
-  textarea.value = localStorage.getItem('paroleNascondi') || '';
-  modale.style.display = 'flex';
-});
-btnChiudi.addEventListener('click', ()=> modale.style.display='none');
-btnSalva.addEventListener('click', ()=>{
-  localStorage.setItem('paroleNascondi', textarea.value.trim());
-  filtroInput.value = textarea.value.trim();
-  applicaFiltro();
-  modale.style.display='none';
-});
-btnCancella.addEventListener('click', ()=>{
-  localStorage.removeItem('paroleNascondi');
-  filtroInput.value = '';
-  applicaFiltro();
-  modale.style.display='none';
-});
-
-// === TOGGLE SOLO I MIGLIORI ===
-const btnSoloMigliori = document.getElementById('btnSoloMigliori');
-let soloMiglioriAttivo = false;
-btnSoloMigliori.addEventListener('click', ()=>{
-  soloMiglioriAttivo = !soloMiglioriAttivo;
-  const canaleSinistra = document.getElementById('canaleSinistra');
-  const canaleDestra   = document.getElementById('canaleDestra');
-  const canaleFiltrati = document.getElementById('canaleFiltrati');
-
-  if (soloMiglioriAttivo) {
-    canaleSinistra.style.display = 'none';
-    canaleDestra.style.display = 'block';
-    canaleFiltrati.style.display = 'block';
-    btnSoloMigliori.textContent = '🌍 TUTTi gli oggetti';
-  } else {
-    canaleSinistra.style.display = 'block';
-    canaleDestra.style.display = 'block';
-    canaleFiltrati.style.display = 'block';
-    btnSoloMigliori.textContent = '⭐ Solo i Migliori oggetti';
-  }
-});
-// === TOGGLE ADULTi ===
-const btnAdulti = document.getElementById('btnAdulti');
-const canaleAdulti = document.getElementById('canaleAdulti');
-let adultiVisibili = true; // 👈 adesso è visibile di default
-
-btnAdulti.addEventListener('click', () => {
-  adultiVisibili = !adultiVisibili;
-  canaleAdulti.style.display = adultiVisibili ? 'block' : 'none';
-  btnAdulti.textContent = adultiVisibili
-    ? '🚫 Nascondi Sesso'
-    : '🔞 Mostra Sesso';
-});
 </script>
 </body>
 </html>
-
-
