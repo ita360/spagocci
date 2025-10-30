@@ -4,12 +4,14 @@
 <link rel="icon" href="https://github.com/spagocci/recensioni/blob/main/icona.png" type="image/png">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Spagocci 1.38</title>
+<title>Spagocci 1.40</title>
 <style>
 body {
   font-family:sans-serif;
   padding:20px;
   background:#f9f9f9;
+  overflow-y:auto;              /* ✅ Rende la pagina interamente scorrevole */
+  -webkit-overflow-scrolling:touch; /* ✅ Scroll fluido su iOS */
 }
 button {
   margin-bottom:10px;
@@ -79,85 +81,6 @@ button {
   color:#009900;
 }
 
-/* === LAYOUT === */
-.row {
-  display:flex;
-  gap:10px;
-  height:80vh;
-}
-.column {
-  flex:1;
-  background:linear-gradient(to bottom,#fff,#f0f0f0);
-  padding:20px;
-  border-radius:20px;
-  border:none;
-  box-shadow:inset 0 0 10px rgba(0,0,0,0.05),0 4px 10px rgba(0,0,0,0.1);
-  overflow-y:auto;
-}
-
-/* === CARD OGGETTI === */
-.contenuto {
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
-  gap:15px;
-}
-.item {
-  background:#fff;
-  border-radius:15px;
-  box-shadow:0 3px 8px rgba(0,0,0,0.1);
-  padding:10px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  transition:transform .2s ease, box-shadow .2s ease;
-}
-.item:hover{transform:translateY(-3px);box-shadow:0 5px 10px rgba(0,0,0,0.15);}
-.item-content {
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  text-align:center;
-  gap:8px;
-}
-.item-content img {
-  width:100%;
-  max-width:150px;
-  aspect-ratio:1/1;
-  object-fit:contain;
-  border-radius:12px;
-}
-.price-big {
-  font-weight:bold;
-  color:#009900;
-}
-.column a {
-  color:#000;
-  text-decoration:none;
-  font-weight:bold;
-  display:-webkit-box;
-  -webkit-line-clamp:3;   /* max 3 righe su desktop */
-  -webkit-box-orient:vertical;
-  overflow:hidden;
-  line-height:1.3em;
-}
-.column a:hover{text-decoration:underline;}
-small{color:#666;font-size:0.8em;}
-
-/* === RESPONSIVE === */
-@media(max-width:900px){
-  .row{flex-direction:column;height:auto;}
-}
-@media(max-width:768px){
-  .contenuto{
-    grid-template-columns:repeat(3,1fr);
-    gap:8px;
-  }
-  .item{padding:8px;}
-  .item-content img{max-width:100px;}
-  .column a{-webkit-line-clamp:2;font-size:0.8em;}
-  .price-big{font-size:0.9em;}
-}
-
 /* === MODALE === */
 #modaleParole{
   position:fixed;top:0;left:0;width:100%;height:100%;
@@ -173,6 +96,59 @@ small{color:#666;font-size:0.8em;}
   border-radius:8px;border:2px solid #b30000;resize:none;
 }
 #modaleContenuto button{margin-top:10px;margin-right:10px;}
+
+/* === LAYOUT === */
+.row {
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;       /* ✅ Permette lo scroll naturale su mobile */
+  height:auto;          /* ✅ Nessuna altezza fissa: la pagina si estende in verticale */
+}
+.column {
+  flex:1;
+  background:linear-gradient(to bottom,#fff,#f0f0f0);
+  padding:20px;
+  border-radius:20px;
+  border:none;
+  box-shadow:inset 0 0 10px rgba(0,0,0,0.05),0 4px 10px rgba(0,0,0,0.1);
+  overflow:visible;     /* ✅ Evita limiti di scorrimento interni */
+}
+
+/* === CARD OGGETTI === */
+.contenuto {
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  gap:15px;
+}
+
+/* === RESPONSIVE (mobile ≤768px) === */
+@media(max-width:768px){
+  body {
+    padding:10px;
+  }
+  .row {
+    flex-direction:column;
+    height:auto;           /* ✅ Scroll verticale completo */
+  }
+  .contenuto {
+    grid-template-columns:repeat(3,1fr); /* ✅ 3 oggetti per riga su mobile */
+    gap:6px;
+  }
+  .item {
+    padding:6px;
+  }
+  .item-content img {
+    max-width:90px;
+  }
+  .column a {
+    -webkit-line-clamp:2;
+    font-size:0.8em;
+  }
+  .price-big {
+    font-size:0.9em;
+  }
+}
+
 </style>
 </head>
 <body>
