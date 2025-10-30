@@ -38,5 +38,15 @@
     "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 12€</span><br><span style=\"color:red;font-weight:bold;\">AM: 24€</span>",
     "sourceChannel": "1432128848534962402",
     "asin": "B0FBT5JSGK"
+  },
+  {
+    "id": "1433403714529656852",
+    "timestamp": "2025-10-30T10:34:36.897Z",
+    "text": "Puzzle 3D a Forma di Fiore, Puzzle Fai da Te in Legno con Girasole,... - https://www.amazon.it/dp/B0FMXMGVM4 test",
+    "link": "https://www.amazon.it/dp/B0FMXMGVM4",
+    "image": "https://m.media-amazon.com/images/I/81gartjpjkL.jpg_BO30,255,255,255_UF900,850_SR1910,1000,0,C_PIRIOTHREEANDHALF-medium,BottomLeft,30,-20_QL100_.jpg",
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 5€</span><br><span style=\"color:red;font-weight:bold;\">AM: 9€</span>",
+    "asin": "B0FMXMGVM4",
+    "sourceChannel": "1432128848534962402"
   }
 ]
