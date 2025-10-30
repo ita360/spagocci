@@ -2605,7 +2605,7 @@
     "text": "Spilla per tende",
     "link": "https://amazon.it/dp/B0FRMWQ9ZM",
     "image": "https://m.media-amazon.com/images/I/31iIET5s8nL._SS210_.jpg",
-    "price": null,
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 5€</span><br><span style=\"color:red;font-weight:bold;\">AM: 9€</span>",
     "asin": "B0FRMWQ9ZM",
     "sourceChannel": "1431551820509089842"
   },
@@ -2615,7 +2615,7 @@
     "text": "Confettura di Mele Cola con Miele Millefiori e Vaniglia - 100% Frutta Italiana, Senza Glutine, Senza Conservanti - 240gr",
     "link": "https://amazon.it/dp/B0BBRDBMV2",
     "image": "https://m.media-amazon.com/images/I/41dueS-4BdL._SS210_.jpg",
-    "price": null,
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 5€</span><br><span style=\"color:red;font-weight:bold;\">AM: 9€</span>",
     "asin": "B0BBRDBMV2",
     "sourceChannel": "1431551820509089842"
   },
@@ -2625,7 +2625,7 @@
     "text": "CONFETTURE",
     "link": "https://amazon.it/dp/B0FK3ZR6V5",
     "image": "https://m.media-amazon.com/images/I/41lHWmXvvvL._SS210_.jpg",
-    "price": null,
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 5€</span><br><span style=\"color:red;font-weight:bold;\">AM: 9€</span>",
     "asin": "B0FK3ZR6V5",
     "sourceChannel": "1431551820509089842"
   },
@@ -2645,7 +2645,7 @@
     "text": "Sooiiyu Adattatore USB C Jack, Adattatore per Cuffie Audio da USB C Maschio a 3,5 mm Madre, Compatibile con Cuffie, PC, Tablet, laptop, Microfono, Altoparlanti",
     "link": "https://amazon.it/dp/B0FT2QLTP8",
     "image": "https://m.media-amazon.com/images/I/31x2LW9eIkL._SS210_.jpg",
-    "price": null,
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 3€</span><br><span style=\"color:red;font-weight:bold;\">AM: 6€</span>",
     "asin": "B0FT2QLTP8",
     "sourceChannel": "1431551820509089842"
   },
@@ -2655,7 +2655,7 @@
     "text": "Fuhesgu Pino artificiale",
     "link": "https://amazon.it/dp/B0FNWVTW6D",
     "image": "https://m.media-amazon.com/images/I/51iO1qBqlAL._SS210_.jpg",
-    "price": null,
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 12€</span><br><span style=\"color:red;font-weight:bold;\">AM: 24€</span>",
     "asin": "B0FNWVTW6D",
     "sourceChannel": "1431551820509089842"
   },
@@ -2665,7 +2665,7 @@
     "text": "Maglia Termica Foderata in Pile per Ragazzi – Strato Base a Maniche Lunghe con Collo Alto per Tempo Freddo",
     "link": "https://amazon.it/dp/B0D9CQBKML",
     "image": "https://m.media-amazon.com/images/I/31W-xBoh8JL._SS210_.jpg",
-    "price": null,
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 8€</span><br><span style=\"color:red;font-weight:bold;\">AM: 15€</span>",
     "asin": "B0D9CQBKML",
     "sourceChannel": "1431551820509089842"
   },
@@ -2685,7 +2685,7 @@
     "text": "Chalkola Confezione da 4 pennarelli acrilici – 4 x doppia punta 1 mm + 5 mm",
     "link": "https://amazon.it/dp/B0F4HFSCZK",
     "image": "https://m.media-amazon.com/images/I/51pClup4CCL._SS210_.jpg",
-    "price": null,
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 10€</span><br><span style=\"color:red;font-weight:bold;\">AM: 19€</span>",
     "asin": "B0F4HFSCZK",
     "sourceChannel": "1431551820509089842"
   },
@@ -2695,7 +2695,7 @@
     "text": "Gel Stimolante Donna 15ml – Olio da Massaggio Intimo Liquido per Clitoride e Punto G, Aumenta il Piacere e la Libido Femminile",
     "link": "https://amazon.it/dp/B0FRN5P5D7",
     "image": "https://m.media-amazon.com/images/I/51Y68tUuAVL._SS210_.jpg",
-    "price": null,
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 13€</span><br><span style=\"color:red;font-weight:bold;\">AM: 25€</span>",
     "asin": "B0FRN5P5D7",
     "sourceChannel": "1433144661186318630"
   },
@@ -2705,7 +2705,7 @@
     "text": "INNERNEED 2 pezzi di spugna africana esfoliante per doccia in rete, con 1 spazzola in silicone per il corpo",
     "link": "https://amazon.it/dp/B0FVVSV4PX",
     "image": "https://m.media-amazon.com/images/I/51-iEekvbXL._SS210_.jpg",
-    "price": null,
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 8€</span><br><span style=\"color:red;font-weight:bold;\">AM: 16€</span>",
     "asin": "B0FVVSV4PX",
     "sourceChannel": "1432128848534962402"
   },
@@ -2715,7 +2715,7 @@
     "text": "F4B Sottobicchieri Mandala (1) Diamond Painting | Strass rotondi | Con supporto | Sottobicchieri | Bambini | Pacchetto adulti e bambini",
     "link": "https://amazon.it/dp/B0CN9QLS3Y",
     "image": "https://m.media-amazon.com/images/I/51vAx4DRu6L._SS210_.jpg",
-    "price": null,
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 13€</span><br><span style=\"color:red;font-weight:bold;\">AM: 25€</span>",
     "asin": "B0CN9QLS3Y",
     "sourceChannel": "1432128848534962402"
   },
@@ -2725,7 +2725,7 @@
     "text": "Pmueuff Cuscino da Viaggio, Cuscino Aereo Memory Foam Regolabile Cuscino Cervicale Ergonomico Portatile con Maschera per Dormir, Tappi Auricolari, Borsa Cuscino Collo da Viaggio per Aereo, Treno, Auto",
     "link": "https://amazon.it/dp/B0FPWXGJYW",
     "image": "https://m.media-amazon.com/images/I/510iH8avDrL._SS210_.jpg",
-    "price": null,
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 9€</span><br><span style=\"color:red;font-weight:bold;\">AM: 17€</span>",
     "asin": "B0FPWXGJYW",
     "sourceChannel": "1432128848534962402"
   },
@@ -2735,7 +2735,7 @@
     "text": "Yowell Cartuccia Toner 142A W1420A con Chip, Compatibile con HP 142A W1420A 142X W1420X per HP Laserjet MFP M140w Toner per Laserjet M110w M110 MFP M139w M139 M140w M140 (1 nero) (142A)",
     "link": "https://amazon.it/dp/B0FCYK2FSX",
     "image": "https://m.media-amazon.com/images/I/41SJgv8cf6L._SL500_.jpg",
-    "price": null,
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 12€</span><br><span style=\"color:red;font-weight:bold;\">AM: 24€</span>",
     "asin": "B0FCYK2FSX",
     "sourceChannel": "1432128848534962402"
   },
@@ -2745,7 +2745,7 @@
     "text": "QBEJIME 4 Paia Calzini Antiscivolo Pilates Donna, Calze Antiscivolo Donna, Calzini Yoga Per Ragazza Con Cinturino, Per Balletto, Danza, Ballo a Piedi Nudi, Fitness",
     "link": "https://amazon.it/dp/B0FNRGF3ZX",
     "image": "https://m.media-amazon.com/images/I/41BdiMfm1GL._SS210_.jpg",
-    "price": null,
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 5€</span><br><span style=\"color:red;font-weight:bold;\">AM: 9€</span>",
     "asin": "B0FNRGF3ZX",
     "sourceChannel": "1432128848534962402"
   },
@@ -2755,7 +2755,7 @@
     "text": "Buudala Luci LED a Batteria Ricaricabile, Luci Stringa, 8 Modalità Catena Luminosa Timer, Impermeabile Luci Natale Interni Esterni, Lucine LED Decorative Batteria per Natale Albero Camera Festa",
     "link": "https://amazon.it/dp/B0FRRSGW2H",
     "image": "https://m.media-amazon.com/images/I/51BBIZmXTzL._SL500_.jpg",
-    "price": null,
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 5€</span><br><span style=\"color:red;font-weight:bold;\">AM: 10€</span>",
     "asin": "B0FRRSGW2H",
     "sourceChannel": "1432128848534962402"
   },
@@ -2765,7 +2765,7 @@
     "text": "QIWEIQING Custodia Magnetica per iPhone",
     "link": "https://amazon.it/dp/B0FR9TS5JV",
     "image": "https://m.media-amazon.com/images/I/419dwIxgTvL._SL500_.jpg",
-    "price": null,
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 7€</span><br><span style=\"color:red;font-weight:bold;\">AM: 13€</span>",
     "asin": "B0FR9TS5JV",
     "sourceChannel": "1432128848534962402"
   },
@@ -2775,7 +2775,7 @@
     "text": "wisdom line Candele LED ricaricabili senza fiamma, bianco, 3,8 x 5,3 cm, fiamma mobile, set di 8, decorazione per la casa",
     "link": "https://amazon.it/dp/B0FSXDZRWK",
     "image": "https://m.media-amazon.com/images/I/210hXw-i2bL._SS210_.jpg",
-    "price": null,
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 6€</span><br><span style=\"color:red;font-weight:bold;\">AM: 11€</span>",
     "asin": "B0FSXDZRWK",
     "sourceChannel": "1432128848534962402"
   },
@@ -2785,7 +2785,7 @@
     "text": "SITAFU Cinturino Intrecciato Compatibile con Cinturino Apple Watch Ultra 49mm 46mm 45mm 44mm 42mm- Cinturini in Nylon Tessuto Sportivo per iWatch Ultra2 Ultra Series 11/10/9/8/7/SE/6/5/4/3/2/1",
     "link": "https://amazon.it/dp/B0FS1QMB49",
     "image": "https://m.media-amazon.com/images/I/51Z4K2AbgwL._SS210_.jpg",
-    "price": null,
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 5€</span><br><span style=\"color:red;font-weight:bold;\">AM: 10€</span>",
     "asin": "B0FS1QMB49",
     "sourceChannel": "1432128848534962402"
   },
@@ -2795,7 +2795,7 @@
     "text": "Creality PETG Refill Filamento di Ricarica 1, 75 mm, Filamento per Stampa 3D senza Bobina",
     "link": "https://amazon.it/dp/B0FY17P24H",
     "image": "https://m.media-amazon.com/images/I/41SpgJA88IL._SS210_.jpg",
-    "price": null,
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 8€</span><br><span style=\"color:red;font-weight:bold;\">AM: 15€</span>",
     "asin": "B0FY17P24H",
     "sourceChannel": "1432128848534962402"
   },
@@ -2825,7 +2825,7 @@
     "text": "HERMORRYSS Calendario Avvento 2025 Bambini, Calendario dell'Avvento della Fattoria, Set Figurine Animali Fattoria di Plastica con Recinzioni, Giochi Educativo Regalo per Bambini Ragazzi Ragazze",
     "link": "https://amazon.it/dp/B0FJM4PZCH",
     "image": "https://m.media-amazon.com/images/I/51coUHhRupL._SS210_.jpg",
-    "price": null,
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 9€</span><br><span style=\"color:red;font-weight:bold;\">AM: 18€</span>",
     "asin": "B0FJM4PZCH",
     "sourceChannel": "1432128848534962402"
   },
@@ -2835,7 +2835,7 @@
     "text": "Pfloge® Ciabatta Multipresa con USB, 10-in-1 Presa Multipla con 2 AC Prese, 2 USB A+C, 3500W/15A, Ciabatta Elettrica Per Smartphone, Laptop, Casa",
     "link": "https://amazon.it/dp/B0FL1V8VTZ",
     "image": "https://m.media-amazon.com/images/I/41u4Tbkm59L._SS210_.jpg",
-    "price": null,
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 8€</span><br><span style=\"color:red;font-weight:bold;\">AM: 15€</span>",
     "asin": "B0FL1V8VTZ",
     "sourceChannel": "1431551820509089842"
   },
@@ -2845,7 +2845,7 @@
     "text": "Tappo Scarico Lavandino Cucina E Setaccio, Filtro Di Piletta Del Lavello, Griglia Lavandino Accessori, Materiale in Acciaio Inox E Rame, Adatto per Fori Di Lavandino Profondi 37 mm E Larghi 75-87 mm.",
     "link": "https://amazon.it/dp/B0DHNLNX8T",
     "image": "https://m.media-amazon.com/images/I/412cUpo6XDL._SS210_.jpg",
-    "price": null,
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 10€</span><br><span style=\"color:red;font-weight:bold;\">AM: 20€</span>",
     "asin": "B0DHNLNX8T",
     "sourceChannel": "1431551820509089842"
   },
@@ -2855,7 +2855,7 @@
     "text": "Set di 16 connettori per tubi in ottone, 10 morsetti per pantaloni, per tubo dell'acqua, tubo dell'aria, tubo del carburante (6 mm/8 mm/10 mm/12 mm)",
     "link": "https://amazon.it/dp/B0FR8NRLM4",
     "image": "https://m.media-amazon.com/images/I/51-QKGbZDOL._SS210_.jpg",
-    "price": null,
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 7€</span><br><span style=\"color:red;font-weight:bold;\">AM: 13€</span>",
     "asin": "B0FR8NRLM4",
     "sourceChannel": "1431551820509089842"
   },
@@ -2865,7 +2865,7 @@
     "text": "Cornice 3D Profonda a 5 cm, A4 Cornice 22x31.5cm, Cornice Profonda Per Oggetti, Cornice Contenitore Bianca, Cornice 3D Per Oggetti, Fiori o Ricordi (Bianco)",
     "link": "https://amazon.it/dp/B0FJFW1P9X",
     "image": "https://m.media-amazon.com/images/I/51hlNIE6k0L._SS210_.jpg",
-    "price": null,
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 7€</span><br><span style=\"color:red;font-weight:bold;\">AM: 14€</span>",
     "asin": "B0FJFW1P9X",
     "sourceChannel": "1431551820509089842"
   },
@@ -2875,7 +2875,7 @@
     "text": "Cavo USB C e Lightning 4 in 1, certificato MFi, 60 W, ricarica rapida e sincronizzazione dati Apple CarPlay Android Auto, cavo multi caricatore a spirale Lightning/porte tipo C/USB A per iPhone 16 15",
     "link": "https://amazon.it/dp/B0DK3BPKKM",
     "image": "https://m.media-amazon.com/images/I/316zpGsfa0L._SS210_.jpg",
-    "price": null,
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 8€</span><br><span style=\"color:red;font-weight:bold;\">AM: 15€</span>",
     "asin": "B0DK3BPKKM",
     "sourceChannel": "1431551820509089842"
   },
@@ -2895,7 +2895,7 @@
     "text": "Set da 40 Palline di Natale Rosse e Bianche, 6 cm, Plastica Infrangibile e Dotato di Ganci, Adatto per Decorazioni Interne ed Esterne, per il Tuo Albero di Natale",
     "link": "https://amazon.it/dp/B0FX7XFGFY",
     "image": "https://m.media-amazon.com/images/I/51pwHMjmHsL._SS210_.jpg",
-    "price": null,
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 8€</span><br><span style=\"color:red;font-weight:bold;\">AM: 16€</span>",
     "asin": "B0FX7XFGFY",
     "sourceChannel": "1431551820509089842"
   },
@@ -2915,7 +2915,7 @@
     "text": "Terre Dei Trulli Tarallini Tradizionali | Taralli Pugliesi Per Uno Snack Veloce E Gustoso | Snack Salati Per Un Aperi Snack Genuino",
     "link": "https://amazon.it/dp/B0F8W99GN3",
     "image": "https://m.media-amazon.com/images/I/41Dmxy8LWAL._SS210_.jpg",
-    "price": null,
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 8€</span><br><span style=\"color:red;font-weight:bold;\">AM: 15€</span>",
     "asin": "B0F8W99GN3",
     "sourceChannel": "1431551820509089842"
   }
