@@ -83,7 +83,7 @@ button {
 .row {
   display:flex;
   gap:10px;
-  height:80vh;
+  height:auto;
 }
 .column {
   flex:1;
@@ -228,17 +228,20 @@ small{color:#666;font-size:0.8em;}
     <h2>#filtrati</h2>
     <div class="contenuto" id="contenutoFiltrati"></div>
   </div>
+  <div class="column" id="canaleAdulti">
+    <h2>#adulti</h2>
+    <div class="contenuto" id="contenutoAdulti"></div>
+  </div>
+  <div class="column" id="canaleDestra">
+    <h2>#perpochisecondi</h2>
+    <div class="contenuto" id="contenutoDestra"></div>
+  </div>
+  <div class="column" id="canaleSubito">
+    <h2>#subitodisponibili</h2>
+    <div class="contenuto" id="contenutoSubito"></div>
+  </div>
 </div>
 
-<div class="column" id="canaleAdulti">
-  <h2>#adulti</h2>
-  <div class="contenuto" id="contenutoAdulti"></div>
-</div>
-
-<div class="column" id="canaleDestra">
-  <h2>#perpochisecondi</h2>
-  <div class="contenuto" id="contenutoDestra"></div>
-</div>
 
 <button id="toggleRefresh">⏸ Ferma aggiornamento</button>
 <button id="btnValle">😭 Valle Di Lacrime</button>
@@ -247,7 +250,7 @@ small{color:#666;font-size:0.8em;}
 /* === TIMER === */
 let refreshInterval=60,timeLeft=refreshInterval,refreshActive=true;
 const timerDisplay=document.getElementById("timer");
-function updateTimerDisplay(){timerDisplay.textContent=`Agg: ${timeLeft}s`;}
+function updateTimerDisplay(){timerDisplay.textContent=`Agg Tra: ${timeLeft}s`;}
 setInterval(()=>{if(!refreshActive)return;timeLeft--;if(timeLeft<=0)location.reload();updateTimerDisplay();},1000);
 
 /* === AUDIO E BOTTONI REFRESH === */
@@ -298,29 +301,23 @@ function caricaCatalogo(){
     const d=document.getElementById('contenutoDestra');
     const f=document.getElementById('contenutoFiltrati');
     const a=document.getElementById('contenutoAdulti');
-    s.innerHTML=d.innerHTML=f.innerHTML=a.innerHTML='';
+    const sub=document.getElementById('contenutoSubito'); // ✅ nuova colonna
 
-
+    // pulizia iniziale
+    s.innerHTML=d.innerHTML=f.innerHTML=a.innerHTML=sub.innerHTML='';
 
     data.forEach(item=>{
-// Rende cliccabili le immagini con link Amazon
-document.querySelectorAll('.clickable-img').forEach(img => {
-  img.addEventListener('click', () => {
-    const url = img.dataset.link;
-    if (url) window.open(url, '_blank');
-  });
-});
       const isNuovo=!messaggiVisualizzati.has(item.id);
       messaggiVisualizzati.add(item.id);
       localStorage.setItem('messaggiVisualizzati',JSON.stringify([...messaggiVisualizzati]));
       const div=document.createElement('div');
       div.className='item';
-div.innerHTML=`<div class="item-content">
-  ${item.image && item.link ? `<img src="${item.image}" alt="" class="clickable-img" data-link="${item.link}">` : item.image ? `<img src="${item.image}" alt="">` : ''}
-  ${item.price?`<div class="price-big">${item.price}</div>`:''}
-  <p>${item.link?`<a href="${item.link}" target="_blank">${item.text}</a>`:item.text}</p>
-  <small>${new Date(item.timestamp).toLocaleString()}</small>
-</div>`;
+      div.innerHTML=`<div class="item-content">
+        ${item.image && item.link ? `<img src="${item.image}" alt="" class="clickable-img" data-link="${item.link}">` : item.image ? `<img src="${item.image}" alt="">` : ''}
+        ${item.price?`<div class="price-big">${item.price}</div>`:''}
+        <p>${item.link?`<a href="${item.link}" target="_blank">${item.text}</a>`:item.text}</p>
+        <small>${new Date(item.timestamp).toLocaleString()}</small>
+      </div>`;
 
       if(item.sourceChannel==='1432128848534962402'){ // #tutti
         s.appendChild(div); if(!primaVolta&&audioAttivo&&isNuovo)audioGenerale.play().catch(()=>{});
@@ -330,12 +327,16 @@ div.innerHTML=`<div class="item-content">
         f.appendChild(div); if(!primaVolta&&audioAttivo&&isNuovo)audioGenerale.play().catch(()=>{});
       } else if(item.sourceChannel==='1433144661186318630'){ // #adulti
         a.appendChild(div); if(!primaVolta&&audioAttivo&&isNuovo)audioGenerale.play().catch(()=>{});
+      } else if(item.sourceChannel==='1433444235851468980'){ // ✅ #subitodisponibili
+        sub.appendChild(div);
+        if(!primaVolta && audioAttivo && isNuovo) audioGenerale.play().catch(()=>{});
       }
     });
+
     applicaFiltri();
   })
   .catch(err=>{
-    ['contenutoSinistra','contenutoDestra','contenutoFiltrati','contenutoAdulti'].forEach(id=>{
+    ['contenutoSinistra','contenutoDestra','contenutoFiltrati','contenutoAdulti','contenutoSubito'].forEach(id=>{
       document.getElementById(id).innerHTML=`<p style="color:red;">❌ ${err.message}</p>`;
     });
   });
