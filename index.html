@@ -446,14 +446,107 @@ setInterval(caricaBacheca, 10000);
 caricaBacheca();
 </script>
 <script>
+/* =========================================================
+ * 🛒 CARICAMENTO CATALOGO – da GitHub (data.json)
+ * =======================================================*/
+let messaggiVisualizzati = new Set(JSON.parse(localStorage.getItem('messaggiVisualizzati') || '[]'));
+let primaVolta = messaggiVisualizzati.size === 0;
+let audioAttivo = localStorage.getItem('audioAttivo') === 'true';
+
+const audioGenerale = document.getElementById('audioGenerale');
+const audioPochiSecondi = document.getElementById('audioPochiSecondi');
+
+function caricaCatalogo() {
+  const t = Date.now();
+  fetch(`https://spagocci.github.io/recensioni/data.json?t=${t}`)
+    .then(r => r.json())
+    .then(data => {
+      // ordina per data più recente
+      data.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+
+      const vetrina = document.getElementById('contenutoVetrina');
+      const tutti = document.getElementById('contenutoSinistra');
+      const migliori = document.getElementById('contenutoFiltrati');
+      const adulti = document.getElementById('contenutoAdulti');
+      const sicurezza = document.getElementById('contenutoDestra');
+
+      // pulizia iniziale
+      [vetrina, tutti, migliori, adulti, sicurezza].forEach(el => el.innerHTML = '');
+
+      data.forEach(item => {
+        const isNuovo = !messaggiVisualizzati.has(item.id);
+        messaggiVisualizzati.add(item.id);
+        localStorage.setItem('messaggiVisualizzati', JSON.stringify([...messaggiVisualizzati]));
+
+        const div = document.createElement('div');
+        div.className = 'item';
+        div.innerHTML = `
+          <div class="item-content">
+            ${item.image && item.link ? `<a href="${item.link}" target="_blank"><img src="${item.image}" alt=""></a>` :
+              item.image ? `<img src="${item.image}" alt="">` : ''}
+            ${item.price ? `<div class="price-big">${item.price}</div>` : ''}
+            <p>${item.link ? `<a href="${item.link}" target="_blank">${item.text}</a>` : item.text}</p>
+            <small>${new Date(item.timestamp).toLocaleString()}</small>
+          </div>`;
+
+        // Smista nei canali corretti
+        if (item.sourceChannel === '1433444235851468980') { // 🏪 VETRINA
+          vetrina.appendChild(div);
+          if (!primaVolta && audioAttivo && isNuovo) audioGenerale.play().catch(() => {});
+        } else if (item.sourceChannel === '1432128848534962402') { // 🤢 Tutti
+          tutti.appendChild(div);
+          if (!primaVolta && audioAttivo && isNuovo) audioGenerale.play().catch(() => {});
+        } else if (item.sourceChannel === '1431551820509089842') { // ⭐ Migliori
+          migliori.appendChild(div);
+          if (!primaVolta && audioAttivo && isNuovo) audioGenerale.play().catch(() => {});
+        } else if (item.sourceChannel === '1433144661186318630') { // 🍑 Adulti
+          adulti.appendChild(div);
+          if (!primaVolta && audioAttivo && isNuovo) audioGenerale.play().catch(() => {});
+        } else if (item.sourceChannel === '1430829927175032954') { // 👮 Sicurezza
+          sicurezza.appendChild(div);
+          if (!primaVolta && audioAttivo && isNuovo) audioPochiSecondi.play().catch(() => {});
+        }
+      });
+
+      applicaFiltri();
+    })
+    .catch(err => {
+      console.error('Errore caricamento catalogo:', err);
+      ['contenutoVetrina','contenutoSinistra','contenutoFiltrati','contenutoAdulti','contenutoDestra'].forEach(id=>{
+        document.getElementById(id).innerHTML = `<p style="color:red;">❌ ${err.message}</p>`;
+      });
+    });
+}
+
+/* === FILTRI VISUALI === */
+const filtroInput = document.getElementById('filtroParole');
+const mostraInput = document.getElementById('mostraParole');
+const clearMostra = document.getElementById('clearMostra');
+const conteggioNascosti = document.getElementById('conteggioNascosti');
+
+function applicaFiltri() {
+  const nascondi = filtroInput.value.toLowerCase().split(/[;,]+/).map(x=>x.trim()).filter(Boolean);
+  const mostra = mostraInput.value.toLowerCase().split(/[;,]+/).map(x=>x.trim()).filter(Boolean);
+  let nascosti = 0;
+  document.querySelectorAll('.item').forEach(el => {
+    const testo = (el.innerText || '').toLowerCase();
+    const hide = nascondi.some(w => testo.includes(w));
+    const show = mostra.length === 0 || mostra.some(w => testo.includes(w));
+    const vis = !hide && show;
+    el.style.display = vis ? '' : 'none';
+    if (!vis) nascosti++;
+  });
+  conteggioNascosti.textContent = `🔕 Oggetti nascosti: ${nascosti}`;
+}
+
+// avvio automatico
 caricaCatalogo();
 setInterval(caricaCatalogo, 10000);
-</script>  
-
+</script>
 </body>
-  
 </html>
  
+
 
 
 
