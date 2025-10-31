@@ -101,77 +101,67 @@ button {
   grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
   gap:15px;
 }
-.item {
-  background:#fff;
-  border-radius:15px;
-  box-shadow:0 3px 8px rgba(0,0,0,0.1);
-  padding:10px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  transition:transform .2s ease, box-shadow .2s ease;
+/* === CARD OGGETTI SEMPLIFICATA === */
+.contenuto {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* 2 oggetti circa su desktop */
+  gap: 10px;
 }
-.item:hover{transform:translateY(-3px);box-shadow:0 5px 10px rgba(0,0,0,0.15);}
+.item {
+  background: none;       /* 🔸 niente sfondo */
+  border: none;           /* 🔸 nessun bordo */
+  box-shadow: none;       /* 🔸 niente ombre */
+  padding: 0;             /* 🔸 elimina padding interno */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .item-content {
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  text-align:center;
-  gap:8px;
+  text-align: center;
 }
 .item-content img {
-  width:100%;
-  max-width:150px;
-  aspect-ratio:1/1;
-  object-fit:contain;
-  border-radius:12px;
+  width: 100%;
+  max-width: 180px;
+  aspect-ratio: 1/1;
+  object-fit: contain;
+  border-radius: 0;        /* 🔸 nessun bordo arrotondato */
 }
 .price-big {
-  font-weight:bold;
-  color:#009900;
+  font-weight: bold;
+  color: #009900;
+  font-size: 1em;
 }
 .column a {
-  color:#000;
-  text-decoration:none;
-  font-weight:bold;
-  display:-webkit-box;
-  -webkit-line-clamp:3;   /* max 3 righe su desktop */
-  -webkit-box-orient:vertical;
-  overflow:hidden;
-  line-height:1.3em;
+  color: #000;
+  text-decoration: none;
+  font-weight: bold;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.2em;
 }
-.column a:hover{text-decoration:underline;}
-small{color:#666;font-size:0.8em;}
+.column a:hover { text-decoration: underline; }
+small { color: #666; font-size: 0.8em; }
 
 /* === RESPONSIVE === */
 @media(max-width:768px){
-  .contenuto{
-    grid-template-columns:repeat(4,1fr); /* ✅ 4 oggetti per riga */
-    gap:6px;
+  .contenuto {
+    grid-template-columns: repeat(2, 1fr); /* ✅ 2 oggetti per riga su smartphone */
+    gap: 6px;
   }
-  .item{
-    padding:5px;
+  .item-content img {
+    max-width: 120px;     /* ✅ immagini adattate */
   }
-  .item-content img{
-    max-width:70px;     /* ✅ immagini più piccole */
+  .column a {
+    -webkit-line-clamp: 2;
+    font-size: 0.8em;
+    line-height: 1.1em;
   }
-  .column a{
-    -webkit-line-clamp:2;
-    font-size:0.7em;    /* ✅ testo più piccolo */
-    line-height:1.1em;
-  }
-  .price-big{
-    font-size:0.8em;
-  }
-  small{
-    font-size:0.65em;
-  }
-  h2{
-    font-size:0.9em;    /* titoli colonne ridotti */
-    margin-bottom:5px;
-  }
+  .price-big { font-size: 0.9em; }
+  small { font-size: 0.7em; }
+  h2 { font-size: 0.9em; margin-bottom: 4px; }
 }
-
 
 /* === MODALE === */
 #modaleParole{
