@@ -4,7 +4,7 @@
 <link rel="icon" href="https://github.com/spagocci/recensioni/blob/main/icona.png" type="image/png">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Spagocci 1.37</title>
+<title>Spagocci 1.0.0</title>
 <style>
 body {
   font-family:sans-serif;
@@ -144,19 +144,34 @@ button {
 small{color:#666;font-size:0.8em;}
 
 /* === RESPONSIVE === */
-@media(max-width:900px){
-  .row{flex-direction:column;height:auto;}
-}
 @media(max-width:768px){
   .contenuto{
-    grid-template-columns:repeat(3,1fr);
-    gap:8px;
+    grid-template-columns:repeat(4,1fr); /* ✅ 4 oggetti per riga */
+    gap:6px;
   }
-  .item{padding:8px;}
-  .item-content img{max-width:100px;}
-  .column a{-webkit-line-clamp:2;font-size:0.8em;}
-  .price-big{font-size:0.9em;}
+  .item{
+    padding:5px;
+  }
+  .item-content img{
+    max-width:70px;     /* ✅ immagini più piccole */
+  }
+  .column a{
+    -webkit-line-clamp:2;
+    font-size:0.7em;    /* ✅ testo più piccolo */
+    line-height:1.1em;
+  }
+  .price-big{
+    font-size:0.8em;
+  }
+  small{
+    font-size:0.65em;
+  }
+  h2{
+    font-size:0.9em;    /* titoli colonne ridotti */
+    margin-bottom:5px;
+  }
 }
+
 
 /* === MODALE === */
 #modaleParole{
@@ -224,6 +239,10 @@ small{color:#666;font-size:0.8em;}
     <h2>#tutti</h2>
     <div class="contenuto" id="contenutoSinistra"></div>
   </div>
+  <div class="column" id="canaleSubito">
+    <h2>#subitodisponibili</h2>
+    <div class="contenuto" id="contenutoSubito"></div>
+  </div>
   <div class="column" id="canaleFiltrati">
     <h2>#filtrati</h2>
     <div class="contenuto" id="contenutoFiltrati"></div>
@@ -235,10 +254,6 @@ small{color:#666;font-size:0.8em;}
   <div class="column" id="canaleDestra">
     <h2>#perpochisecondi</h2>
     <div class="contenuto" id="contenutoDestra"></div>
-  </div>
-  <div class="column" id="canaleSubito">
-    <h2>#subitodisponibili</h2>
-    <div class="contenuto" id="contenutoSubito"></div>
   </div>
 </div>
 
