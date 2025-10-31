@@ -466,11 +466,53 @@ function applicaFiltri(){
   conteggioNascosti.textContent = `🔕 Oggetti nascosti: ${nascosti}`;
 }
 </script>
-  
+  <script>
+/* =========================================================
+ * 🔄 AGGIORNAMENTO AUTOMATICO BACHECA PUBBLICA (GitHub)
+ * =======================================================*/
+const BACHECA_URL = "https://spagocci.github.io/recensioni/bacheca.json";
+const chatLista = document.getElementById('chatLista');
+
+async function caricaBacheca() {
+  try {
+    const res = await fetch(`${BACHECA_URL}?t=${Date.now()}`);
+    if (!res.ok) throw new Error("Errore nel caricamento");
+    const data = await res.json();
+
+    chatLista.innerHTML = ""; // pulizia
+    data.forEach(m => {
+      const div = document.createElement("div");
+      div.style = "background:white;padding:8px;margin-bottom:6px;border-radius:5px;border:1px solid #ddd;position:relative;";
+      div.innerHTML = `
+        <b>${m.autore}</b>
+        <small style="color:gray;">(${m.userId})</small>: ${m.testo}
+        <div style="position:absolute;right:5px;top:5px;">
+          ${
+            m.userId === mioID
+              ? `<button onclick="modificaMessaggio('${m.id}')" style="background:#ffcc00;border:none;border-radius:3px;padding:2px 6px;cursor:pointer;">✏️</button>
+                 <button onclick="cancellaMessaggio('${m.id}')" style="background:#ff4444;color:white;border:none;border-radius:3px;padding:2px 6px;cursor:pointer;">🗑️</button>`
+              : `<button onclick="nascondiMessaggio('${m.id}')" style="background:#ccc;border:none;border-radius:3px;padding:2px 6px;cursor:pointer;">🙈</button>
+                 <button onclick="bannaUtente('${m.userId}','${m.autore.replace(/'/g,"\\'")}')" style="background:#990000;color:white;border:none;border-radius:3px;padding:2px 6px;cursor:pointer;">🚫</button>`
+          }
+        </div>
+      `;
+      chatLista.appendChild(div);
+    });
+  } catch (e) {
+    chatLista.innerHTML = `<p style="color:red;">❌ Errore nel caricamento della bacheca: ${e.message}</p>`;
+  }
+}
+
+// Aggiornamento automatico ogni 10 secondi
+setInterval(caricaBacheca, 10_000);
+caricaBacheca();
+</script>
+
 </body>
   
 </html>
  
+
 
 
 
