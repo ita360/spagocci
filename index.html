@@ -323,195 +323,134 @@ small { color: #666; font-size: 0.8em; }
 <button id="toggleRefresh">⏸ Ferma aggiornamento</button>
 <button id="btnValle">😭 Valle Di Lacrime</button>
 
+<!-- === BACHECA PUBBLICA "SPAGOCCI CHAT" === -->
+<div id="spagocciChat" style="
+  background:#fff;
+  border:3px solid #b30000;
+  border-radius:15px;
+  padding:15px;
+  margin-top:30px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.1);
+">
+  <h2 style="text-align:center;">💬 SpagocciChat – Bacheca Messaggi Pubblica</h2>
+  <div id="chatLista" style="
+    max-height:400px;
+    overflow-y:auto;
+    background:#f9f9f9;
+    border-radius:10px;
+    padding:10px;
+    margin-bottom:15px;
+    border:1px solid #ddd;
+  ">
+    <p style="color:#555;">⏳ Caricamento messaggi in corso...</p>
+  </div>
+
+  <div style="display:flex;gap:10px;">
+    <input id="chatInput" type="text" placeholder="✍️ Scrivi un messaggio nella SpagocciChat..." 
+      style="flex:1;padding:8px;border:2px solid #b30000;border-radius:10px;font-size:1em;">
+    <button id="chatInvia" style="
+      background:#b30000;
+      color:white;
+      border:none;
+      border-radius:10px;
+      padding:8px 15px;
+      cursor:pointer;
+      font-weight:bold;
+    ">📨 Invia</button>
+  </div>
+</div>
+
 <script>
-/* === TIMER === */
-let refreshInterval=60,timeLeft=refreshInterval,refreshActive=true;
-const timerDisplay=document.getElementById("timer");
-function updateTimerDisplay(){timerDisplay.textContent = timeLeft;}
-setInterval(()=>{if(!refreshActive)return;timeLeft--;if(timeLeft<=0)location.reload();updateTimerDisplay();},1000);
-
-/* === AUDIO E BOTTONI REFRESH === */
-const toggleButton=document.getElementById("toggleRefresh");
-const audioAggAttivato=document.getElementById("audioAggAttivato");
-const audioAggDisattivato=document.getElementById("audioAggDisattivato");
-toggleButton.addEventListener("click",async()=>{
-  refreshActive=!refreshActive;
-  toggleButton.textContent=refreshActive?"⏸ Ferma aggiornamento":"▶️ Riprendi aggiornamento";
-  try{if(refreshActive)await audioAggAttivato.play();else await audioAggDisattivato.play();}
-  catch(e){console.warn("Errore audio:",e.message);}
-});
-
-/* === AUDIO NOTIFICHE === */
-let audioAttivo=localStorage.getItem('audioAttivo')==='true';
-let messaggiVisualizzati=new Set(JSON.parse(localStorage.getItem('messaggiVisualizzati')||'[]'));
-let primaVolta=messaggiVisualizzati.size===0;
-const toggleAudioBtn=document.getElementById('toggleAudio');
-const audioGenerale=document.getElementById('audioGenerale');
-const audioPochiSecondi=document.getElementById('audioPochiSecondi');
-const audioAttivate=document.getElementById('audioAttivate');
-const audioDisattivate=document.getElementById('audioDisattivate');
-const audioValle=document.getElementById('audioValle');
-const btnValle=document.getElementById('btnValle');
-function aggiornaBottoneAudio(){toggleAudioBtn.textContent=audioAttivo?"🔊Audio":"🔇Audio";}
-aggiornaBottoneAudio();
-btnValle.addEventListener('click',async()=>{try{await audioValle.play();}catch(e){console.warn("Errore audio:",e.message);}});
-toggleAudioBtn.addEventListener('click',async()=>{
-  audioAttivo=!audioAttivo;
-  localStorage.setItem('audioAttivo',audioAttivo);
-  aggiornaBottoneAudio();
-  try{
-    await audioGenerale.play();audioGenerale.pause();audioGenerale.currentTime=0;
-    await audioPochiSecondi.play();audioPochiSecondi.pause();audioPochiSecondi.currentTime=0;
-    if(audioAttivo)await audioAttivate.play();else await audioDisattivate.play();
-  }catch(e){console.warn("Errore audio:",e.message);}
-});
-
-/* === CARICAMENTO OGGETTI === */
-function caricaCatalogo() {
-  const t = Date.now();
-  fetch(`https://spagocci.github.io/recensioni/data.json?t=${t}`)
-    .then(r => r.json())
-    .then(data => {
-      data.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
-      const s = document.getElementById('contenutoSinistra');
-      const d = document.getElementById('contenutoDestra');
-      const f = document.getElementById('contenutoFiltrati');
-      const a = document.getElementById('contenutoAdulti');
-      const vetrina = document.getElementById('contenutoVetrina');
-
-      // pulizia iniziale
-      s.innerHTML = d.innerHTML = f.innerHTML = a.innerHTML = vetrina.innerHTML = '';
-
-      data.forEach(item => {
-        const isNuovo = !messaggiVisualizzati.has(item.id);
-        messaggiVisualizzati.add(item.id);
-        localStorage.setItem('messaggiVisualizzati', JSON.stringify([...messaggiVisualizzati]));
-        const div = document.createElement('div');
-        div.className = 'item';
-        div.innerHTML = `
-          <div class="item-content">
-            ${item.image && item.link ? `<img src="${item.image}" alt="" class="clickable-img" data-link="${item.link}">` : item.image ? `<img src="${item.image}" alt="">` : ''}
-            ${item.price ? `<div class="price-big">${item.price}</div>` : ''}
-            <p>${item.link ? `<a href="${item.link}" target="_blank">${item.text}</a>` : item.text}</p>
-            <small>${new Date(item.timestamp).toLocaleString()}</small>
-          </div>`;
-
-        if (item.sourceChannel === '1432128848534962402') { // #tutti
-          s.appendChild(div); if (!primaVolta && audioAttivo && isNuovo) audioGenerale.play().catch(() => {});
-        } else if (item.sourceChannel === '1430829927175032954') { // #perpochisecondi
-          d.appendChild(div); if (!primaVolta && audioAttivo && isNuovo) audioPochiSecondi.play().catch(() => {});
-        } else if (item.sourceChannel === '1431551820509089842') { // #filtrati
-          f.appendChild(div); if (!primaVolta && audioAttivo && isNuovo) audioGenerale.play().catch(() => {});
-        } else if (item.sourceChannel === '1433144661186318630') { // #adulti
-          a.appendChild(div); if (!primaVolta && audioAttivo && isNuovo) audioGenerale.play().catch(() => {});
-        } else if (item.sourceChannel === '1433444235851468980') { // #vetrina
-          vetrina.appendChild(div);
-          if (!primaVolta && audioAttivo && isNuovo) audioGenerale.play().catch(() => {});
-        }
-      });
-
-      applicaFiltri();
-      primaVolta = false; // ✅ solo dopo il primo caricamento
-    })
-    .catch(err => {
-      ['contenutoSinistra', 'contenutoDestra', 'contenutoFiltrati', 'contenutoAdulti', 'contenutoVetrina'].forEach(id => {
-        document.getElementById(id).innerHTML = `<p style="color:red;">❌ ${err.message}</p>`;
-      });
-    });
-}
-
-// ✅ Queste due righe devono stare FUORI dalla funzione:
-caricaCatalogo();
-setInterval(caricaCatalogo, 10000);
-
-/* === FILTRI (nascondi + cerca) === */
-const filtroInput = document.getElementById('filtroParole');
-const mostraInput = document.getElementById('mostraParole');
-const clearMostra = document.getElementById('clearMostra');
-const conteggioNascosti = document.getElementById('conteggioNascosti');
-
-filtroInput.value = localStorage.getItem('paroleNascondi') || '';
-mostraInput.value = localStorage.getItem('mostraParole') || '';
-
-if (mostraInput.value.trim()) clearMostra.style.display = 'inline-block';
-
-filtroInput.addEventListener('input', ()=>{
-  localStorage.setItem('paroleNascondi', filtroInput.value.trim());
-  applicaFiltri();
-});
-mostraInput.addEventListener('input', ()=>{
-  localStorage.setItem('mostraParole', mostraInput.value.trim());
-  clearMostra.style.display = mostraInput.value.trim() ? 'inline-block' : 'none';
-  applicaFiltri();
-});
-clearMostra.addEventListener('click', ()=>{
-  mostraInput.value = '';
-  localStorage.removeItem('mostraParole');
-  clearMostra.style.display = 'none';
-  applicaFiltri();
-});
-
-function applicaFiltri(){
-  const nascondi = filtroInput.value.toLowerCase().split(/[;,]+/).map(x=>x.trim()).filter(Boolean);
-  const mostra = mostraInput.value.toLowerCase().split(/[;,]+/).map(x=>x.trim()).filter(Boolean);
-  let nascosti = 0;
-  document.querySelectorAll('.item').forEach(el=>{
-    const testo = (el.innerText || '').toLowerCase();
-    const hide = nascondi.some(w=>testo.includes(w));
-    const show = mostra.length===0 || mostra.some(w=>testo.includes(w));
-    const vis = !hide && show;
-    el.style.display = vis ? '' : 'none';
-    if(!vis) nascosti++;
-  });
-  conteggioNascosti.textContent = `🔕 Oggetti nascosti: ${nascosti}`;
-}
-</script>
-  <script>
 /* =========================================================
- * 🔄 AGGIORNAMENTO AUTOMATICO BACHECA PUBBLICA (GitHub)
+ * 💬 SPAGOCCI CHAT – Invio e Lettura Messaggi
  * =======================================================*/
-const BACHECA_URL = "https://spagocci.github.io/recensioni/bacheca.json";
-const chatLista = document.getElementById('chatLista');
 
+// URL webhook Discord
+const WEBHOOK_URL = "https://discord.com/api/webhooks/1433822966105374774/1fLCCm7tpDbkrf74anCEvsnGpu-O8klhx3Dy1daNEqk9OpAVgavKD4PQ1iB-hebNY2lX";
+
+// File bacheca pubblico su GitHub
+const BACHECA_URL = "https://spagocci.github.io/recensioni/bacheca.json";
+
+// Elementi HTML
+const chatInput = document.getElementById("chatInput");
+const chatInvia = document.getElementById("chatInvia");
+const chatLista = document.getElementById("chatLista");
+
+// ID univoco per ogni visitatore
+let mioID = localStorage.getItem("spagocciUserID");
+if (!mioID) {
+  mioID = "user_" + Math.random().toString(36).substring(2, 10);
+  localStorage.setItem("spagocciUserID", mioID);
+}
+
+/* === INVIO MESSAGGIO === */
+chatInvia.addEventListener("click", inviaMessaggio);
+chatInput.addEventListener("keypress", e => {
+  if (e.key === "Enter") inviaMessaggio();
+});
+
+async function inviaMessaggio() {
+  const testo = chatInput.value.trim();
+  if (!testo) return alert("✏️ Scrivi un messaggio prima di inviare!");
+
+  const nome = "Utente " + mioID.slice(-4); // nome base anonimo
+  const contenuto = `💬 ${nome} (${mioID}): ${testo}`;
+
+  try {
+    const res = await fetch(WEBHOOK_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ content: contenuto })
+    });
+    if (!res.ok) throw new Error("Errore di invio");
+
+    chatInput.value = "";
+    caricaBacheca(); // aggiorna subito la lista
+  } catch (err) {
+    alert("❌ Errore nell'invio del messaggio: " + err.message);
+  }
+}
+
+/* === CARICAMENTO MESSAGGI DA GITHUB === */
 async function caricaBacheca() {
   try {
     const res = await fetch(`${BACHECA_URL}?t=${Date.now()}`);
-    if (!res.ok) throw new Error("Errore nel caricamento");
+    if (!res.ok) throw new Error("Errore nel caricamento della bacheca");
     const data = await res.json();
 
-    chatLista.innerHTML = ""; // pulizia
-    data.forEach(m => {
+    chatLista.innerHTML = "";
+    if (data.length === 0) {
+      chatLista.innerHTML = `<p style="color:#777;">(Nessun messaggio ancora)</p>`;
+      return;
+    }
+
+    data.slice(-100).reverse().forEach(m => {
       const div = document.createElement("div");
-      div.style = "background:white;padding:8px;margin-bottom:6px;border-radius:5px;border:1px solid #ddd;position:relative;";
+      div.style = "background:white;padding:8px;margin-bottom:6px;border-radius:5px;border:1px solid #ddd;";
       div.innerHTML = `
-        <b>${m.autore}</b>
-        <small style="color:gray;">(${m.userId})</small>: ${m.testo}
-        <div style="position:absolute;right:5px;top:5px;">
-          ${
-            m.userId === mioID
-              ? `<button onclick="modificaMessaggio('${m.id}')" style="background:#ffcc00;border:none;border-radius:3px;padding:2px 6px;cursor:pointer;">✏️</button>
-                 <button onclick="cancellaMessaggio('${m.id}')" style="background:#ff4444;color:white;border:none;border-radius:3px;padding:2px 6px;cursor:pointer;">🗑️</button>`
-              : `<button onclick="nascondiMessaggio('${m.id}')" style="background:#ccc;border:none;border-radius:3px;padding:2px 6px;cursor:pointer;">🙈</button>
-                 <button onclick="bannaUtente('${m.userId}','${m.autore.replace(/'/g,"\\'")}')" style="background:#990000;color:white;border:none;border-radius:3px;padding:2px 6px;cursor:pointer;">🚫</button>`
-          }
-        </div>
+        <b>${m.autore || "Anonimo"}</b>
+        <small style="color:gray;">(${m.userId || "?"})</small>:
+        ${m.testo}
       `;
       chatLista.appendChild(div);
     });
+
   } catch (e) {
-    chatLista.innerHTML = `<p style="color:red;">❌ Errore nel caricamento della bacheca: ${e.message}</p>`;
+    chatLista.innerHTML = `<p style="color:red;">❌ ${e.message}</p>`;
   }
 }
 
 // Aggiornamento automatico ogni 10 secondi
-setInterval(caricaBacheca, 10_000);
+setInterval(caricaBacheca, 10000);
 caricaBacheca();
 </script>
+  
 
 </body>
   
 </html>
  
+
 
 
 
