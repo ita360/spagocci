@@ -48,5 +48,15 @@
     "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 14€</span><br><span style=\"color:red;font-weight:bold;\">AM: 28€</span>",
     "asin": "B0FWCHGCM8",
     "sourceChannel": "1433444235851468980"
+  },
+  {
+    "id": "1433820098241761341",
+    "timestamp": "2025-10-31T14:09:10.510Z",
+    "text": "Kleemeiero 36 Pezzi Matite Natale con Gomma Matite di Legno Nataliz...",
+    "link": "https://www.amazon.it/dp/B0FKB9J36Z?&linkCode=sl1&tag=ita36000-21&linkId=d1967c136166fe96ba1555a5ce5f6a05&language=it_IT&ref_=as_li_ss_tl",
+    "image": "https://m.media-amazon.com/images/I/71D9kItSByL.jpg_BO30,255,255,255_UF900,850_SR1910,1000,0,C_QL100_.jpg",
+    "price": null,
+    "asin": "B0FKB9J36Z",
+    "sourceChannel": "1433444235851468980"
   }
 ]
