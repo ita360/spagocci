@@ -262,7 +262,6 @@ img[loading="lazy"] {
 
 <div id="statusBar">
   <span id="conteggioNascosti">🔕 Oggetti nascosti: 0</span>
-  <span id="timer"></span>
 </div>
 
 <!-- === MODALE === -->
@@ -318,10 +317,12 @@ img[loading="lazy"] {
 <script>
 window.onload = () => {
 /* === TIMER === */
-let refreshInterval=60,timeLeft=refreshInterval,refreshActive=true;
-const timerDisplay=document.getElementById("timer");
-function updateTimerDisplay(){}
-setInterval(()=>{if(!refreshActive)return;timeLeft--;if(timeLeft<=0)location.reload();updateTimerDisplay();},1000);
+let refreshInterval = 60, timeLeft = refreshInterval, refreshActive = true;
+setInterval(() => {
+  if (!refreshActive) return;
+  timeLeft--;
+  if (timeLeft <= 0) location.reload();
+}, 1000);
 
 /* === AUDIO E BOTTONI REFRESH === */
 const toggleButton=document.getElementById("toggleRefresh");
