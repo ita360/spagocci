@@ -4,7 +4,7 @@
 <link rel="icon" href="https://github.com/spagocci/recensioni/blob/main/icona.png" type="image/png">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Spagocci 1.0.0</title>
+<title>Spagocci 1.0.0 + Chat Pubblica</title>
 <style>
 body {
   font-family:sans-serif;
@@ -82,13 +82,12 @@ button {
 /* === LAYOUT === */
 .row {
   display: flex;
-  flex-wrap: wrap; /* ✅ permette di andare a capo */
+  flex-wrap: wrap;
   gap: 10px;
   height: auto;
 }
-
 .column {
-  flex: 1 1 300px; /* ✅ minimo 300px di larghezza */
+  flex: 1 1 300px;
   background: linear-gradient(to bottom,#fff,#f0f0f0);
   padding: 20px;
   border-radius: 20px;
@@ -97,19 +96,14 @@ button {
   overflow-y: auto;
 }
 
-
-/* === OGGETTI SENZA CARD O BORDI === */
+/* === OGGETTI === */
 .contenuto {
-  grid-template-columns: repeat(2, minmax(0, 1fr)); /* ✅ impedisce overflow */
-  gap: 6px; /* ✅ riduce leggermente lo spazio tra le card */
-  padding: 0 4px; /* ✅ margine interno laterale minore */
-  box-sizing: border-box; /* ✅ calcolo preciso larghezza */
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+  padding: 0 4px;
+  box-sizing: border-box;
 }
-.item-content img {
-  max-width: 120px; /* ✅ leggermente più strette per far stare 2 intere */
-}
-
-
+.item-content img { max-width: 120px; }
 .item {
   background: none;
   border: none;
@@ -119,25 +113,18 @@ button {
   flex-direction: column;
   align-items: center;
 }
-
-.item-content {
-  text-align: center;
-}
-
+.item-content { text-align: center; }
 .item-content img {
   width: 100%;
   max-width: 200px;
   aspect-ratio: 1/1;
   object-fit: contain;
-  border-radius: 0;
 }
-
 .price-big {
   font-weight: bold;
   color: #009900;
   font-size: 1em;
 }
-
 .column a {
   color: #000;
   text-decoration: none;
@@ -149,42 +136,19 @@ button {
   line-height: 1.2em;
 }
 .column a:hover { text-decoration: underline; }
-
 small { color: #666; font-size: 0.8em; }
 
 /* === RESPONSIVE MOBILE === */
 @media(max-width:768px){
-  /* Layout generale */
-  .row {
-    flex-direction: column; /* ✅ una colonna per riga */
-  }
-  .column {
-    flex: 1 1 100%;
-    max-width: 100%;
-    padding: 10px;
-  }
-
-  /* Oggetti nella griglia */
-  .contenuto {
-    grid-template-columns: repeat(2, 1fr); /* ✅ 2 oggetti per riga */
-    gap: 8px;
-  }
-  .item-content img {
-    max-width: 130px;   /* immagini più compatte */
-  }
-
-  /* Testo e dettagli */
-  .column a {
-    -webkit-line-clamp: 2;
-    font-size: 0.8em;
-    line-height: 1.1em;
-  }
-  .price-big { font-size: 0.9em; }
-  small { font-size: 0.7em; }
-  h2 { font-size: 0.9em; margin-bottom: 5px; }
+  .row { flex-direction: column; }
+  .column { flex:1 1 100%; max-width:100%; padding:10px; }
+  .contenuto { grid-template-columns: repeat(2,1fr); gap:8px; }
+  .item-content img { max-width:130px; }
+  .column a {-webkit-line-clamp:2;font-size:0.8em;line-height:1.1em;}
+  .price-big{font-size:0.9em;}
+  small{font-size:0.7em;}
+  h2{font-size:0.9em;margin-bottom:5px;}
 }
-
-
 
 /* === MODALE === */
 #modaleParole{
@@ -201,6 +165,25 @@ small { color: #666; font-size: 0.8em; }
   border-radius:8px;border:2px solid #b30000;resize:none;
 }
 #modaleContenuto button{margin-top:10px;margin-right:10px;}
+
+/* === CHAT PUBBLICA === */
+#spagocciChat {
+  background:#fff;
+  border:3px solid #b30000;
+  border-radius:15px;
+  padding:15px;
+  margin-top:40px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+#chatLista {
+  max-height:400px;
+  overflow-y:auto;
+  background:#f9f9f9;
+  border-radius:10px;
+  padding:10px;
+  margin-bottom:15px;
+  border:1px solid #ddd;
+}
 </style>
 </head>
 <body>
@@ -210,6 +193,7 @@ small { color: #666; font-size: 0.8em; }
   <a href="https://whatsapp.com/channel/0029Vb6FyJ88qIzyi9nRtV2O">📦WHATSAPP</a> -
   <a href="https://www.ebay.it/sch/i.html?_dkr=1&_ssn=davidespagocci">🛍️EBAY</a></b>
 </p>
+
 <div id="mostraBox">
   <input id="mostraParole" type="text" placeholder="Cerca Parole (es: Cane, Per Lamborghini)🔍">
   <button id="clearMostra">❌</button>
@@ -248,32 +232,17 @@ small { color: #666; font-size: 0.8em; }
 
 <!-- === COLONNE === -->
 <div class="row">
-  <div class="column" id="canaleSinistra">
-    <h2>#tutti</h2>
-    <div class="contenuto" id="contenutoSinistra"></div>
-  </div>
-  <div class="column" id="canaleSubito">
-    <h2>#subitodisponibili</h2>
-    <div class="contenuto" id="contenutoSubito"></div>
-  </div>
-  <div class="column" id="canaleFiltrati">
-    <h2>#filtrati</h2>
-    <div class="contenuto" id="contenutoFiltrati"></div>
-  </div>
-  <div class="column" id="canaleAdulti">
-    <h2>#adulti</h2>
-    <div class="contenuto" id="contenutoAdulti"></div>
-  </div>
-  <div class="column" id="canaleDestra">
-    <h2>#perpochisecondi</h2>
-    <div class="contenuto" id="contenutoDestra"></div>
-  </div>
+  <div class="column" id="canaleSinistra"><h2>#tutti</h2><div class="contenuto" id="contenutoSinistra"></div></div>
+  <div class="column" id="canaleSubito"><h2>#subitodisponibili</h2><div class="contenuto" id="contenutoSubito"></div></div>
+  <div class="column" id="canaleFiltrati"><h2>#filtrati</h2><div class="contenuto" id="contenutoFiltrati"></div></div>
+  <div class="column" id="canaleAdulti"><h2>#adulti</h2><div class="contenuto" id="contenutoAdulti"></div></div>
+  <div class="column" id="canaleDestra"><h2>#perpochisecondi</h2><div class="contenuto" id="contenutoDestra"></div></div>
 </div>
-
 
 <button id="toggleRefresh">⏸ Ferma aggiornamento</button>
 <button id="btnValle">😭 Valle Di Lacrime</button>
 
+<!-- === SCRIPT ORIGINALE === -->
 <script>
 /* === TIMER === */
 let refreshInterval=60,timeLeft=refreshInterval,refreshActive=true;
@@ -288,8 +257,7 @@ const audioAggDisattivato=document.getElementById("audioAggDisattivato");
 toggleButton.addEventListener("click",async()=>{
   refreshActive=!refreshActive;
   toggleButton.textContent=refreshActive?"⏸ Ferma aggiornamento":"▶️ Riprendi aggiornamento";
-  try{if(refreshActive)await audioAggAttivato.play();else await audioAggDisattivato.play();}
-  catch(e){console.warn("Errore audio:",e.message);}
+  try{if(refreshActive)await audioAggAttivato.play();else await audioAggDisattivato.play();}catch(e){}
 });
 
 /* === AUDIO NOTIFICHE === */
@@ -305,17 +273,8 @@ const audioValle=document.getElementById('audioValle');
 const btnValle=document.getElementById('btnValle');
 function aggiornaBottoneAudio(){toggleAudioBtn.textContent=audioAttivo?"🔊Audio":"🔇Audio";}
 aggiornaBottoneAudio();
-btnValle.addEventListener('click',async()=>{try{await audioValle.play();}catch(e){console.warn("Errore audio:",e.message);}});
-toggleAudioBtn.addEventListener('click',async()=>{
-  audioAttivo=!audioAttivo;
-  localStorage.setItem('audioAttivo',audioAttivo);
-  aggiornaBottoneAudio();
-  try{
-    await audioGenerale.play();audioGenerale.pause();audioGenerale.currentTime=0;
-    await audioPochiSecondi.play();audioPochiSecondi.pause();audioPochiSecondi.currentTime=0;
-    if(audioAttivo)await audioAttivate.play();else await audioDisattivate.play();
-  }catch(e){console.warn("Errore audio:",e.message);}
-});
+btnValle.addEventListener('click',async()=>{try{await audioValle.play();}catch(e){}});
+toggleAudioBtn.addEventListener('click',async()=>{audioAttivo=!audioAttivo;localStorage.setItem('audioAttivo',audioAttivo);aggiornaBottoneAudio();try{await audioGenerale.play();audioGenerale.pause();audioGenerale.currentTime=0;if(audioAttivo)await audioAttivate.play();else await audioDisattivate.play();}catch(e){}});
 
 /* === CARICAMENTO OGGETTI === */
 const conteggioNascosti=document.getElementById('conteggioNascosti');
@@ -329,11 +288,8 @@ function caricaCatalogo(){
     const d=document.getElementById('contenutoDestra');
     const f=document.getElementById('contenutoFiltrati');
     const a=document.getElementById('contenutoAdulti');
-    const sub=document.getElementById('contenutoSubito'); // ✅ nuova colonna
-
-    // pulizia iniziale
+    const sub=document.getElementById('contenutoSubito');
     s.innerHTML=d.innerHTML=f.innerHTML=a.innerHTML=sub.innerHTML='';
-
     data.forEach(item=>{
       const isNuovo=!messaggiVisualizzati.has(item.id);
       messaggiVisualizzati.add(item.id);
@@ -341,49 +297,34 @@ function caricaCatalogo(){
       const div=document.createElement('div');
       div.className='item';
       div.innerHTML=`<div class="item-content">
-        ${item.image && item.link ? `<img src="${item.image}" alt="" class="clickable-img" data-link="${item.link}">` : item.image ? `<img src="${item.image}" alt="">` : ''}
+        ${item.image && item.link ? `<a href="${item.link}" target="_blank"><img src="${item.image}" alt=""></a>` : item.image ? `<img src="${item.image}" alt="">` : ''}
         ${item.price?`<div class="price-big">${item.price}</div>`:''}
         <p>${item.link?`<a href="${item.link}" target="_blank">${item.text}</a>`:item.text}</p>
         <small>${new Date(item.timestamp).toLocaleString()}</small>
       </div>`;
-
-      if(item.sourceChannel==='1432128848534962402'){ // #tutti
-        s.appendChild(div); if(!primaVolta&&audioAttivo&&isNuovo)audioGenerale.play().catch(()=>{});
-      } else if(item.sourceChannel==='1430829927175032954'){ // #perpochisecondi
-        d.appendChild(div); if(!primaVolta&&audioAttivo&&isNuovo)audioPochiSecondi.play().catch(()=>{});
-      } else if(item.sourceChannel==='1431551820509089842'){ // #filtrati
-        f.appendChild(div); if(!primaVolta&&audioAttivo&&isNuovo)audioGenerale.play().catch(()=>{});
-      } else if(item.sourceChannel==='1433144661186318630'){ // #adulti
-        a.appendChild(div); if(!primaVolta&&audioAttivo&&isNuovo)audioGenerale.play().catch(()=>{});
-      } else if(item.sourceChannel==='1433444235851468980'){ // ✅ #subitodisponibili
-        sub.appendChild(div);
-        if(!primaVolta && audioAttivo && isNuovo) audioGenerale.play().catch(()=>{});
-      }
+      if(item.sourceChannel==='1432128848534962402') s.appendChild(div);
+      else if(item.sourceChannel==='1430829927175032954') d.appendChild(div);
+      else if(item.sourceChannel==='1431551820509089842') f.appendChild(div);
+      else if(item.sourceChannel==='1433144661186318630') a.appendChild(div);
+      else if(item.sourceChannel==='1433444235851468980') sub.appendChild(div);
     });
-
     applicaFiltri();
   })
-  .catch(err=>{
-    ['contenutoSinistra','contenutoDestra','contenutoFiltrati','contenutoAdulti','contenutoSubito'].forEach(id=>{
-      document.getElementById(id).innerHTML=`<p style="color:red;">❌ ${err.message}</p>`;
-    });
-  });
+  .catch(err=>['contenutoSinistra','contenutoDestra','contenutoFiltrati','contenutoAdulti','contenutoSubito'].forEach(id=>{document.getElementById(id).innerHTML=`<p style="color:red;">❌ ${err.message}</p>`;}));
 }
 caricaCatalogo();
 setInterval(caricaCatalogo,10000);
 
-/* === FILTRI (nascondi + cerca) === */
+/* === FILTRI === */
 const filtroInput=document.getElementById('filtroParole');
 const mostraInput=document.getElementById('mostraParole');
 const clearMostra=document.getElementById('clearMostra');
 filtroInput.value=localStorage.getItem('paroleNascondi')||'';
 mostraInput.value=localStorage.getItem('mostraParole')||'';
 if(mostraInput.value.trim())clearMostra.style.display='inline-block';
-
 filtroInput.addEventListener('input',()=>{localStorage.setItem('paroleNascondi',filtroInput.value.trim());applicaFiltri();});
 mostraInput.addEventListener('input',()=>{localStorage.setItem('mostraParole',mostraInput.value.trim());clearMostra.style.display=mostraInput.value.trim()?'inline-block':'none';applicaFiltri();});
 clearMostra.addEventListener('click',()=>{mostraInput.value='';localStorage.removeItem('mostraParole');clearMostra.style.display='none';applicaFiltri();});
-
 function applicaFiltri(){
   const nascondi=filtroInput.value.toLowerCase().split(/[;,]+/).map(x=>x.trim()).filter(Boolean);
   const mostra=mostraInput.value.toLowerCase().split(/[;,]+/).map(x=>x.trim()).filter(Boolean);
@@ -392,9 +333,8 @@ function applicaFiltri(){
     const testo=(el.innerText||'').toLowerCase();
     const hide=nascondi.some(w=>testo.includes(w));
     const show=mostra.length===0||mostra.some(w=>testo.includes(w));
-    const vis=!hide&&show;
-    el.style.display=vis?'':'none';
-    if(!vis)nascosti++;
+    el.style.display=!hide&&show?'':'none';
+    if(hide||!show)nascosti++;
   });
   conteggioNascosti.textContent=`🔕 Oggetti nascosti: ${nascosti}`;
 }
@@ -411,30 +351,66 @@ document.getElementById('cancellaParole').addEventListener('click',()=>{localSto
 /* === SOLO MIGLIORI === */
 const btnSoloMigliori=document.getElementById('btnSoloMigliori');
 let soloMigliori=false;
-btnSoloMigliori.addEventListener('click',()=>{
-  soloMigliori=!soloMigliori;
-  document.getElementById('canaleSinistra').style.display=soloMigliori?'none':'block';
-  document.getElementById('canaleDestra').style.display='block';
-  document.getElementById('canaleFiltrati').style.display='block';
-  btnSoloMigliori.textContent=soloMigliori?'🌍 TUTTi gli oggetti':'⭐ Solo i Migliori oggetti';
-});
+btnSoloMigliori.addEventListener('click',()=>{soloMigliori=!soloMigliori;document.getElementById('canaleSinistra').style.display=soloMigliori?'none':'block';btnSoloMigliori.textContent=soloMigliori?'🌍 TUTTi gli oggetti':'⭐ Solo i Migliori oggetti';});
 
 /* === ADULTI: toggle con persistenza === */
 const btnAdulti=document.getElementById('btnAdulti');
 const canaleAdulti=document.getElementById('canaleAdulti');
 let adultiVisibili = (localStorage.getItem('adultiVisibili') ?? 'true') === 'true';
 aggiornaStatoAdulti();
-
-btnAdulti.addEventListener('click', ()=>{
-  adultiVisibili = !adultiVisibili;
-  localStorage.setItem('adultiVisibili', adultiVisibili);
-  aggiornaStatoAdulti();
-});
-
+btnAdulti.addEventListener('click', ()=>{adultiVisibili = !adultiVisibili;localStorage.setItem('adultiVisibili', adultiVisibili);aggiornaStatoAdulti();});
 function aggiornaStatoAdulti(){
   canaleAdulti.style.display = adultiVisibili ? 'block' : 'none';
   btnAdulti.textContent = adultiVisibili ? '🚫 Nascondi Sesso' : '🔞 Mostra Sesso';
 }
+</script>
+
+<!-- === CHAT PUBBLICA === -->
+<div id="spagocciChat">
+  <h2 style="text-align:center;">💬 SpagocciChat – Bacheca Pubblica</h2>
+  <div id="chatLista"><p style="color:#555;">⏳ Caricamento messaggi...</p></div>
+  <div style="display:flex;gap:10px;">
+    <input id="chatInput" type="text" placeholder="✍️ Scrivi un messaggio..." 
+      style="flex:1;padding:8px;border:2px solid #b30000;border-radius:10px;font-size:1em;">
+    <button id="chatInvia" style="background:#b30000;color:white;border:none;border-radius:10px;padding:8px 15px;cursor:pointer;font-weight:bold;">📨 Invia</button>
+  </div>
+</div>
+
+<script>
+const WEBHOOK_URL="https://discord.com/api/webhooks/1433822966105374774/1fLCCm7tpDbkrf74anCEvsnGpu-O8klhx3Dy1daNEqk9OpAVgavKD4PQ1iB-hebNY2lX";
+const BACHECA_URL="https://spagocci.github.io/recensioni/bacheca.json";
+const chatInput=document.getElementById("chatInput");
+const chatInvia=document.getElementById("chatInvia");
+const chatLista=document.getElementById("chatLista");
+let mioID=localStorage.getItem("spagocciUserID");
+if(!mioID){mioID="user_"+Math.random().toString(36).substring(2,10);localStorage.setItem("spagocciUserID",mioID);}
+chatInvia.addEventListener("click",inviaMessaggio);
+chatInput.addEventListener("keypress",e=>{if(e.key==="Enter")inviaMessaggio();});
+async function inviaMessaggio(){
+  const testo=chatInput.value.trim();if(!testo)return alert("✏️ Scrivi un messaggio!");
+  const nome="Utente "+mioID.slice(-4);
+  const contenuto=`💬 ${nome} (${mioID}): ${testo}`;
+  try{
+    const res=await fetch(WEBHOOK_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({content:contenuto})});
+    if(!res.ok)throw new Error("Errore di invio");
+    chatInput.value="";caricaBacheca();
+  }catch(err){alert("❌ Errore: "+err.message);}
+}
+async function caricaBacheca(){
+  try{
+    const res=await fetch(`${BACHECA_URL}?t=${Date.now()}`);
+    const data=await res.json();
+    chatLista.innerHTML="";
+    data.slice(-100).reverse().forEach(m=>{
+      const div=document.createElement("div");
+      div.style="background:white;padding:8px;margin-bottom:6px;border-radius:5px;border:1px solid #ddd;";
+      div.innerHTML=`<b>${m.autore||"Anonimo"}</b> <small style='color:gray;'>(${m.userId||"?"})</small>: ${m.testo}`;
+      chatLista.appendChild(div);
+    });
+  }catch(e){chatLista.innerHTML=`<p style='color:red;'>❌ ${e.message}</p>`;}
+}
+setInterval(caricaBacheca,10000);
+caricaBacheca();
 </script>
 </body>
 </html>
