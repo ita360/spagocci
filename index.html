@@ -100,9 +100,13 @@ button {
 
 /* === OGGETTI SENZA CARD O BORDI === */
 .contenuto {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* desktop/tablet */
-  gap: 10px;
+  grid-template-columns: repeat(2, minmax(0, 1fr)); /* ✅ impedisce overflow */
+  gap: 6px; /* ✅ riduce leggermente lo spazio tra le card */
+  padding: 0 4px; /* ✅ margine interno laterale minore */
+  box-sizing: border-box; /* ✅ calcolo preciso larghezza */
+}
+.item-content img {
+  max-width: 120px; /* ✅ leggermente più strette per far stare 2 intere */
 }
 
 .item {
@@ -433,3 +437,4 @@ function aggiornaStatoAdulti(){
 </script>
 </body>
 </html>
+
