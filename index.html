@@ -4,7 +4,7 @@
 <link rel="icon" href="https://github.com/spagocci/recensioni/blob/main/icona.png" type="image/png">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Spagocci 1.0.0</title>
+<title>Spagocci 1.1.0</title>
 <style>
 body {
   font-family:sans-serif;
@@ -97,6 +97,14 @@ button {
   overflow-y: auto;
 }
 
+/* === POSIZIONE SPECIALE VETRINA === */
+.vetrina-top {
+  width: 100%;
+  margin-bottom: 25px; /* spazio tra vetrina e le colonne sotto */
+  background: linear-gradient(to bottom, #fff, #f5f5f5);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
 
 /* === OGGETTI SENZA CARD O BORDI === */
 .contenuto {
@@ -108,6 +116,7 @@ button {
 .item-content img {
   max-width: 120px; /* ✅ leggermente più strette per far stare 2 intere */
 }
+
 
 .item {
   background: none;
@@ -150,6 +159,22 @@ button {
 .column a:hover { text-decoration: underline; }
 
 small { color: #666; font-size: 0.8em; }
+
+/* === VETRINA SCORREVOLE === */
+#contenutoVetrina {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  gap: 10px;
+  scroll-behavior: smooth;
+  padding-bottom: 10px;
+}
+
+#contenutoVetrina .item {
+  flex: 0 0 auto;
+  text-align: center;
+  width: 160px; /* ✅ dimensione card più compatta */
+}
 
 /* === RESPONSIVE MOBILE === */
 @media(max-width:768px){
@@ -221,7 +246,7 @@ small { color: #666; font-size: 0.8em; }
 
 <div id="statusBar">
   <span id="conteggioNascosti">🔕 Oggetti nascosti: 0</span>
-  <span id="timer">Agg. tra: 60 s</span>
+  <span id="timer">60 s</span>
 </div>
 
 <!-- === MODALE === -->
@@ -245,18 +270,21 @@ small { color: #666; font-size: 0.8em; }
 <audio id="audioAggDisattivato" src="https://raw.githubusercontent.com/spagocci/recensioni/main/aggdisattivato.mp3" preload="auto"></audio>
 <audio id="audioValle" src="https://raw.githubusercontent.com/spagocci/recensioni/main/valledilacrime.mp3" preload="auto"></audio>
 
+
+<!-- === VETRINA IN ALTO === -->
+<div class="column vetrina-top" id="canaleVetrina">
+  <h2>#Vetrina</h2>
+  <div class="contenuto" id="contenutoVetrina"></div>
+</div>
+
 <!-- === COLONNE === -->
 <div class="row">
   <div class="column" id="canaleSinistra">
-    <h2>#tutti</h2>
+    <h2>#Tutta la merda (non consigliato premi bottone i migliori)</h2>
     <div class="contenuto" id="contenutoSinistra"></div>
   </div>
-  <div class="column" id="canaleSubito">
-    <h2>#subitodisponibili</h2>
-    <div class="contenuto" id="contenutoSubito"></div>
-  </div>
   <div class="column" id="canaleFiltrati">
-    <h2>#filtrati</h2>
+    <h2>⭐i migliori🛡️🙅‍♂️ Offerte Flash</h2>
     <div class="contenuto" id="contenutoFiltrati"></div>
   </div>
   <div class="column" id="canaleAdulti">
@@ -277,7 +305,7 @@ small { color: #666; font-size: 0.8em; }
 /* === TIMER === */
 let refreshInterval=60,timeLeft=refreshInterval,refreshActive=true;
 const timerDisplay=document.getElementById("timer");
-function updateTimerDisplay(){timerDisplay.textContent=`Agg Tra: ${timeLeft}s`;}
+function updateTimerDisplay(){timerDisplay.textContent = timeLeft;}
 setInterval(()=>{if(!refreshActive)return;timeLeft--;if(timeLeft<=0)location.reload();updateTimerDisplay();},1000);
 
 /* === AUDIO E BOTTONI REFRESH === */
@@ -317,124 +345,105 @@ toggleAudioBtn.addEventListener('click',async()=>{
 });
 
 /* === CARICAMENTO OGGETTI === */
-const conteggioNascosti=document.getElementById('conteggioNascosti');
-function caricaCatalogo(){
-  const t=Date.now();
+function caricaCatalogo() {
+  const t = Date.now();
   fetch(`https://spagocci.github.io/recensioni/data.json?t=${t}`)
-  .then(r=>r.json())
-  .then(data=>{
-    data.sort((a,b)=>new Date(b.timestamp)-new Date(a.timestamp));
-    const s=document.getElementById('contenutoSinistra');
-    const d=document.getElementById('contenutoDestra');
-    const f=document.getElementById('contenutoFiltrati');
-    const a=document.getElementById('contenutoAdulti');
-    const sub=document.getElementById('contenutoSubito'); // ✅ nuova colonna
+    .then(r => r.json())
+    .then(data => {
+      data.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+      const s = document.getElementById('contenutoSinistra');
+      const d = document.getElementById('contenutoDestra');
+      const f = document.getElementById('contenutoFiltrati');
+      const a = document.getElementById('contenutoAdulti');
+      const vetrina = document.getElementById('contenutoVetrina');
 
-    // pulizia iniziale
-    s.innerHTML=d.innerHTML=f.innerHTML=a.innerHTML=sub.innerHTML='';
+      // pulizia iniziale
+      s.innerHTML = d.innerHTML = f.innerHTML = a.innerHTML = vetrina.innerHTML = '';
 
-    data.forEach(item=>{
-      const isNuovo=!messaggiVisualizzati.has(item.id);
-      messaggiVisualizzati.add(item.id);
-      localStorage.setItem('messaggiVisualizzati',JSON.stringify([...messaggiVisualizzati]));
-      const div=document.createElement('div');
-      div.className='item';
-      div.innerHTML=`<div class="item-content">
-        ${item.image && item.link ? `<img src="${item.image}" alt="" class="clickable-img" data-link="${item.link}">` : item.image ? `<img src="${item.image}" alt="">` : ''}
-        ${item.price?`<div class="price-big">${item.price}</div>`:''}
-        <p>${item.link?`<a href="${item.link}" target="_blank">${item.text}</a>`:item.text}</p>
-        <small>${new Date(item.timestamp).toLocaleString()}</small>
-      </div>`;
+      data.forEach(item => {
+        const isNuovo = !messaggiVisualizzati.has(item.id);
+        messaggiVisualizzati.add(item.id);
+        localStorage.setItem('messaggiVisualizzati', JSON.stringify([...messaggiVisualizzati]));
+        const div = document.createElement('div');
+        div.className = 'item';
+        div.innerHTML = `
+          <div class="item-content">
+            ${item.image && item.link ? `<img src="${item.image}" alt="" class="clickable-img" data-link="${item.link}">` : item.image ? `<img src="${item.image}" alt="">` : ''}
+            ${item.price ? `<div class="price-big">${item.price}</div>` : ''}
+            <p>${item.link ? `<a href="${item.link}" target="_blank">${item.text}</a>` : item.text}</p>
+            <small>${new Date(item.timestamp).toLocaleString()}</small>
+          </div>`;
 
-      if(item.sourceChannel==='1432128848534962402'){ // #tutti
-        s.appendChild(div); if(!primaVolta&&audioAttivo&&isNuovo)audioGenerale.play().catch(()=>{});
-      } else if(item.sourceChannel==='1430829927175032954'){ // #perpochisecondi
-        d.appendChild(div); if(!primaVolta&&audioAttivo&&isNuovo)audioPochiSecondi.play().catch(()=>{});
-      } else if(item.sourceChannel==='1431551820509089842'){ // #filtrati
-        f.appendChild(div); if(!primaVolta&&audioAttivo&&isNuovo)audioGenerale.play().catch(()=>{});
-      } else if(item.sourceChannel==='1433144661186318630'){ // #adulti
-        a.appendChild(div); if(!primaVolta&&audioAttivo&&isNuovo)audioGenerale.play().catch(()=>{});
-      } else if(item.sourceChannel==='1433444235851468980'){ // ✅ #subitodisponibili
-        sub.appendChild(div);
-        if(!primaVolta && audioAttivo && isNuovo) audioGenerale.play().catch(()=>{});
-      }
+        if (item.sourceChannel === '1432128848534962402') { // #tutti
+          s.appendChild(div); if (!primaVolta && audioAttivo && isNuovo) audioGenerale.play().catch(() => {});
+        } else if (item.sourceChannel === '1430829927175032954') { // #perpochisecondi
+          d.appendChild(div); if (!primaVolta && audioAttivo && isNuovo) audioPochiSecondi.play().catch(() => {});
+        } else if (item.sourceChannel === '1431551820509089842') { // #filtrati
+          f.appendChild(div); if (!primaVolta && audioAttivo && isNuovo) audioGenerale.play().catch(() => {});
+        } else if (item.sourceChannel === '1433144661186318630') { // #adulti
+          a.appendChild(div); if (!primaVolta && audioAttivo && isNuovo) audioGenerale.play().catch(() => {});
+        } else if (item.sourceChannel === '1433444235851468980') { // #vetrina
+          vetrina.appendChild(div);
+          if (!primaVolta && audioAttivo && isNuovo) audioGenerale.play().catch(() => {});
+        }
+      });
+
+      applicaFiltri();
+      primaVolta = false; // ✅ solo dopo il primo caricamento
+    })
+    .catch(err => {
+      ['contenutoSinistra', 'contenutoDestra', 'contenutoFiltrati', 'contenutoAdulti', 'contenutoVetrina'].forEach(id => {
+        document.getElementById(id).innerHTML = `<p style="color:red;">❌ ${err.message}</p>`;
+      });
     });
-
-    applicaFiltri();
-  })
-  .catch(err=>{
-    ['contenutoSinistra','contenutoDestra','contenutoFiltrati','contenutoAdulti','contenutoSubito'].forEach(id=>{
-      document.getElementById(id).innerHTML=`<p style="color:red;">❌ ${err.message}</p>`;
-    });
-  });
 }
+
+// ✅ Queste due righe devono stare FUORI dalla funzione:
 caricaCatalogo();
-setInterval(caricaCatalogo,10000);
+setInterval(caricaCatalogo, 10000);
 
 /* === FILTRI (nascondi + cerca) === */
-const filtroInput=document.getElementById('filtroParole');
-const mostraInput=document.getElementById('mostraParole');
-const clearMostra=document.getElementById('clearMostra');
-filtroInput.value=localStorage.getItem('paroleNascondi')||'';
-mostraInput.value=localStorage.getItem('mostraParole')||'';
-if(mostraInput.value.trim())clearMostra.style.display='inline-block';
+const filtroInput = document.getElementById('filtroParole');
+const mostraInput = document.getElementById('mostraParole');
+const clearMostra = document.getElementById('clearMostra');
+const conteggioNascosti = document.getElementById('conteggioNascosti');
 
-filtroInput.addEventListener('input',()=>{localStorage.setItem('paroleNascondi',filtroInput.value.trim());applicaFiltri();});
-mostraInput.addEventListener('input',()=>{localStorage.setItem('mostraParole',mostraInput.value.trim());clearMostra.style.display=mostraInput.value.trim()?'inline-block':'none';applicaFiltri();});
-clearMostra.addEventListener('click',()=>{mostraInput.value='';localStorage.removeItem('mostraParole');clearMostra.style.display='none';applicaFiltri();});
+filtroInput.value = localStorage.getItem('paroleNascondi') || '';
+mostraInput.value = localStorage.getItem('mostraParole') || '';
+
+if (mostraInput.value.trim()) clearMostra.style.display = 'inline-block';
+
+filtroInput.addEventListener('input', ()=>{
+  localStorage.setItem('paroleNascondi', filtroInput.value.trim());
+  applicaFiltri();
+});
+mostraInput.addEventListener('input', ()=>{
+  localStorage.setItem('mostraParole', mostraInput.value.trim());
+  clearMostra.style.display = mostraInput.value.trim() ? 'inline-block' : 'none';
+  applicaFiltri();
+});
+clearMostra.addEventListener('click', ()=>{
+  mostraInput.value = '';
+  localStorage.removeItem('mostraParole');
+  clearMostra.style.display = 'none';
+  applicaFiltri();
+});
 
 function applicaFiltri(){
-  const nascondi=filtroInput.value.toLowerCase().split(/[;,]+/).map(x=>x.trim()).filter(Boolean);
-  const mostra=mostraInput.value.toLowerCase().split(/[;,]+/).map(x=>x.trim()).filter(Boolean);
-  let nascosti=0;
+  const nascondi = filtroInput.value.toLowerCase().split(/[;,]+/).map(x=>x.trim()).filter(Boolean);
+  const mostra = mostraInput.value.toLowerCase().split(/[;,]+/).map(x=>x.trim()).filter(Boolean);
+  let nascosti = 0;
   document.querySelectorAll('.item').forEach(el=>{
-    const testo=(el.innerText||'').toLowerCase();
-    const hide=nascondi.some(w=>testo.includes(w));
-    const show=mostra.length===0||mostra.some(w=>testo.includes(w));
-    const vis=!hide&&show;
-    el.style.display=vis?'':'none';
-    if(!vis)nascosti++;
+    const testo = (el.innerText || '').toLowerCase();
+    const hide = nascondi.some(w=>testo.includes(w));
+    const show = mostra.length===0 || mostra.some(w=>testo.includes(w));
+    const vis = !hide && show;
+    el.style.display = vis ? '' : 'none';
+    if(!vis) nascosti++;
   });
-  conteggioNascosti.textContent=`🔕 Oggetti nascosti: ${nascosti}`;
+  conteggioNascosti.textContent = `🔕 Oggetti nascosti: ${nascosti}`;
 }
 
-/* === MODALE PAROLE === */
-const modale=document.getElementById('modaleParole');
-const textarea=document.getElementById('modaleTextarea');
-const btnGestisci=document.getElementById('btnGestisciParole');
-btnGestisci.addEventListener('click',()=>{textarea.value=localStorage.getItem('paroleNascondi')||'';modale.style.display='flex';});
-document.getElementById('chiudiModale').addEventListener('click',()=>modale.style.display='none');
-document.getElementById('salvaParole').addEventListener('click',()=>{localStorage.setItem('paroleNascondi',textarea.value.trim());filtroInput.value=textarea.value.trim();applicaFiltri();modale.style.display='none';});
-document.getElementById('cancellaParole').addEventListener('click',()=>{localStorage.removeItem('paroleNascondi');filtroInput.value='';applicaFiltri();modale.style.display='none';});
-
-/* === SOLO MIGLIORI === */
-const btnSoloMigliori=document.getElementById('btnSoloMigliori');
-let soloMigliori=false;
-btnSoloMigliori.addEventListener('click',()=>{
-  soloMigliori=!soloMigliori;
-  document.getElementById('canaleSinistra').style.display=soloMigliori?'none':'block';
-  document.getElementById('canaleDestra').style.display='block';
-  document.getElementById('canaleFiltrati').style.display='block';
-  btnSoloMigliori.textContent=soloMigliori?'🌍 TUTTi gli oggetti':'⭐ Solo i Migliori oggetti';
-});
-
-/* === ADULTI: toggle con persistenza === */
-const btnAdulti=document.getElementById('btnAdulti');
-const canaleAdulti=document.getElementById('canaleAdulti');
-let adultiVisibili = (localStorage.getItem('adultiVisibili') ?? 'true') === 'true';
-aggiornaStatoAdulti();
-
-btnAdulti.addEventListener('click', ()=>{
-  adultiVisibili = !adultiVisibili;
-  localStorage.setItem('adultiVisibili', adultiVisibili);
-  aggiornaStatoAdulti();
-});
-
-function aggiornaStatoAdulti(){
-  canaleAdulti.style.display = adultiVisibili ? 'block' : 'none';
-  btnAdulti.textContent = adultiVisibili ? '🚫 Nascondi Sesso' : '🔞 Mostra Sesso';
-}
 </script>
 </body>
 </html>
-
