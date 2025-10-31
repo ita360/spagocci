@@ -81,21 +81,23 @@ button {
 
 /* === LAYOUT === */
 .row {
-  display:flex;
-  gap:10px;
-  height:auto;
-}
-.column {
-  flex:1;
-  background:linear-gradient(to bottom,#fff,#f0f0f0);
-  padding:20px;
-  border-radius:20px;
-  border:none;
-  box-shadow:inset 0 0 10px rgba(0,0,0,0.05),0 4px 10px rgba(0,0,0,0.1);
-  overflow-y:auto;
+  display: flex;
+  flex-wrap: wrap; /* ✅ permette di andare a capo */
+  gap: 10px;
+  height: auto;
 }
 
+.column {
+  flex: 1 1 300px; /* ✅ minimo 300px di larghezza */
+  background: linear-gradient(to bottom,#fff,#f0f0f0);
+  padding: 20px;
+  border-radius: 20px;
+  border: none;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.05), 0 4px 10px rgba(0,0,0,0.1);
+  overflow-y: auto;
 }
+
+
 /* === OGGETTI SENZA CARD O BORDI === */
 .contenuto {
   display: grid;
@@ -147,6 +149,17 @@ small { color: #666; font-size: 0.8em; }
 
 /* === RESPONSIVE MOBILE === */
 @media(max-width:768px){
+  /* Layout generale */
+  .row {
+    flex-direction: column; /* ✅ una colonna per riga */
+  }
+  .column {
+    flex: 1 1 100%;
+    max-width: 100%;
+    padding: 10px;
+  }
+
+  /* Oggetti nella griglia */
   .contenuto {
     grid-template-columns: repeat(2, 1fr); /* ✅ 2 oggetti per riga */
     gap: 8px;
@@ -154,6 +167,8 @@ small { color: #666; font-size: 0.8em; }
   .item-content img {
     max-width: 130px;   /* immagini più compatte */
   }
+
+  /* Testo e dettagli */
   .column a {
     -webkit-line-clamp: 2;
     font-size: 0.8em;
@@ -163,6 +178,7 @@ small { color: #666; font-size: 0.8em; }
   small { font-size: 0.7em; }
   h2 { font-size: 0.9em; margin-bottom: 5px; }
 }
+
 
 
 /* === MODALE === */
@@ -417,4 +433,3 @@ function aggiornaStatoAdulti(){
 </script>
 </body>
 </html>
-
