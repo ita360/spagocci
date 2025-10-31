@@ -40,46 +40,6 @@
     "sourceChannel": "1433444235851468980"
   },
   {
-    "id": "1433855111183994951",
-    "timestamp": "2025-10-31T16:28:18.246Z",
-    "text": "7''",
-    "link": "https://amazon.it/dp/B0FSL2PWTF",
-    "image": "https://m.media-amazon.com/images/I/31+N0CIBhXL._SS210_.jpg",
-    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 10€</span><br><span style=\"color:red;font-weight:bold;\">AM: 20€</span>",
-    "asin": "B0FSL2PWTF",
-    "sourceChannel": "1431551820509089842"
-  },
-  {
-    "id": "1433855068125270096",
-    "timestamp": "2025-10-31T16:28:07.980Z",
-    "text": "Porta badge estraibile, porta badge per carta d'identità, per infermiere, medico, studente, insegnante, ufficio, 1 pezzo",
-    "link": "https://amazon.it/dp/B0CJ76ZM61",
-    "image": "https://m.media-amazon.com/images/I/31qFpvApoYL._SS210_.jpg",
-    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 5€</span><br><span style=\"color:red;font-weight:bold;\">AM: 9€</span>",
-    "asin": "B0CJ76ZM61",
-    "sourceChannel": "1431551820509089842"
-  },
-  {
-    "id": "1433854913254916107",
-    "timestamp": "2025-10-31T16:27:31.056Z",
-    "text": "FIHODONE Tappetino Antiscivolo Vasca da Bagno 88×40cm, Tappetino Vasca Antiscivolo in PVC, Tappeto Antiscivolo Vasca con Ventose, Tappeto Vasca Antiscivolo Antibatterico e Resistente Alla Muffa",
-    "link": "https://amazon.it/dp/B0D9N642NV",
-    "image": "https://m.media-amazon.com/images/I/41oQSRNHLcL._SS210_.jpg",
-    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 7€</span><br><span style=\"color:red;font-weight:bold;\">AM: 14€</span>",
-    "asin": "B0D9N642NV",
-    "sourceChannel": "1431551820509089842"
-  },
-  {
-    "id": "1433854912621580422",
-    "timestamp": "2025-10-31T16:27:30.905Z",
-    "text": "Clip Consolatore, Supporto per Copripiumino Riutilizzabili, Ferma Piumino e Consolatore Clip, Copripiumino Clips Mollette, Conserva Angoli di Piumino Trapunta Coperte Rimanere sul Posto, 12 Pezzi",
-    "link": "https://amazon.it/dp/B0FMHTRXQF",
-    "image": "https://m.media-amazon.com/images/I/31MvCgOtPdL._SS210_.jpg",
-    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 5€</span><br><span style=\"color:red;font-weight:bold;\">AM: 10€</span>",
-    "asin": "B0FMHTRXQF",
-    "sourceChannel": "1431551820509089842"
-  },
-  {
     "id": "1433855788689920230",
     "timestamp": "2025-10-31T16:30:59.776Z",
     "text": "Redamancy 30 Pezzi Spille di Sicurezza Grandi, Spille da Balia Grandi, 70mm,60mm,50mm Lunghezza Perni di Sicurezza Grandi per Coperte, Kilt, Tessuto a Maglia, Artigianato (Nero)",
@@ -267,16 +227,6 @@
     "image": "https://m.media-amazon.com/images/I/41uNTWAdrYL._SS210_.jpg",
     "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 11€</span><br><span style=\"color:red;font-weight:bold;\">AM: 21€</span>",
     "asin": "B0FJD7D45K",
-    "sourceChannel": "1431551820509089842"
-  },
-  {
-    "id": "1433855193262592021",
-    "timestamp": "2025-10-31T16:28:37.815Z",
-    "text": "Redamancy Fermacavi Adesivi in Nylon Riutilizzabili, 60 Pezzi per Cavi sotto la Scrivania, Organizzazione Cavi Elettrici e USB, Adesivo Forte Senza Strumenti, Grigio",
-    "link": "https://amazon.it/dp/B0FS6PP19K",
-    "image": "https://m.media-amazon.com/images/I/41HEtvb6jPL._SS210_.jpg",
-    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 5€</span><br><span style=\"color:red;font-weight:bold;\">AM: 10€</span>",
-    "asin": "B0FS6PP19K",
     "sourceChannel": "1431551820509089842"
   }
 ]
