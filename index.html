@@ -4,7 +4,7 @@
 <link rel="icon" href="https://github.com/spagocci/recensioni/blob/main/icona.png" type="image/png">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Spagocci 1.0.0 + Chat Pubblica</title>
+<title>Spagocci 1.5.0</title>
 <style>
 body {
   font-family:sans-serif;
@@ -138,17 +138,73 @@ button {
 .column a:hover { text-decoration: underline; }
 small { color: #666; font-size: 0.8em; }
 
+/* === POSIZIONE SPECIALE VETRINA === */
+.vetrina-top {
+  width: 100%;
+  background: #fff8e1;
+  padding: 15px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  margin-bottom: 20px; /* separa dalle altre colonne */
+}
+
+/* Contenuto interno (griglia prodotti) */
+#contenutoVetrina {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;       /* ✅ scorrevole in orizzontale */
+  gap: 10px;
+  scroll-behavior: smooth;
+  padding-bottom: 10px;
+  -webkit-overflow-scrolling: touch; /* ✅ scorrimento fluido su iPhone/iPad */
+}
+
+#contenutoVetrina::-webkit-scrollbar {
+  height: 6px;
+}
+#contenutoVetrina::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 3px;
+}
+
+#contenutoVetrina .item {
+  flex: 0 0 auto;
+  text-align: center;
+  width: 160px;           /* dimensione card compatta */
+}
+
+#contenutoVetrina img {
+  width: 100%;
+  max-width: 160px;
+  aspect-ratio: 1/1;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+/* === PERFORMANCE === */
+img[loading="lazy"] {
+  content-visibility: auto;
+}
+
 /* === RESPONSIVE MOBILE === */
 @media(max-width:768px){
+  body {
+    padding: 10px;
+  }
   .row { flex-direction: column; }
   .column { flex:1 1 100%; max-width:100%; padding:10px; }
   .contenuto { grid-template-columns: repeat(2,1fr); gap:8px; }
-  .item-content img { max-width:130px; }
-  .column a {-webkit-line-clamp:2;font-size:0.8em;line-height:1.1em;}
-  .price-big{font-size:0.9em;}
-  small{font-size:0.7em;}
-  h2{font-size:0.9em;margin-bottom:5px;}
+  .item-content img { max-width:110px; } /* ✅ spostata e corretta */
+  .column a {
+    -webkit-line-clamp:2;
+    font-size:0.8em;
+    line-height:1.1em;
+  }
+  .price-big { font-size:0.9em; }
+  small { font-size:0.7em; }
+  h2 { font-size:0.9em; margin-bottom:5px; }
 }
+
 
 /* === MODALE === */
 #modaleParole{
@@ -206,7 +262,7 @@ small { color: #666; font-size: 0.8em; }
 
 <div id="statusBar">
   <span id="conteggioNascosti">🔕 Oggetti nascosti: 0</span>
-  <span id="timer">Agg. tra: 60 s</span>
+  <span id="timer"></span>
 </div>
 
 <!-- === MODALE === -->
@@ -230,10 +286,15 @@ small { color: #666; font-size: 0.8em; }
 <audio id="audioAggDisattivato" src="https://raw.githubusercontent.com/spagocci/recensioni/main/aggdisattivato.mp3" preload="auto"></audio>
 <audio id="audioValle" src="https://raw.githubusercontent.com/spagocci/recensioni/main/valledilacrime.mp3" preload="auto"></audio>
 
+<!-- === VETRINA (sopra le altre colonne) === -->
+<div class="column vetrina-top">
+  <h3>⭐ Vetrina 🤩 Oggetti Subito Disponibili 🫱🏻‍🫲🏻</h3>
+  <div class="contenuto" id="contenutoVetrina"></div>
+</div>
+
 <!-- === COLONNE === -->
 <div class="row">
   <div class="column" id="canaleSinistra"><h2>#tutti</h2><div class="contenuto" id="contenutoSinistra"></div></div>
-  <div class="column" id="canaleSubito"><h2>#subitodisponibili</h2><div class="contenuto" id="contenutoSubito"></div></div>
   <div class="column" id="canaleFiltrati"><h2>#filtrati</h2><div class="contenuto" id="contenutoFiltrati"></div></div>
   <div class="column" id="canaleAdulti"><h2>#adulti</h2><div class="contenuto" id="contenutoAdulti"></div></div>
   <div class="column" id="canaleDestra"><h2>#perpochisecondi</h2><div class="contenuto" id="contenutoDestra"></div></div>
@@ -242,12 +303,24 @@ small { color: #666; font-size: 0.8em; }
 <button id="toggleRefresh">⏸ Ferma aggiornamento</button>
 <button id="btnValle">😭 Valle Di Lacrime</button>
 
+<!-- === CHAT PUBBLICA === -->
+<div id="spagocciChat">
+  <h2 style="text-align:center;">💬 SpagocciChat – Bacheca Pubblica</h2>
+  <div id="chatLista"><p style="color:#555;">⏳ Caricamento messaggi...</p></div>
+  <div style="display:flex;gap:10px;">
+    <input id="chatInput" type="text" placeholder="✍️ Scrivi un messaggio..." 
+      style="flex:1;padding:8px;border:2px solid #b30000;border-radius:10px;font-size:1em;">
+    <button id="chatInvia" style="background:#b30000;color:white;border:none;border-radius:10px;padding:8px 15px;cursor:pointer;font-weight:bold;">📨 Invia</button>
+  </div>
+</div>
+
 <!-- === SCRIPT ORIGINALE === -->
 <script>
+window.onload = () => {
 /* === TIMER === */
 let refreshInterval=60,timeLeft=refreshInterval,refreshActive=true;
 const timerDisplay=document.getElementById("timer");
-function updateTimerDisplay(){timerDisplay.textContent=`Agg Tra: ${timeLeft}s`;}
+function updateTimerDisplay(){}
 setInterval(()=>{if(!refreshActive)return;timeLeft--;if(timeLeft<=0)location.reload();updateTimerDisplay();},1000);
 
 /* === AUDIO E BOTTONI REFRESH === */
@@ -261,59 +334,104 @@ toggleButton.addEventListener("click",async()=>{
 });
 
 /* === AUDIO NOTIFICHE === */
-let audioAttivo=localStorage.getItem('audioAttivo')==='true';
-let messaggiVisualizzati=new Set(JSON.parse(localStorage.getItem('messaggiVisualizzati')||'[]'));
-let primaVolta=messaggiVisualizzati.size===0;
-const toggleAudioBtn=document.getElementById('toggleAudio');
-const audioGenerale=document.getElementById('audioGenerale');
-const audioPochiSecondi=document.getElementById('audioPochiSecondi');
-const audioAttivate=document.getElementById('audioAttivate');
-const audioDisattivate=document.getElementById('audioDisattivate');
-const audioValle=document.getElementById('audioValle');
-const btnValle=document.getElementById('btnValle');
-function aggiornaBottoneAudio(){toggleAudioBtn.textContent=audioAttivo?"🔊Audio":"🔇Audio";}
+let audioAttivo = localStorage.getItem('audioAttivo') === 'true';
+const toggleAudioBtn = document.getElementById('toggleAudio');
+const audioAttivate = document.getElementById('audioAttivate');
+const audioDisattivate = document.getElementById('audioDisattivate');
+
+function aggiornaBottoneAudio() {
+  toggleAudioBtn.textContent = audioAttivo ? "🔊Audio" : "🔇Audio";
+}
 aggiornaBottoneAudio();
-btnValle.addEventListener('click',async()=>{try{await audioValle.play();}catch(e){}});
-toggleAudioBtn.addEventListener('click',async()=>{audioAttivo=!audioAttivo;localStorage.setItem('audioAttivo',audioAttivo);aggiornaBottoneAudio();try{await audioGenerale.play();audioGenerale.pause();audioGenerale.currentTime=0;if(audioAttivo)await audioAttivate.play();else await audioDisattivate.play();}catch(e){}});
+
+toggleAudioBtn.addEventListener('click', async () => {
+  audioAttivo = !audioAttivo;
+  localStorage.setItem('audioAttivo', audioAttivo);
+  aggiornaBottoneAudio();
+  try {
+    if (audioAttivo)
+      await audioAttivate.play();
+    else
+      await audioDisattivate.play();
+  } catch (e) {}
+});
 
 /* === CARICAMENTO OGGETTI === */
-const conteggioNascosti=document.getElementById('conteggioNascosti');
-function caricaCatalogo(){
-  const t=Date.now();
-  fetch(`https://spagocci.github.io/recensioni/data.json?t=${t}`)
-  .then(r=>r.json())
-  .then(data=>{
-    data.sort((a,b)=>new Date(b.timestamp)-new Date(a.timestamp));
-    const s=document.getElementById('contenutoSinistra');
-    const d=document.getElementById('contenutoDestra');
-    const f=document.getElementById('contenutoFiltrati');
-    const a=document.getElementById('contenutoAdulti');
-    const sub=document.getElementById('contenutoSubito');
-    s.innerHTML=d.innerHTML=f.innerHTML=a.innerHTML=sub.innerHTML='';
-    data.forEach(item=>{
-      const isNuovo=!messaggiVisualizzati.has(item.id);
-      messaggiVisualizzati.add(item.id);
-      localStorage.setItem('messaggiVisualizzati',JSON.stringify([...messaggiVisualizzati]));
-      const div=document.createElement('div');
-      div.className='item';
-      div.innerHTML=`<div class="item-content">
-        ${item.image && item.link ? `<a href="${item.link}" target="_blank"><img src="${item.image}" alt=""></a>` : item.image ? `<img src="${item.image}" alt="">` : ''}
-        ${item.price?`<div class="price-big">${item.price}</div>`:''}
-        <p>${item.link?`<a href="${item.link}" target="_blank">${item.text}</a>`:item.text}</p>
-        <small>${new Date(item.timestamp).toLocaleString()}</small>
-      </div>`;
-      if(item.sourceChannel==='1432128848534962402') s.appendChild(div);
-      else if(item.sourceChannel==='1430829927175032954') d.appendChild(div);
-      else if(item.sourceChannel==='1431551820509089842') f.appendChild(div);
-      else if(item.sourceChannel==='1433144661186318630') a.appendChild(div);
-      else if(item.sourceChannel==='1433444235851468980') sub.appendChild(div);
+const conteggioNascosti = document.getElementById('conteggioNascosti');
+let messaggiVisualizzati = new Set(JSON.parse(localStorage.getItem('messaggiVisualizzati') || '[]'));
+
+function caricaCatalogo() {
+  const t = Date.now();
+  return fetch(`https://spagocci.github.io/recensioni/data.json?t=${t}`)
+    .then(r => r.ok ? r.json() : Promise.reject(new Error("Errore nel caricamento")))
+    .then(data => {
+      // Ordina i dati per timestamp (più recenti in alto)
+      data.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+
+      // Riferimenti alle colonne
+      const s = document.getElementById('contenutoSinistra');
+      const d = document.getElementById('contenutoDestra');
+      const f = document.getElementById('contenutoFiltrati');
+      const ad = document.getElementById('contenutoAdulti');
+      const v = document.getElementById('contenutoVetrina');
+
+      // Pulisce le colonne
+      s.innerHTML = d.innerHTML = f.innerHTML = ad.innerHTML = v.innerHTML = '';
+
+      // Crea e inserisce gli elementi
+      data.forEach(item => {
+        if (!messaggiVisualizzati.has(item.id)) {
+          messaggiVisualizzati.add(item.id);
+        }
+
+        const div = document.createElement('div');
+        div.className = 'item';
+        div.innerHTML = `
+          <div class="item-content">
+            ${
+              item.image && item.link 
+                ? `<a href="${item.link}" target="_blank">
+                     <img src="${item.image}" alt="" loading="lazy">
+                   </a>` 
+                : item.image 
+                  ? `<img src="${item.image}" alt="" loading="lazy">` 
+                  : ''
+            }
+            ${item.price ? `<div class="price-big">${item.price}</div>` : ''}
+            <p>${item.link ? `<a href="${item.link}" target="_blank">${item.text}</a>` : item.text}</p>
+            <small>${new Date(item.timestamp).toLocaleString()}</small>
+          </div>`;
+
+        // Inserisce l'elemento nella colonna corretta
+        if (item.sourceChannel === '1432128848534962402') s.appendChild(div);
+        else if (item.sourceChannel === '1430829927175032954') d.appendChild(div);
+        else if (item.sourceChannel === '1431551820509089842') f.appendChild(div);
+        else if (item.sourceChannel === '1433144661186318630') ad.appendChild(div);
+        else if (item.sourceChannel === '1433444235851468980') v.appendChild(div);
+      });
+
+      // ✅ Salva tutti gli ID una sola volta dopo il ciclo
+      localStorage.setItem('messaggiVisualizzati', JSON.stringify([...messaggiVisualizzati]));
+
+      applicaFiltri();
+    })
+    .catch(err => {
+      ['contenutoSinistra', 'contenutoDestra', 'contenutoFiltrati', 'contenutoAdulti', 'contenutoVetrina']
+        .forEach(id => {
+          document.getElementById(id).innerHTML = `<p style="color:red;">❌ ${err.message}</p>`;
+        });
     });
-    applicaFiltri();
-  })
-  .catch(err=>['contenutoSinistra','contenutoDestra','contenutoFiltrati','contenutoAdulti','contenutoSubito'].forEach(id=>{document.getElementById(id).innerHTML=`<p style="color:red;">❌ ${err.message}</p>`;}));
 }
-caricaCatalogo();
-setInterval(caricaCatalogo,10000);
+
+// 🔁 Ciclo asincrono per aggiornare ogni 25 secondi
+async function aggiornaCatalogoLoop() {
+  while (true) {
+    await caricaCatalogo();
+    await new Promise(r => setTimeout(r, 25000)); // 25s di pausa
+  }
+}
+aggiornaCatalogoLoop();
+
 
 /* === FILTRI === */
 const filtroInput=document.getElementById('filtroParole');
@@ -351,7 +469,10 @@ document.getElementById('cancellaParole').addEventListener('click',()=>{localSto
 /* === SOLO MIGLIORI === */
 const btnSoloMigliori=document.getElementById('btnSoloMigliori');
 let soloMigliori=false;
-btnSoloMigliori.addEventListener('click',()=>{soloMigliori=!soloMigliori;document.getElementById('canaleSinistra').style.display=soloMigliori?'none':'block';btnSoloMigliori.textContent=soloMigliori?'🤢Mostra TUTTi gli oggetti 🤮':'⭐Mostra Solo i Migliri oggetti🤩';});
+btnSoloMigliori.addEventListener('click',()=>{soloMigliori=!soloMigliori;document.getElementById('canaleSinistra').style.display=soloMigliori?'none':'block';btnSoloMigliori.innerHTML = soloMigliori
+  ? '🤢 Mostra <b>TUTTi</b> gli oggetti 🤮'
+  : '🤩 Mostra Solo i <b>Migliori</b> oggetti ⭐';
+});
 
 /* === ADULTI: toggle con persistenza === */
 const btnAdulti=document.getElementById('btnAdulti');
@@ -364,18 +485,6 @@ function aggiornaStatoAdulti(){
   btnAdulti.textContent = adultiVisibili ? '🚫 Nascondi Sesso' : '🔞 Mostra Sesso';
 }
 </script>
-
-<!-- === CHAT PUBBLICA === -->
-<div id="spagocciChat">
-  <h2 style="text-align:center;">💬 SpagocciChat – Bacheca Pubblica</h2>
-  <div id="chatLista"><p style="color:#555;">⏳ Caricamento messaggi...</p></div>
-  <div style="display:flex;gap:10px;">
-    <input id="chatInput" type="text" placeholder="✍️ Scrivi un messaggio..." 
-      style="flex:1;padding:8px;border:2px solid #b30000;border-radius:10px;font-size:1em;">
-    <button id="chatInvia" style="background:#b30000;color:white;border:none;border-radius:10px;padding:8px 15px;cursor:pointer;font-weight:bold;">📨 Invia</button>
-  </div>
-</div>
-
 <script>
 const WEBHOOK_URL="https://discord.com/api/webhooks/1433822966105374774/1fLCCm7tpDbkrf74anCEvsnGpu-O8klhx3Dy1daNEqk9OpAVgavKD4PQ1iB-hebNY2lX";
 const BACHECA_URL="https://spagocci.github.io/recensioni/bacheca.json";
@@ -401,16 +510,33 @@ async function caricaBacheca(){
     const res=await fetch(`${BACHECA_URL}?t=${Date.now()}`);
     const data=await res.json();
     chatLista.innerHTML="";
-    data.slice(-100).reverse().forEach(m=>{
-      const div=document.createElement("div");
-      div.style="background:white;padding:8px;margin-bottom:6px;border-radius:5px;border:1px solid #ddd;";
-      div.innerHTML=`<b>${m.autore||"Anonimo"}</b> <small style='color:gray;'>(${m.userId||"?"})</small>: ${m.testo}`;
-      chatLista.appendChild(div);
-    });
+data.slice(-100).reverse().forEach(m => {
+  const div = document.createElement("div");
+  div.style = "background:white;padding:8px;margin-bottom:6px;border-radius:5px;border:1px solid #ddd;";
+
+  const autore = document.createElement("b");
+  autore.textContent = m.autore || "Anonimo";
+
+  const id = document.createElement("small");
+  id.style.color = "gray";
+  id.textContent = ` (${m.userId || "?"})`;
+
+  const testo = document.createElement("span");
+  testo.textContent = `: ${m.testo}`;
+
+  div.appendChild(autore);
+  div.appendChild(id);
+  div.appendChild(testo);
+  chatLista.appendChild(div);
+const nearBottom = chatLista.scrollHeight - chatLista.scrollTop - chatLista.clientHeight < 80;
+if (nearBottom) chatLista.scrollTop = chatLista.scrollHeight;
+});
+
   }catch(e){chatLista.innerHTML=`<p style='color:red;'>❌ ${e.message}</p>`;}
 }
-setInterval(caricaBacheca,10000);
+setInterval(caricaBacheca,60000);
 caricaBacheca();
+chatLista.scrollTop = chatLista.scrollHeight;
 </script>
 </body>
 </html>
