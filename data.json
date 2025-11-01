@@ -1440,6 +1440,26 @@
     "sourceChannel": "1432128848534962402"
   },
   {
+    "id": "1434214846085464084",
+    "timestamp": "2025-11-01T16:17:45.730Z",
+    "text": "Ventole Nuwo",
+    "link": "https://amazon.it/dp/B0FG33JHQH",
+    "image": "https://m.media-amazon.com/images/I/41GGIfL180L._SS210_.jpg",
+    "price": null,
+    "asin": "B0FG33JHQH",
+    "sourceChannel": "1431551820509089842"
+  },
+  {
+    "id": "1434215102181015563",
+    "timestamp": "2025-11-01T16:18:46.788Z",
+    "text": "House Of Marley Stir It Up Wireless 2 Giradischi Bluetooth con Casse Da 10W – Giradischi Vinili dal Design Responsabile con Testina Audio - Technica, Bambù",
+    "link": "https://amazon.it/dp/B0FPGMWH8Z",
+    "image": "https://m.media-amazon.com/images/I/31fCrxrJmwL._SL500_.jpg",
+    "price": null,
+    "asin": "B0FPGMWH8Z",
+    "sourceChannel": "1433444235851468980"
+  },
+  {
     "id": "1434137946625413220",
     "timestamp": "2025-11-01T11:12:11.470Z",
     "text": "XIEXIESHER Steampunk Accessori Donna, Ingranaggi Steampunk Collana Girocollo Gotico Nero Pizzo Collana Girocollo Ingranaggi Steampunk Bracciale Ingranaggi Orecchini Gotico Steampunk Donna",
@@ -1840,6 +1860,16 @@
     "sourceChannel": "1432128848534962402"
   },
   {
+    "id": "1434135450934579261",
+    "timestamp": "2025-11-01T11:02:16.451Z",
+    "text": "Astaxantina - 120 Capsule Morbide con 160mg Olio di Astaxantina Naturale - Estratto Haematococcus Pluvialis - Antiossidanti Integratori Sistema Immunitario, Occhi, Pelle - Senza OGM - ALDOUS",
+    "link": "https://amazon.it/dp/B0FX9CTRWB",
+    "image": "https://m.media-amazon.com/images/I/41XWAkWphnL._SS210_.jpg",
+    "price": null,
+    "asin": "B0FX9CTRWB",
+    "sourceChannel": "1432128848534962402"
+  },
+  {
     "id": "1434135094099968031",
     "timestamp": "2025-11-01T11:00:51.375Z",
     "text": "FINETOO Confezione da 5 Tanga da Donna in Cotone con Vita Bassa e Fascia Sportiva Confezione Multipla S-XL",
@@ -1850,13 +1880,13 @@
     "sourceChannel": "1432128848534962402"
   },
   {
-    "id": "1434214846085464084",
-    "timestamp": "2025-11-01T16:17:45.730Z",
-    "text": "Ventole Nuwo",
-    "link": "https://amazon.it/dp/B0FG33JHQH",
-    "image": "https://m.media-amazon.com/images/I/41GGIfL180L._SS210_.jpg",
+    "id": "1434215041317732452",
+    "timestamp": "2025-11-01T16:18:32.277Z",
+    "text": "House Of Marley Stir It Up Wireless 2 Giradischi Bluetooth con Casse Da 10W – Giradischi Vinili dal Design Responsabile con Testina Audio - Technica, Bambù",
+    "link": "https://amazon.it/dp/B0FPGMWH8Z",
+    "image": "https://m.media-amazon.com/images/I/31fCrxrJmwL._SS210_.jpg",
     "price": null,
-    "asin": "B0FG33JHQH",
+    "asin": "B0FPGMWH8Z",
     "sourceChannel": "1431551820509089842"
   }
 ]
