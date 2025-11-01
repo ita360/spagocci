@@ -100,26 +100,6 @@
     "sourceChannel": "1432128848534962402"
   },
   {
-    "id": "1434137235933892668",
-    "timestamp": "2025-11-01T11:09:22.028Z",
-    "text": "Himissy Maglioncino Gatto, Vestito Natale Gatto, Maglione a forma di Gatti, Vestito per Gatti Natalizio, Vestito Cane Taglia Piccola, per Calore Invernale",
-    "link": "https://amazon.it/dp/B0FWYS5869",
-    "image": "https://m.media-amazon.com/images/I/51lCcf4MmPL._SS210_.jpg",
-    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 6€</span><br><span style=\"color:red;font-weight:bold;\">AM: 11€</span>",
-    "asin": "B0FWYS5869",
-    "sourceChannel": "1432128848534962402"
-  },
-  {
-    "id": "1434137216267063346",
-    "timestamp": "2025-11-01T11:09:17.339Z",
-    "text": "12 pezzi Maschera Idratante Viso, Maschera viso di riparazione, Daily Care mascheras per il viso, Idratante e Illuminante Mask, Skincare Face Mask, per tutti i tipi di pelle, rinfrescante, idratazione",
-    "link": "https://amazon.it/dp/B0FVD7HDKK",
-    "image": "https://m.media-amazon.com/images/I/51yBtdMUpdL._SS210_.jpg",
-    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 5€</span><br><span style=\"color:red;font-weight:bold;\">AM: 10€</span>",
-    "asin": "B0FVD7HDKK",
-    "sourceChannel": "1432128848534962402"
-  },
-  {
     "id": "1434137647172812881",
     "timestamp": "2025-11-01T11:11:00.075Z",
     "text": "Weishuo Stivaletti Pioggia Bambino Leggeri Impermeabili Scarpe da Pioggia con Manici da Tirare Facili da Indossare Stivali di Gomma Unisex-Bambini Ragazzi e Ragazze",
@@ -1420,6 +1400,46 @@
     "sourceChannel": "1432128848534962402"
   },
   {
+    "id": "1434156766706401460",
+    "timestamp": "2025-11-01T12:26:58.527Z",
+    "text": "VGECEE Borsa termica per pizza, 85 l, 1 borsa termica per pizza, grande, 50 x 50 x 35, 5 cm, borsa termica da 85 l, per alimenti, borsa termica per pizza, borsa termica isolata, pieghevole",
+    "link": "https://amazon.it/dp/B0FKBQSSW9",
+    "image": "https://m.media-amazon.com/images/I/516Hg0+x77L._SL500_.jpg",
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 10€</span><br><span style=\"color:red;font-weight:bold;\">AM: 20€</span>",
+    "asin": "B0FKBQSSW9",
+    "sourceChannel": "1432128848534962402"
+  },
+  {
+    "id": "1434156765158703165",
+    "timestamp": "2025-11-01T12:26:58.158Z",
+    "text": "VGECEE Borsa termica per pizza, 85 l, 1 borsa termica per pizza, grande, 50 x 50 x 35, 5 cm, borsa termica da 85 l, per alimenti, borsa termica per pizza, borsa termica isolata, pieghevole",
+    "link": "https://amazon.it/dp/B0FKBQSSW9",
+    "image": "https://m.media-amazon.com/images/I/516Hg0+x77L._SL500_.jpg",
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 10€</span><br><span style=\"color:red;font-weight:bold;\">AM: 20€</span>",
+    "asin": "B0FKBQSSW9",
+    "sourceChannel": "1432128848534962402"
+  },
+  {
+    "id": "1434137235933892668",
+    "timestamp": "2025-11-01T11:09:22.028Z",
+    "text": "Himissy Maglioncino Gatto, Vestito Natale Gatto, Maglione a forma di Gatti, Vestito per Gatti Natalizio, Vestito Cane Taglia Piccola, per Calore Invernale",
+    "link": "https://amazon.it/dp/B0FWYS5869",
+    "image": "https://m.media-amazon.com/images/I/51lCcf4MmPL._SS210_.jpg",
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 6€</span><br><span style=\"color:red;font-weight:bold;\">AM: 11€</span>",
+    "asin": "B0FWYS5869",
+    "sourceChannel": "1432128848534962402"
+  },
+  {
+    "id": "1434137216267063346",
+    "timestamp": "2025-11-01T11:09:17.339Z",
+    "text": "12 pezzi Maschera Idratante Viso, Maschera viso di riparazione, Daily Care mascheras per il viso, Idratante e Illuminante Mask, Skincare Face Mask, per tutti i tipi di pelle, rinfrescante, idratazione",
+    "link": "https://amazon.it/dp/B0FVD7HDKK",
+    "image": "https://m.media-amazon.com/images/I/51yBtdMUpdL._SS210_.jpg",
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 5€</span><br><span style=\"color:red;font-weight:bold;\">AM: 10€</span>",
+    "asin": "B0FVD7HDKK",
+    "sourceChannel": "1432128848534962402"
+  },
+  {
     "id": "1434137198374031370",
     "timestamp": "2025-11-01T11:09:13.073Z",
     "text": "Maschera avvolgente all'acido salicilico, maschera viso all'acido salicilico con provitamina B5 per una migliore cura della pelle, 220 ml",
@@ -1648,5 +1668,25 @@
     "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 8€</span><br><span style=\"color:red;font-weight:bold;\">AM: 15€</span>",
     "asin": "B0CKHHDTR6",
     "sourceChannel": "1432128848534962402"
+  },
+  {
+    "id": "1434156528885170348",
+    "timestamp": "2025-11-01T12:26:01.826Z",
+    "text": "CoolSmile Portaspazzolino compatibile con spazzolino elettrico Philips Sonicare",
+    "link": "https://amazon.it/dp/B0FN7YMY7G",
+    "image": "https://m.media-amazon.com/images/I/31eXKHUbHcL._SS210_.jpg",
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 10€</span><br><span style=\"color:red;font-weight:bold;\">AM: 20€</span>",
+    "asin": "B0FN7YMY7G",
+    "sourceChannel": "1431551820509089842"
+  },
+  {
+    "id": "1434156528725790772",
+    "timestamp": "2025-11-01T12:26:01.788Z",
+    "text": "CoolSmile Portaspazzolino compatibile con spazzolino elettrico Philips Sonicare",
+    "link": "https://amazon.it/dp/B0FN7YMY7G",
+    "image": "https://m.media-amazon.com/images/I/31eXKHUbHcL._SS210_.jpg",
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 10€</span><br><span style=\"color:red;font-weight:bold;\">AM: 20€</span>",
+    "asin": "B0FN7YMY7G",
+    "sourceChannel": "1431551820509089842"
   }
 ]
