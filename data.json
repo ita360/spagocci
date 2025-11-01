@@ -1420,6 +1420,26 @@
     "sourceChannel": "1432128848534962402"
   },
   {
+    "id": "1434156528885170348",
+    "timestamp": "2025-11-01T12:26:01.826Z",
+    "text": "CoolSmile Portaspazzolino compatibile con spazzolino elettrico Philips Sonicare",
+    "link": "https://amazon.it/dp/B0FN7YMY7G",
+    "image": "https://m.media-amazon.com/images/I/31eXKHUbHcL._SS210_.jpg",
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 10€</span><br><span style=\"color:red;font-weight:bold;\">AM: 20€</span>",
+    "asin": "B0FN7YMY7G",
+    "sourceChannel": "1431551820509089842"
+  },
+  {
+    "id": "1434156528725790772",
+    "timestamp": "2025-11-01T12:26:01.788Z",
+    "text": "CoolSmile Portaspazzolino compatibile con spazzolino elettrico Philips Sonicare",
+    "link": "https://amazon.it/dp/B0FN7YMY7G",
+    "image": "https://m.media-amazon.com/images/I/31eXKHUbHcL._SS210_.jpg",
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 10€</span><br><span style=\"color:red;font-weight:bold;\">AM: 20€</span>",
+    "asin": "B0FN7YMY7G",
+    "sourceChannel": "1431551820509089842"
+  },
+  {
     "id": "1434137235933892668",
     "timestamp": "2025-11-01T11:09:22.028Z",
     "text": "Himissy Maglioncino Gatto, Vestito Natale Gatto, Maglione a forma di Gatti, Vestito per Gatti Natalizio, Vestito Cane Taglia Piccola, per Calore Invernale",
@@ -1668,25 +1688,5 @@
     "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 8€</span><br><span style=\"color:red;font-weight:bold;\">AM: 15€</span>",
     "asin": "B0CKHHDTR6",
     "sourceChannel": "1432128848534962402"
-  },
-  {
-    "id": "1434156528885170348",
-    "timestamp": "2025-11-01T12:26:01.826Z",
-    "text": "CoolSmile Portaspazzolino compatibile con spazzolino elettrico Philips Sonicare",
-    "link": "https://amazon.it/dp/B0FN7YMY7G",
-    "image": "https://m.media-amazon.com/images/I/31eXKHUbHcL._SS210_.jpg",
-    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 10€</span><br><span style=\"color:red;font-weight:bold;\">AM: 20€</span>",
-    "asin": "B0FN7YMY7G",
-    "sourceChannel": "1431551820509089842"
-  },
-  {
-    "id": "1434156528725790772",
-    "timestamp": "2025-11-01T12:26:01.788Z",
-    "text": "CoolSmile Portaspazzolino compatibile con spazzolino elettrico Philips Sonicare",
-    "link": "https://amazon.it/dp/B0FN7YMY7G",
-    "image": "https://m.media-amazon.com/images/I/31eXKHUbHcL._SS210_.jpg",
-    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 10€</span><br><span style=\"color:red;font-weight:bold;\">AM: 20€</span>",
-    "asin": "B0FN7YMY7G",
-    "sourceChannel": "1431551820509089842"
   }
 ]
