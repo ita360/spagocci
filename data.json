@@ -1170,16 +1170,6 @@
     "sourceChannel": "1432128848534962402"
   },
   {
-    "id": "1434136239862448170",
-    "timestamp": "2025-11-01T11:05:24.546Z",
-    "text": "Scatola regalo nera, Scatole regalo magnetiche con coperchio 26×19×8, 5 cm, Scatola regalo con coperchio premium, decorazione per regali per compleanni, matrimoni e fest",
-    "link": "https://amazon.it/dp/B0FR8DY73P",
-    "image": "https://m.media-amazon.com/images/I/41cNIAzHOOL._SS210_.jpg",
-    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 7€</span><br><span style=\"color:red;font-weight:bold;\">AM: 14€</span>",
-    "asin": "B0FR8DY73P",
-    "sourceChannel": "1432128848534962402"
-  },
-  {
     "id": "1434035201880625162",
     "timestamp": "2025-11-01T04:23:55.214Z",
     "text": "ITSHINY Coperta Riscaldante Elettrica 180x135 cm con Controllo Digi...",
@@ -1280,16 +1270,6 @@
     "sourceChannel": "1433444235851468980"
   },
   {
-    "id": "1434136132672688198",
-    "timestamp": "2025-11-01T11:04:58.990Z",
-    "text": "Tatxmalv Porta Candela Natalizio Candele Decorative, Portacandele per Corona Avvento, Portacandela Natalizio con Base in Legno e Decorazioni in Metallo, Decorazioni Natalizia Creativa",
-    "link": "https://amazon.it/dp/B0FN44BKCL",
-    "image": "https://m.media-amazon.com/images/I/51PaKRaphrL._SL500_.jpg",
-    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 7€</span><br><span style=\"color:red;font-weight:bold;\">AM: 13€</span>",
-    "asin": "B0FN44BKCL",
-    "sourceChannel": "1432128848534962402"
-  },
-  {
     "id": "1434151268846276751",
     "timestamp": "2025-11-01T12:05:07.735Z",
     "text": "VGECEE Cappello di Natale extra lungo in peluche blu con 10 mini cappello di Natale",
@@ -1337,6 +1317,46 @@
     "image": "https://m.media-amazon.com/images/I/51fuPhsUsTL._SS210_.jpg",
     "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 7€</span><br><span style=\"color:red;font-weight:bold;\">AM: 13€</span>",
     "asin": "B0FKBS2FS9",
+    "sourceChannel": "1432128848534962402"
+  },
+  {
+    "id": "1434152480400474162",
+    "timestamp": "2025-11-01T12:09:56.592Z",
+    "text": "VGECEE Teglia apribile rettangolare, 28 x 18 cm, stampo rettangolare per torte con chiusura antiaderente, stampo quadrato in acciaio al carbonio, forma quadrata per torte di formaggio",
+    "link": "https://amazon.it/dp/B0FKBQ684J",
+    "image": "https://m.media-amazon.com/images/I/51DelqenJTL._SL500_.jpg",
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 9€</span><br><span style=\"color:red;font-weight:bold;\">AM: 17€</span>",
+    "asin": "B0FKBQ684J",
+    "sourceChannel": "1432128848534962402"
+  },
+  {
+    "id": "1434152455427461312",
+    "timestamp": "2025-11-01T12:09:50.638Z",
+    "text": "VGECEE Paraspifferi per porta, 96 cm, ritagliabile, guarnizione per porta sotto la porta, paraspifferi, paraspifferi, scopa inferiore, colore bianco, per porte e fessure inferiori di 0, 3 – 2 cm di",
+    "link": "https://amazon.it/dp/B0FKGFDZP8",
+    "image": "https://m.media-amazon.com/images/I/41gUQQnOsQL._SS210_.jpg",
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 5€</span><br><span style=\"color:red;font-weight:bold;\">AM: 10€</span>",
+    "asin": "B0FKGFDZP8",
+    "sourceChannel": "1432128848534962402"
+  },
+  {
+    "id": "1434136239862448170",
+    "timestamp": "2025-11-01T11:05:24.546Z",
+    "text": "Scatola regalo nera, Scatole regalo magnetiche con coperchio 26×19×8, 5 cm, Scatola regalo con coperchio premium, decorazione per regali per compleanni, matrimoni e fest",
+    "link": "https://amazon.it/dp/B0FR8DY73P",
+    "image": "https://m.media-amazon.com/images/I/41cNIAzHOOL._SS210_.jpg",
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 7€</span><br><span style=\"color:red;font-weight:bold;\">AM: 14€</span>",
+    "asin": "B0FR8DY73P",
+    "sourceChannel": "1432128848534962402"
+  },
+  {
+    "id": "1434136132672688198",
+    "timestamp": "2025-11-01T11:04:58.990Z",
+    "text": "Tatxmalv Porta Candela Natalizio Candele Decorative, Portacandele per Corona Avvento, Portacandela Natalizio con Base in Legno e Decorazioni in Metallo, Decorazioni Natalizia Creativa",
+    "link": "https://amazon.it/dp/B0FN44BKCL",
+    "image": "https://m.media-amazon.com/images/I/51PaKRaphrL._SL500_.jpg",
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 7€</span><br><span style=\"color:red;font-weight:bold;\">AM: 13€</span>",
+    "asin": "B0FN44BKCL",
     "sourceChannel": "1432128848534962402"
   },
   {
@@ -1398,5 +1418,25 @@
     "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 8€</span><br><span style=\"color:red;font-weight:bold;\">AM: 15€</span>",
     "asin": "B0CKHHDTR6",
     "sourceChannel": "1432128848534962402"
+  },
+  {
+    "id": "1434152728703008879",
+    "timestamp": "2025-11-01T12:10:55.792Z",
+    "text": "Creme per Le Mani Set Regalo di Natale, Crema Mani Regalo Natale, 5 Pezzi Hand Cream Set, Nutriente e Riparare Mani Secche, per Compleanno, Natalizie, Anniversario e Festa, Gadget Natalizie, Regali Natalizi",
+    "link": "https://amazon.it/dp/B0FL6JXNZR",
+    "image": "https://m.media-amazon.com/images/I/51NPkFHVViL._SS210_.jpg",
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 5€</span><br><span style=\"color:red;font-weight:bold;\">AM: 10€</span>",
+    "asin": "B0FL6JXNZR",
+    "sourceChannel": "1431551820509089842"
+  },
+  {
+    "id": "1434152572339617914",
+    "timestamp": "2025-11-01T12:10:18.512Z",
+    "text": "Exen Spelafili - Spelafili Automatico 0, 2-6 mm², Spelacavi con Taglierina Laterale Fino a 2 mm",
+    "link": "https://amazon.it/dp/B0FS1WMVVD",
+    "image": "https://m.media-amazon.com/images/I/31F0L6i9G0L._SS210_.jpg",
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 11€</span><br><span style=\"color:red;font-weight:bold;\">AM: 21€</span>",
+    "asin": "B0FS1WMVVD",
+    "sourceChannel": "1431551820509089842"
   }
 ]
