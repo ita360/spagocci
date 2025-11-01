@@ -710,16 +710,6 @@
     "sourceChannel": "1433444235851468980"
   },
   {
-    "id": "1433886889550807141",
-    "timestamp": "2025-10-31T18:34:34.799Z",
-    "text": "Blukar Torcia LED Ricaricabile 2 Temperatura Colore,Super Luminoso ...",
-    "link": "https://www.amazon.it/dp/B0FG2V4F5D?&linkCode=sl1&tag=ita36000-21&linkId=a7fccee4d9a25edc212fab3f10a0dc0c&language=it_IT&ref_=as_li_ss_tl",
-    "image": "https://m.media-amazon.com/images/I/71TDJUi2RiL.jpg_BO30,255,255,255_UF900,850_SR1910,1000,0,C_QL100_.jpg",
-    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 7€</span><br><span style=\"color:red;font-weight:bold;\">AM: 14€</span>",
-    "asin": "B0FG2V4F5D",
-    "sourceChannel": "1433444235851468980"
-  },
-  {
     "id": "1434151268846276751",
     "timestamp": "2025-11-01T12:05:07.735Z",
     "text": "VGECEE Cappello di Natale extra lungo in peluche blu con 10 mini cappello di Natale",
@@ -1370,6 +1360,66 @@
     "sourceChannel": "1432128848534962402"
   },
   {
+    "id": "1434214207544627375",
+    "timestamp": "2025-11-01T16:15:13.490Z",
+    "text": "Adattatore per Biberon SUAVINEX ZERO ZERO e DR BROWN'S - Adattatore Scaldabiberon - Compatibile con Scaldabiberon Ø50 mm - Facile da Pulire - Adattatore Scaldalatte materno",
+    "link": "https://amazon.it/dp/B0FX17KM6N",
+    "image": "https://m.media-amazon.com/images/I/31YuU3hvxlL._SS210_.jpg",
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 5€</span><br><span style=\"color:red;font-weight:bold;\">AM: 10€</span>",
+    "asin": "B0FX17KM6N",
+    "sourceChannel": "1432128848534962402"
+  },
+  {
+    "id": "1434215435527655555",
+    "timestamp": "2025-11-01T16:20:06.264Z",
+    "text": "Olio per Cani, Gatti e Animali Domestici, Olio Rilassante a uso topico - Pet 5",
+    "link": "https://amazon.it/dp/B0FWR7DNMZ",
+    "image": "https://m.media-amazon.com/images/I/313wNgNGLoL._SL500_.jpg",
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 10€</span><br><span style=\"color:red;font-weight:bold;\">AM: 20€</span>",
+    "asin": "B0FWR7DNMZ",
+    "sourceChannel": "1432128848534962402"
+  },
+  {
+    "id": "1434230822692585512",
+    "timestamp": "2025-11-01T17:21:14.850Z",
+    "text": "Btofellin Canotta da Donna Elegante Senza Maniche Canottiera Estiva Elegante Camisole Casual Tank Top Basic Maglietta Tops Halter Sciolta Morbido",
+    "link": "https://amazon.it/dp/B0D3BHKDJK",
+    "image": "https://m.media-amazon.com/images/I/41RrPhCp17L._SS210_.jpg",
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 8€</span><br><span style=\"color:red;font-weight:bold;\">AM: 15€</span>",
+    "asin": "B0D3BHKDJK",
+    "sourceChannel": "1432128848534962402"
+  },
+  {
+    "id": "1434229579605868634",
+    "timestamp": "2025-11-01T17:16:18.475Z",
+    "text": "Hovea - Scopino Bagno Sospeso Nero - Scopino WC Piatto Silicone & Portascopino Metallo - Nessuna Foratura - Montaggio a Parete con Adesivo o Vite - Porta Scopino - WC3010",
+    "link": "https://amazon.it/dp/B0FSF722JH",
+    "image": "https://m.media-amazon.com/images/I/41c6d9YzLgL._SS210_.jpg",
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 8€</span><br><span style=\"color:red;font-weight:bold;\">AM: 16€</span>",
+    "asin": "B0FSF722JH",
+    "sourceChannel": "1432128848534962402"
+  },
+  {
+    "id": "1434228490970071040",
+    "timestamp": "2025-11-01T17:11:58.924Z",
+    "text": "Bio Pets - Dentifricio Spray per Cani e Gatti 100ml – Pulisci Denti Cane e Gatto, Togli Tartaro Cani Piccola Taglia, Alito Fresco, Pulizia Denti Senza Spazzolino – Naturale e Sicuro",
+    "link": "https://amazon.it/dp/B0F63LR6RT",
+    "image": "https://m.media-amazon.com/images/I/41HOEvr5IIL._SS210_.jpg",
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 8€</span><br><span style=\"color:red;font-weight:bold;\">AM: 15€</span>",
+    "asin": "B0F63LR6RT",
+    "sourceChannel": "1432128848534962402"
+  },
+  {
+    "id": "1434227954476384417",
+    "timestamp": "2025-11-01T17:09:51.014Z",
+    "text": "Water Flow Complex - 180 capsule - Con ortica, tarassaco, tè verde, carciofo e cranberry - Formula vegetale senza compresse diuretiche chimiche - Vegano, ad alto dosaggio",
+    "link": "https://amazon.it/dp/B0FFMC2MBD",
+    "image": "https://m.media-amazon.com/images/I/414WQ0Yjs+L._SS210_.jpg",
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 13€</span><br><span style=\"color:red;font-weight:bold;\">AM: 25€</span>",
+    "asin": "B0FFMC2MBD",
+    "sourceChannel": "1432128848534962402"
+  },
+  {
     "id": "1434138348641063107",
     "timestamp": "2025-11-01T11:13:47.318Z",
     "text": "6 pezzi portacandele in metallo, tre tipi di portacandele con altezze di 33/28/23 cm. Decorazione portacandele per matrimoni, feste, compleanni, decorazioni da tavolo",
@@ -1420,62 +1470,12 @@
     "sourceChannel": "1432128848534962402"
   },
   {
-    "id": "1434214207544627375",
-    "timestamp": "2025-11-01T16:15:13.490Z",
-    "text": "Adattatore per Biberon SUAVINEX ZERO ZERO e DR BROWN'S - Adattatore Scaldabiberon - Compatibile con Scaldabiberon Ø50 mm - Facile da Pulire - Adattatore Scaldalatte materno",
-    "link": "https://amazon.it/dp/B0FX17KM6N",
-    "image": "https://m.media-amazon.com/images/I/31YuU3hvxlL._SS210_.jpg",
-    "price": null,
-    "asin": "B0FX17KM6N",
-    "sourceChannel": "1432128848534962402"
-  },
-  {
-    "id": "1434214846085464084",
-    "timestamp": "2025-11-01T16:17:45.730Z",
-    "text": "Ventole Nuwo",
-    "link": "https://amazon.it/dp/B0FG33JHQH",
-    "image": "https://m.media-amazon.com/images/I/41GGIfL180L._SS210_.jpg",
-    "price": null,
-    "asin": "B0FG33JHQH",
-    "sourceChannel": "1431551820509089842"
-  },
-  {
-    "id": "1434215102181015563",
-    "timestamp": "2025-11-01T16:18:46.788Z",
-    "text": "House Of Marley Stir It Up Wireless 2 Giradischi Bluetooth con Casse Da 10W – Giradischi Vinili dal Design Responsabile con Testina Audio - Technica, Bambù",
-    "link": "https://amazon.it/dp/B0FPGMWH8Z",
-    "image": "https://m.media-amazon.com/images/I/31fCrxrJmwL._SL500_.jpg",
-    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 215€</span><br><span style=\"color:red;font-weight:bold;\">AM: 430€</span>",
-    "asin": "B0FPGMWH8Z",
-    "sourceChannel": "1433444235851468980"
-  },
-  {
-    "id": "1434215361040879797",
-    "timestamp": "2025-11-01T16:19:48.505Z",
-    "text": "REVAMP HydroShine Phon per Capelli Professionale 3 in 1 – Spazzola ad Aria Calda con Tecnologia Hydro Ion per Idratazione e Lucentezza – Compatto e Ultraleggero",
-    "link": "https://amazon.it/dp/B0FPMJDDW9",
-    "image": "https://m.media-amazon.com/images/I/51HGDheJtkL._SL500_.jpg",
-    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 75€</span><br><span style=\"color:red;font-weight:bold;\">AM: 150€</span>",
-    "asin": "B0FPMJDDW9",
-    "sourceChannel": "1433444235851468980"
-  },
-  {
-    "id": "1434215435527655555",
-    "timestamp": "2025-11-01T16:20:06.264Z",
-    "text": "Olio per Cani, Gatti e Animali Domestici, Olio Rilassante a uso topico - Pet 5",
-    "link": "https://amazon.it/dp/B0FWR7DNMZ",
-    "image": "https://m.media-amazon.com/images/I/313wNgNGLoL._SL500_.jpg",
-    "price": null,
-    "asin": "B0FWR7DNMZ",
-    "sourceChannel": "1432128848534962402"
-  },
-  {
     "id": "1434138128586641478",
     "timestamp": "2025-11-01T11:12:54.853Z",
     "text": "Filtro per purificatore d'aria, filtro in fibra di carbonio, ricambio evaporatore 970718-01, ricambio per purificatore d'aria Dyson Humidify+cool PH01 PH02 PH03 PH04 PH3A (arancione, 1 pezzo)",
     "link": "https://amazon.it/dp/B0FM71517D",
     "image": "https://m.media-amazon.com/images/I/51xF0rPM2NL._SS210_.jpg",
-    "price": null,
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 13€</span><br><span style=\"color:red;font-weight:bold;\">AM: 25€</span>",
     "asin": "B0FM71517D",
     "sourceChannel": "1432128848534962402"
   },
@@ -1485,7 +1485,7 @@
     "text": "XIEXIESHER Steampunk Accessori Donna, Ingranaggi Steampunk Collana Girocollo Gotico Nero Pizzo Collana Girocollo Ingranaggi Steampunk Bracciale Ingranaggi Orecchini Gotico Steampunk Donna",
     "link": "https://amazon.it/dp/B0FXFD294V",
     "image": "https://m.media-amazon.com/images/I/51QA8mgAB1L._SS210_.jpg",
-    "price": null,
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 7€</span><br><span style=\"color:red;font-weight:bold;\">AM: 13€</span>",
     "asin": "B0FXFD294V",
     "sourceChannel": "1432128848534962402"
   },
@@ -1495,7 +1495,7 @@
     "text": "Paraspruzzi friggitrice ad aria calda compatibile con Ninja AF500EU, accessorio per friggitrice ad aria calda, efficace e riutilizzabile",
     "link": "https://amazon.it/dp/B0DY5VB5WV",
     "image": "https://m.media-amazon.com/images/I/51KHZccF8FL._SS210_.jpg",
-    "price": null,
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 5€</span><br><span style=\"color:red;font-weight:bold;\">AM: 9€</span>",
     "asin": "B0DY5VB5WV",
     "sourceChannel": "1432128848534962402"
   },
@@ -1505,7 +1505,7 @@
     "text": "MultiValue Mini portafoglio da donna con fiore mini portafoglio da donna con cerniera portamonete per monete da donna",
     "link": "https://amazon.it/dp/B0FNX27N14",
     "image": "https://m.media-amazon.com/images/I/41Dh5NXtRBL._SS210_.jpg",
-    "price": null,
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 4€</span><br><span style=\"color:red;font-weight:bold;\">AM: 7€</span>",
     "asin": "B0FNX27N14",
     "sourceChannel": "1432128848534962402"
   },
@@ -1515,7 +1515,7 @@
     "text": "Wolf Belly - Shampoo Secco in Mousse per Cani e Gatti (200 ml) | Pulisce senza Acqua, Rimuove Sporco e Odori | Senza Risciacquo | Con Aloe Vera e Glicerina | Uso Rapido - Prodotto in Europa",
     "link": "https://amazon.it/dp/B0FDRCPJ8P",
     "image": "https://m.media-amazon.com/images/I/31Fxuejv3vL._SS210_.jpg",
-    "price": null,
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 9€</span><br><span style=\"color:red;font-weight:bold;\">AM: 17€</span>",
     "asin": "B0FDRCPJ8P",
     "sourceChannel": "1432128848534962402"
   },
@@ -1525,7 +1525,7 @@
     "text": "Wirvyuer Custodia Compatibile con iPhone 17 Cover Ragazze Oro Amore Cuore Custodia",
     "link": "https://amazon.it/dp/B0FSKBQ1H1",
     "image": "https://m.media-amazon.com/images/I/41ppyxBNKEL._SS210_.jpg",
-    "price": null,
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 6€</span><br><span style=\"color:red;font-weight:bold;\">AM: 11€</span>",
     "asin": "B0FSKBQ1H1",
     "sourceChannel": "1432128848534962402"
   },
@@ -1535,7 +1535,7 @@
     "text": "Cantiere Candeline Compleanno, Veicoli Ingegneristici Candele per Costruzioni, 3D Candele per Bambini, Compleanno 3 Anni",
     "link": "https://amazon.it/dp/B0FPM8H7M4",
     "image": "https://m.media-amazon.com/images/I/41ILhOwa+rL._SS210_.jpg",
-    "price": null,
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 4€</span><br><span style=\"color:red;font-weight:bold;\">AM: 8€</span>",
     "asin": "B0FPM8H7M4",
     "sourceChannel": "1432128848534962402"
   },
@@ -1545,7 +1545,7 @@
     "text": "Vaitasy Custodia: Design Elegante Monocolore Business con Pencil Holder e Supporto Pieghevole per Ufficio",
     "link": "https://amazon.it/dp/B0FW6QMF7Q",
     "image": "https://m.media-amazon.com/images/I/41z0ZzSdJoL._SS210_.jpg",
-    "price": null,
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 10€</span><br><span style=\"color:red;font-weight:bold;\">AM: 20€</span>",
     "asin": "B0FW6QMF7Q",
     "sourceChannel": "1432128848534962402"
   },
@@ -1555,7 +1555,7 @@
     "text": "YLK Cover Opaca per iPhone XR, Custodia Posteriore Glassata Traslucida Sottile, Cover con Della Fotocamera Protezione",
     "link": "https://amazon.it/dp/B0FR7MV1KR",
     "image": "https://m.media-amazon.com/images/I/41p37N+504L._SS210_.jpg",
-    "price": null,
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 4€</span><br><span style=\"color:red;font-weight:bold;\">AM: 7€</span>",
     "asin": "B0FR7MV1KR",
     "sourceChannel": "1432128848534962402"
   },
@@ -1565,7 +1565,7 @@
     "text": "avvolgimi Pashmina Unisex Elegante Made in Italy Sciarpa per Ogni Stagione Uomo Donna",
     "link": "https://amazon.it/dp/B0FRY7KYC6",
     "image": "https://m.media-amazon.com/images/I/31+nbI0hTAL._SS210_.jpg",
-    "price": null,
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 10€</span><br><span style=\"color:red;font-weight:bold;\">AM: 20€</span>",
     "asin": "B0FRY7KYC6",
     "sourceChannel": "1432128848534962402"
   },
@@ -1575,7 +1575,7 @@
     "text": "JelyArt Filato per uncinetto in ciniglia, di cotone, 3 x 50 g, senza filo diviso, spesso per uncinetto, morbido filato di cotone, semplice per principianti",
     "link": "https://amazon.it/dp/B0FXJ9F9CB",
     "image": "https://m.media-amazon.com/images/I/5187IpSPcUL._SS210_.jpg",
-    "price": null,
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 7€</span><br><span style=\"color:red;font-weight:bold;\">AM: 13€</span>",
     "asin": "B0FXJ9F9CB",
     "sourceChannel": "1432128848534962402"
   },
@@ -1585,7 +1585,7 @@
     "text": "KeeFos 22mm Cinturini Compatibile con CMF by Nothing Watch 3 Pro/CMF by Nothing Watch Pro 2, Bracciale in Silicone con Fibbia Magnetica, Cinturino di Ricambio",
     "link": "https://amazon.it/dp/B0FYC98XJZ",
     "image": "https://m.media-amazon.com/images/I/41uLf3nALrL._SS210_.jpg",
-    "price": null,
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 8€</span><br><span style=\"color:red;font-weight:bold;\">AM: 15€</span>",
     "asin": "B0FYC98XJZ",
     "sourceChannel": "1432128848534962402"
   },
@@ -1595,7 +1595,7 @@
     "text": "Montessori - Cubo impilabile in legno, con 5 cubi impilabili in legno, con numeri, colori e animali, regali per bambini dai 1 2 3 anni",
     "link": "https://amazon.it/dp/B0FWRH2ZNN",
     "image": "https://m.media-amazon.com/images/I/51GXnbQwDPL._SS210_.jpg",
-    "price": null,
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 10€</span><br><span style=\"color:red;font-weight:bold;\">AM: 19€</span>",
     "asin": "B0FWRH2ZNN",
     "sourceChannel": "1432128848534962402"
   },
@@ -1605,7 +1605,7 @@
     "text": "Frese per legno 6 Pezzi - Punte fresa 8mm gambo fresa, 3mm, 4mm, 5mm, 6mm, 7mm, 8mm, Adatte a legno fai da te e diverse lavorazioni",
     "link": "https://amazon.it/dp/B0FRFMX3F2",
     "image": "https://m.media-amazon.com/images/I/41jAuCfP29L._SS210_.jpg",
-    "price": null,
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 9€</span><br><span style=\"color:red;font-weight:bold;\">AM: 17€</span>",
     "asin": "B0FRFMX3F2",
     "sourceChannel": "1432128848534962402"
   },
@@ -1615,7 +1615,7 @@
     "text": "2 Pezzi Taglia-cartucce Professionale - Taglia Tubi di Silicone e Colla Acrilica, Lama può essere Sostituita, Design Sicuro con Impugnatura Antiscivolo per Uso Domestico e Professionale",
     "link": "https://amazon.it/dp/B0FRDQ7RQH",
     "image": "https://m.media-amazon.com/images/I/31B547MjcXL._SS210_.jpg",
-    "price": null,
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 5€</span><br><span style=\"color:red;font-weight:bold;\">AM: 10€</span>",
     "asin": "B0FRDQ7RQH",
     "sourceChannel": "1432128848534962402"
   },
@@ -1625,7 +1625,7 @@
     "text": "LEMESO Agenda 2026 Giornaliera A5 in Italiano Diario Planner 2026 12 Mesi con Pagine Calendario, Rubrica, con Copertina in Pelle, Segnalibri (Rosa)",
     "link": "https://amazon.it/dp/B0FMRD46FZ",
     "image": "https://m.media-amazon.com/images/I/31MVmNWwpgL._SS210_.jpg",
-    "price": null,
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 6€</span><br><span style=\"color:red;font-weight:bold;\">AM: 12€</span>",
     "asin": "B0FMRD46FZ",
     "sourceChannel": "1432128848534962402"
   },
@@ -1635,7 +1635,7 @@
     "text": "PeakLife Kit di Ricambi per Tineco Floor One S7 Pro, S6, S5, S5 Pro, S5 Pro 2",
     "link": "https://amazon.it/dp/B0FH5KZZ8F",
     "image": "https://m.media-amazon.com/images/I/515GPi-azKL._SS210_.jpg",
-    "price": null,
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 15€</span><br><span style=\"color:red;font-weight:bold;\">AM: 30€</span>",
     "asin": "B0FH5KZZ8F",
     "sourceChannel": "1432128848534962402"
   },
@@ -1645,7 +1645,7 @@
     "text": "Ruryxel Ghirlande natalizie, 35 cm, ghirlanda di Natale in rattan, ghirlanda di Natale, ghirlanda di Natale, decorazione natalizia per parete, porta di casa, finestra, camino",
     "link": "https://amazon.it/dp/B0FN7P9X3N",
     "image": "https://m.media-amazon.com/images/I/51XUje1osUL._SS210_.jpg",
-    "price": null,
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 6€</span><br><span style=\"color:red;font-weight:bold;\">AM: 11€</span>",
     "asin": "B0FN7P9X3N",
     "sourceChannel": "1432128848534962402"
   },
@@ -1655,7 +1655,7 @@
     "text": "Himissy Maglioncino Gatto, Vestito Natale Gatto, Maglione a forma di Gatti, Vestito per Gatti Natalizio, Vestito Cane Taglia Piccola, per Calore Invernale",
     "link": "https://amazon.it/dp/B0FWYS5869",
     "image": "https://m.media-amazon.com/images/I/51lCcf4MmPL._SS210_.jpg",
-    "price": null,
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 6€</span><br><span style=\"color:red;font-weight:bold;\">AM: 11€</span>",
     "asin": "B0FWYS5869",
     "sourceChannel": "1432128848534962402"
   },
@@ -1880,16 +1880,6 @@
     "sourceChannel": "1432128848534962402"
   },
   {
-    "id": "1434135450934579261",
-    "timestamp": "2025-11-01T11:02:16.451Z",
-    "text": "Astaxantina - 120 Capsule Morbide con 160mg Olio di Astaxantina Naturale - Estratto Haematococcus Pluvialis - Antiossidanti Integratori Sistema Immunitario, Occhi, Pelle - Senza OGM - ALDOUS",
-    "link": "https://amazon.it/dp/B0FX9CTRWB",
-    "image": "https://m.media-amazon.com/images/I/41XWAkWphnL._SS210_.jpg",
-    "price": null,
-    "asin": "B0FX9CTRWB",
-    "sourceChannel": "1432128848534962402"
-  },
-  {
     "id": "1434135094099968031",
     "timestamp": "2025-11-01T11:00:51.375Z",
     "text": "FINETOO Confezione da 5 Tanga da Donna in Cotone con Vita Bassa e Fascia Sportiva Confezione Multipla S-XL",
@@ -1900,13 +1890,33 @@
     "sourceChannel": "1432128848534962402"
   },
   {
-    "id": "1434222924809633822",
-    "timestamp": "2025-11-01T16:49:51.848Z",
-    "text": "House of Marley Rise Up Giradischi Bluetooth con Casse Integrate - Giradischi Vinili a 3 velocità, Streaming a 2 vie, Finitura in Bambù e Coperchio Antipolvere, Realizzato in Modo Sostenibile",
-    "link": "https://amazon.it/dp/B0FP49DDM5",
-    "image": "https://m.media-amazon.com/images/I/41iC+r0CNkL._SL500_.jpg",
-    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 100€</span><br><span style=\"color:red;font-weight:bold;\">AM: 200€</span>",
-    "asin": "B0FP49DDM5",
-    "sourceChannel": "1433444235851468980"
+    "id": "1434233978642239578",
+    "timestamp": "2025-11-01T17:33:47.287Z",
+    "text": "JTF Collare Cervicale - Tutore per Collo Regolabile e Traspirante per Alleviare Cervicale, Colpo di Frusta, Uomini e Donne",
+    "link": "https://amazon.it/dp/B0FYF8W2NV",
+    "image": "https://m.media-amazon.com/images/I/41x+QHBeElL._SL500_.jpg",
+    "price": null,
+    "asin": "B0FYF8W2NV",
+    "sourceChannel": "1430829927175032954"
+  },
+  {
+    "id": "1434232507066220545",
+    "timestamp": "2025-11-01T17:27:56.436Z",
+    "text": "GDZN Supporto per tablet da auto per iPad da 4, 7 a 11\", a collo di cigno, con braccio regolabile a 360°, per iPad Pro 11 Air Mini, Galaxy Tab, Kindle Fire HD, iPhone",
+    "link": "https://amazon.it/dp/B0FHKJ1H4P",
+    "image": "https://m.media-amazon.com/images/I/410mx0nfzFL._SL500_.jpg",
+    "price": null,
+    "asin": "B0FHKJ1H4P",
+    "sourceChannel": "1430829927175032954"
+  },
+  {
+    "id": "1434286815526781098",
+    "timestamp": "2025-11-01T21:03:44.582Z",
+    "text": "HPGAAVD 10 x 2.125 Camera d'Aria da per Monopattino Elettrico，10 Pollici Doppio Spessore Camera d'Aria per 10×2/2.125/2.5 Pollici Scooter Ruota di Ricambio，Valvola Piegata a 90°，2 Leve di Montaggio",
+    "link": "https://amazon.it/dp/B0FL1DG8PR",
+    "image": "https://m.media-amazon.com/images/I/41vpzCpNuJL._SS210_.jpg",
+    "price": null,
+    "asin": "B0FL1DG8PR",
+    "sourceChannel": "1431551820509089842"
   }
 ]
