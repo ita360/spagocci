@@ -1290,16 +1290,6 @@
     "sourceChannel": "1432128848534962402"
   },
   {
-    "id": "1434135952019951736",
-    "timestamp": "2025-11-01T11:04:15.919Z",
-    "text": "Ftemglo Ghirlanda Natalizia 10m, Ghirlanda di Natale artificiale di Verde Bianco, Decorazione realistica a forma di ghirlanda di Natale per camera da letto, porta, parete, finestra, camino",
-    "link": "https://amazon.it/dp/B0FQV766W4",
-    "image": "https://m.media-amazon.com/images/I/61sChkgX5zL._SS210_.jpg",
-    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 7€</span><br><span style=\"color:red;font-weight:bold;\">AM: 13€</span>",
-    "asin": "B0FQV766W4",
-    "sourceChannel": "1432128848534962402"
-  },
-  {
     "id": "1434151268846276751",
     "timestamp": "2025-11-01T12:05:07.735Z",
     "text": "VGECEE Cappello di Natale extra lungo in peluche blu con 10 mini cappello di Natale",
@@ -1337,6 +1327,26 @@
     "image": "https://m.media-amazon.com/images/I/41PkUPMABUL._SS210_.jpg",
     "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 5€</span><br><span style=\"color:red;font-weight:bold;\">AM: 10€</span>",
     "asin": "B0FM3T4L73",
+    "sourceChannel": "1432128848534962402"
+  },
+  {
+    "id": "1434151411456806932",
+    "timestamp": "2025-11-01T12:05:41.736Z",
+    "text": "VGECEE Ramo di limone artificiale giallo limone artificiale decorazione con foglia verde, piante limone, limone, frutta artificiale per feste in cucina, decorazione da tavolo, decorazione per la casa",
+    "link": "https://amazon.it/dp/B0FKBS2FS9",
+    "image": "https://m.media-amazon.com/images/I/51fuPhsUsTL._SS210_.jpg",
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 7€</span><br><span style=\"color:red;font-weight:bold;\">AM: 13€</span>",
+    "asin": "B0FKBS2FS9",
+    "sourceChannel": "1432128848534962402"
+  },
+  {
+    "id": "1434135952019951736",
+    "timestamp": "2025-11-01T11:04:15.919Z",
+    "text": "Ftemglo Ghirlanda Natalizia 10m, Ghirlanda di Natale artificiale di Verde Bianco, Decorazione realistica a forma di ghirlanda di Natale per camera da letto, porta, parete, finestra, camino",
+    "link": "https://amazon.it/dp/B0FQV766W4",
+    "image": "https://m.media-amazon.com/images/I/61sChkgX5zL._SS210_.jpg",
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 7€</span><br><span style=\"color:red;font-weight:bold;\">AM: 13€</span>",
+    "asin": "B0FQV766W4",
     "sourceChannel": "1432128848534962402"
   },
   {
