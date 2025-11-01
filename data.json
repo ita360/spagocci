@@ -1230,16 +1230,6 @@
     "sourceChannel": "1432128848534962402"
   },
   {
-    "id": "1434168386459406458",
-    "timestamp": "2025-11-01T13:13:08.892Z",
-    "text": "Test Product 1 + some\"special'characters & stuff",
-    "link": "https://amazon.it/dp/ABCDEFGHIK",
-    "image": "https://ultraviner.com/icon-iphone.png",
-    "price": null,
-    "asin": "ABCDEFGHIK",
-    "sourceChannel": "1433444235851468980"
-  },
-  {
     "id": "1434168390624346164",
     "timestamp": "2025-11-01T13:13:09.885Z",
     "text": "Swiftctrl Custodia Compatibile con Nintendo Switch 2 (2025) – Borsa Rigida in PU con 10 Alloggiamenti per Giochi, Tasca Accessori, Interno Antiurto e Design Senza Pressione sugli Stick Joy-Con",
@@ -1472,16 +1462,6 @@
   {
     "id": "1434135451605794856",
     "timestamp": "2025-11-01T11:02:16.611Z",
-    "text": "Astaxantina - 120 Capsule Morbide con 160mg Olio di Astaxantina Naturale - Estratto Haematococcus Pluvialis - Antiossidanti Integratori Sistema Immunitario, Occhi, Pelle - Senza OGM - ALDOUS",
-    "link": "https://amazon.it/dp/B0FX9CTRWB",
-    "image": "https://m.media-amazon.com/images/I/41XWAkWphnL._SS210_.jpg",
-    "price": null,
-    "asin": "B0FX9CTRWB",
-    "sourceChannel": "1432128848534962402"
-  },
-  {
-    "id": "1434135450934579261",
-    "timestamp": "2025-11-01T11:02:16.451Z",
     "text": "Astaxantina - 120 Capsule Morbide con 160mg Olio di Astaxantina Naturale - Estratto Haematococcus Pluvialis - Antiossidanti Integratori Sistema Immunitario, Occhi, Pelle - Senza OGM - ALDOUS",
     "link": "https://amazon.it/dp/B0FX9CTRWB",
     "image": "https://m.media-amazon.com/images/I/41XWAkWphnL._SS210_.jpg",
