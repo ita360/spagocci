@@ -1220,16 +1220,6 @@
     "sourceChannel": "1432128848534962402"
   },
   {
-    "id": "1434137175183720480",
-    "timestamp": "2025-11-01T11:09:07.544Z",
-    "text": "Ruryxel Ghirlanda natalizia, 10 m, colore verde, bianco, decorazione natalizia, ghirlanda di abete artificiale come reale, con 30 archi, ghirlanda per scale, albero, camino e esterni",
-    "link": "https://amazon.it/dp/B0FN4FZP6Z",
-    "image": "https://m.media-amazon.com/images/I/61Vds1viiuL._SS210_.jpg",
-    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 6€</span><br><span style=\"color:red;font-weight:bold;\">AM: 11€</span>",
-    "asin": "B0FN4FZP6Z",
-    "sourceChannel": "1432128848534962402"
-  },
-  {
     "id": "1434168936097906780",
     "timestamp": "2025-11-01T13:15:19.936Z",
     "text": "24 decorazioni per albero di Natale, bastoncini di zucchero, albero di Natale, decorazioni natalizie (bastoncini di zucchero rossi con fiocchi)",
@@ -1267,6 +1257,76 @@
     "image": "https://m.media-amazon.com/images/I/31eYX03QLtL._SS210_.jpg",
     "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 4€</span><br><span style=\"color:red;font-weight:bold;\">AM: 7€</span>",
     "asin": "B0FPR64FL3",
+    "sourceChannel": "1432128848534962402"
+  },
+  {
+    "id": "1434170541157388539",
+    "timestamp": "2025-11-01T13:21:42.612Z",
+    "text": "TOMWOODCREATION Supporto da Parete Compatibile per Lego, Prodotto in Francia",
+    "link": "https://amazon.it/dp/B0FXSSG4F9",
+    "image": "https://m.media-amazon.com/images/I/51YhZW1D9eL._SS210_.jpg",
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 5€</span><br><span style=\"color:red;font-weight:bold;\">AM: 10€</span>",
+    "asin": "B0FXSSG4F9",
+    "sourceChannel": "1431551820509089842"
+  },
+  {
+    "id": "1434170819218505860",
+    "timestamp": "2025-11-01T13:22:48.907Z",
+    "text": "Scaldamani Ricaricabile USB, Scaldamani Elettrico 2 in 1, 4000 mAh,...",
+    "link": "https://www.amazon.it/dp/B0FMDTRP4F",
+    "image": "https://m.media-amazon.com/images/I/71qql18V28L.jpg_BO30,255,255,255_UF900,850_SR1910,1000,0,C_PIRIOFIVE-medium,BottomLeft,30,-20_ZJPHNwYW4gZm9yZWdyb3VuZD0iIzU2NTk1OSIgZm9udD0iQW1hem9uRW1iZXIgNTAiID45PC9zcGFuPg==,500,900,420,420,0,0_QL100_.jpg",
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 8€</span><br><span style=\"color:red;font-weight:bold;\">AM: 16€</span>",
+    "asin": "B0FMDTRP4F",
+    "sourceChannel": "1433444235851468980"
+  },
+  {
+    "id": "1434170793901817948",
+    "timestamp": "2025-11-01T13:22:42.871Z",
+    "text": "ECSiNG Pesa Valigia da Viaggio,Non Sono Necessarie Batterie-Digital...",
+    "link": "https://www.amazon.it/dp/B0FRM7W3QF",
+    "image": "https://m.media-amazon.com/images/I/61-NF8vCTML.jpg_BO30,255,255,255_UF900,850_SR1910,1000,0,C_PIRIOFIVE-medium,BottomLeft,30,-20_QL100_.jpg",
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 12€</span><br><span style=\"color:red;font-weight:bold;\">AM: 24€</span>",
+    "asin": "B0FRM7W3QF",
+    "sourceChannel": "1433444235851468980"
+  },
+  {
+    "id": "1434170792282689536",
+    "timestamp": "2025-11-01T13:22:42.485Z",
+    "text": "Huachuang Caricatore USB C tipo C da 67 W per MacBook Pro/Air 2020 ...",
+    "link": "https://www.amazon.it/dp/B0DNFBXJ7J",
+    "image": "https://m.media-amazon.com/images/I/41s9Cs6FO9L.jpg_BO30,255,255,255_UF900,850_SR1910,1000,0,C_QL100_.jpg",
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 11€</span><br><span style=\"color:red;font-weight:bold;\">AM: 22€</span>",
+    "asin": "B0DNFBXJ7J",
+    "sourceChannel": "1433444235851468980"
+  },
+  {
+    "id": "1434170722950840421",
+    "timestamp": "2025-11-01T13:22:25.955Z",
+    "text": "Lindt Praline DUBAI STYLE CHOCOLATE, Praline di Cioccolato al Latte...",
+    "link": "https://www.amazon.it/dp/B0FS2CLF1Q",
+    "image": "https://m.media-amazon.com/images/I/81hiyFrQAIL.jpg_BO30,255,255,255_UF900,850_SR1910,1000,0,C_PIRIOFOURANDHALF-medium,BottomLeft,30,-20_QL100_.jpg",
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 9€</span><br><span style=\"color:red;font-weight:bold;\">AM: 17€</span>",
+    "asin": "B0FS2CLF1Q",
+    "sourceChannel": "1433444235851468980"
+  },
+  {
+    "id": "1434170971216019587",
+    "timestamp": "2025-11-01T13:23:25.146Z",
+    "text": "ZNBOH 5 Pezzi Set Anelli Donna Argento Oro 18K Anello Zirconia Fedine Fidanzamento Sottili Impilabili Waterproof Fedi Nuziali Mignolo Pollice Dito Medio Indice Anelli Regalo Gioielli Ragazze",
+    "link": "https://amazon.it/dp/B0FYG1VXZS",
+    "image": "https://m.media-amazon.com/images/I/21sguWnp2sL._SS210_.jpg",
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 8€</span><br><span style=\"color:red;font-weight:bold;\">AM: 15€</span>",
+    "asin": "B0FYG1VXZS",
+    "sourceChannel": "1432128848534962402"
+  },
+  {
+    "id": "1434137175183720480",
+    "timestamp": "2025-11-01T11:09:07.544Z",
+    "text": "Ruryxel Ghirlanda natalizia, 10 m, colore verde, bianco, decorazione natalizia, ghirlanda di abete artificiale come reale, con 30 archi, ghirlanda per scale, albero, camino e esterni",
+    "link": "https://amazon.it/dp/B0FN4FZP6Z",
+    "image": "https://m.media-amazon.com/images/I/61Vds1viiuL._SS210_.jpg",
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 6€</span><br><span style=\"color:red;font-weight:bold;\">AM: 11€</span>",
+    "asin": "B0FN4FZP6Z",
     "sourceChannel": "1432128848534962402"
   },
   {
@@ -1478,15 +1538,5 @@
     "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 8€</span><br><span style=\"color:red;font-weight:bold;\">AM: 15€</span>",
     "asin": "B0CKHHDTR6",
     "sourceChannel": "1432128848534962402"
-  },
-  {
-    "id": "1434170541157388539",
-    "timestamp": "2025-11-01T13:21:42.612Z",
-    "text": "TOMWOODCREATION Supporto da Parete Compatibile per Lego, Prodotto in Francia",
-    "link": "https://amazon.it/dp/B0FXSSG4F9",
-    "image": "https://m.media-amazon.com/images/I/51YhZW1D9eL._SS210_.jpg",
-    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 5€</span><br><span style=\"color:red;font-weight:bold;\">AM: 10€</span>",
-    "asin": "B0FXSSG4F9",
-    "sourceChannel": "1431551820509089842"
   }
 ]
