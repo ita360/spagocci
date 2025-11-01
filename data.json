@@ -1538,5 +1538,35 @@
     "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 8€</span><br><span style=\"color:red;font-weight:bold;\">AM: 15€</span>",
     "asin": "B0CKHHDTR6",
     "sourceChannel": "1432128848534962402"
+  },
+  {
+    "id": "1434169303791566942",
+    "timestamp": "2025-11-01T13:16:47.601Z",
+    "text": "VGECEE Giocattolo di Natale per Cani, Gioco Interattivo per Cani Gi...",
+    "link": "https://www.amazon.it/dp/B0FNR98H39",
+    "image": "https://m.media-amazon.com/images/I/71YLf2XbQAL.jpg_BO30,255,255,255_UF900,850_SR1910,1000,0,C_QL100_.jpg",
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 6€</span><br><span style=\"color:red;font-weight:bold;\">AM: 12€</span>",
+    "asin": "B0FNR98H39",
+    "sourceChannel": "1433444235851468980"
+  },
+  {
+    "id": "1434168388938104964",
+    "timestamp": "2025-11-01T13:13:09.483Z",
+    "text": "Swiftctrl Custodia Compatibile con Nintendo Switch 2 (2025) – Borsa Rigida in PU con 10 Alloggiamenti per Giochi, Tasca Accessori, Interno Antiurto e Design Senza Pressione sugli Stick Joy-Con",
+    "link": "https://amazon.it/dp/B0FHWKVP7T",
+    "image": "https://m.media-amazon.com/images/I/413ZaTOq+tL._SS210_.jpg",
+    "price": null,
+    "asin": "B0FHWKVP7T",
+    "sourceChannel": "1432128848534962402"
+  },
+  {
+    "id": "1434168935040811089",
+    "timestamp": "2025-11-01T13:15:19.684Z",
+    "text": "24 decorazioni per albero di Natale, bastoncini di zucchero, albero di Natale, decorazioni natalizie (bastoncini di zucchero rossi con fiocchi)",
+    "link": "https://amazon.it/dp/B0FM7HBBL7",
+    "image": "https://m.media-amazon.com/images/I/51oz6Pq85-L._SS210_.jpg",
+    "price": null,
+    "asin": "B0FM7HBBL7",
+    "sourceChannel": "1431551820509089842"
   }
 ]
