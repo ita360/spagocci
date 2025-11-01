@@ -620,16 +620,6 @@
     "sourceChannel": "1432128848534962402"
   },
   {
-    "id": "1434136504271110175",
-    "timestamp": "2025-11-01T11:06:27.586Z",
-    "text": "LYCXAMES 15 ganci adesivi, ganci autoadesivi in acciaio inox, piccoli ganci autoadesivi da parete senza foratura, gancio da cucina per bagno, cucina, guardaroba (nero)",
-    "link": "https://amazon.it/dp/B0FLX8Q6X4",
-    "image": "https://m.media-amazon.com/images/I/419sqZtEWIL._SS210_.jpg",
-    "price": null,
-    "asin": "B0FLX8Q6X4",
-    "sourceChannel": "1432128848534962402"
-  },
-  {
     "id": "1434138869300990094",
     "timestamp": "2025-11-01T11:15:51.453Z",
     "text": "BIGRD Termos Caffè Borraccia Termica con Cannuccia 1.2 litri,Tazza Termica da Viaggio Water Bottle Coperchio Antiperdita Acciaio Inox,Travel Mug Senza BPA",
@@ -1397,6 +1387,26 @@
     "image": "https://m.media-amazon.com/images/I/41biZzOYd1L._SS210_.jpg",
     "price": null,
     "asin": "B0FWBR7MY6",
+    "sourceChannel": "1432128848534962402"
+  },
+  {
+    "id": "1434142546485051536",
+    "timestamp": "2025-11-01T11:30:28.162Z",
+    "text": "Betrynidil Portachiave Ragazza Lettera, Portachiavi Donna Iniziale, Portachiavi Lettera E Farfalla per Regalo Donna, Compleanno, Decorazione Della Zaino Borsa Scuola",
+    "link": "https://amazon.it/dp/B0FPR686C6",
+    "image": "https://m.media-amazon.com/images/I/31Rv1wLcQML._SS210_.jpg",
+    "price": null,
+    "asin": "B0FPR686C6",
+    "sourceChannel": "1432128848534962402"
+  },
+  {
+    "id": "1434136504271110175",
+    "timestamp": "2025-11-01T11:06:27.586Z",
+    "text": "LYCXAMES 15 ganci adesivi, ganci autoadesivi in acciaio inox, piccoli ganci autoadesivi da parete senza foratura, gancio da cucina per bagno, cucina, guardaroba (nero)",
+    "link": "https://amazon.it/dp/B0FLX8Q6X4",
+    "image": "https://m.media-amazon.com/images/I/419sqZtEWIL._SS210_.jpg",
+    "price": null,
+    "asin": "B0FLX8Q6X4",
     "sourceChannel": "1432128848534962402"
   },
   {
