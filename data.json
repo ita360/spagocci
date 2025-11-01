@@ -1240,26 +1240,6 @@
     "sourceChannel": "1432128848534962402"
   },
   {
-    "id": "1434136132672688198",
-    "timestamp": "2025-11-01T11:04:58.990Z",
-    "text": "Tatxmalv Porta Candela Natalizio Candele Decorative, Portacandele per Corona Avvento, Portacandela Natalizio con Base in Legno e Decorazioni in Metallo, Decorazioni Natalizia Creativa",
-    "link": "https://amazon.it/dp/B0FN44BKCL",
-    "image": "https://m.media-amazon.com/images/I/51PaKRaphrL._SL500_.jpg",
-    "price": null,
-    "asin": "B0FN44BKCL",
-    "sourceChannel": "1432128848534962402"
-  },
-  {
-    "id": "1434135952019951736",
-    "timestamp": "2025-11-01T11:04:15.919Z",
-    "text": "Ftemglo Ghirlanda Natalizia 10m, Ghirlanda di Natale artificiale di Verde Bianco, Decorazione realistica a forma di ghirlanda di Natale per camera da letto, porta, parete, finestra, camino",
-    "link": "https://amazon.it/dp/B0FQV766W4",
-    "image": "https://m.media-amazon.com/images/I/61sChkgX5zL._SS210_.jpg",
-    "price": null,
-    "asin": "B0FQV766W4",
-    "sourceChannel": "1432128848534962402"
-  },
-  {
     "id": "1434136569551257612",
     "timestamp": "2025-11-01T11:06:43.150Z",
     "text": "BLOGLOER Riscaldamento elettrico, ventilatore Riscaldamento elettrico",
@@ -1368,6 +1348,26 @@
     "price": null,
     "asin": "B0FWCHGCM8",
     "sourceChannel": "1433444235851468980"
+  },
+  {
+    "id": "1434136132672688198",
+    "timestamp": "2025-11-01T11:04:58.990Z",
+    "text": "Tatxmalv Porta Candela Natalizio Candele Decorative, Portacandele per Corona Avvento, Portacandela Natalizio con Base in Legno e Decorazioni in Metallo, Decorazioni Natalizia Creativa",
+    "link": "https://amazon.it/dp/B0FN44BKCL",
+    "image": "https://m.media-amazon.com/images/I/51PaKRaphrL._SL500_.jpg",
+    "price": null,
+    "asin": "B0FN44BKCL",
+    "sourceChannel": "1432128848534962402"
+  },
+  {
+    "id": "1434135952019951736",
+    "timestamp": "2025-11-01T11:04:15.919Z",
+    "text": "Ftemglo Ghirlanda Natalizia 10m, Ghirlanda di Natale artificiale di Verde Bianco, Decorazione realistica a forma di ghirlanda di Natale per camera da letto, porta, parete, finestra, camino",
+    "link": "https://amazon.it/dp/B0FQV766W4",
+    "image": "https://m.media-amazon.com/images/I/61sChkgX5zL._SS210_.jpg",
+    "price": null,
+    "asin": "B0FQV766W4",
+    "sourceChannel": "1432128848534962402"
   },
   {
     "id": "1434135731307286722",
