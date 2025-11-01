@@ -140,26 +140,6 @@
     "sourceChannel": "1432128848534962402"
   },
   {
-    "id": "1434137114198671441",
-    "timestamp": "2025-11-01T11:08:53.004Z",
-    "text": "Ftemglo Accappatoio Neonato, Asciugamano da Bagno con Cappuccio, Corallo Fleece, Materiale Morbido, Super Assorbente, Asciugamano Neonato Bagnetto",
-    "link": "https://amazon.it/dp/B0FR8CM4V4",
-    "image": "https://m.media-amazon.com/images/I/41YYnnYuaGL._SS210_.jpg",
-    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 5€</span><br><span style=\"color:red;font-weight:bold;\">AM: 9€</span>",
-    "asin": "B0FR8CM4V4",
-    "sourceChannel": "1432128848534962402"
-  },
-  {
-    "id": "1434136853778403440",
-    "timestamp": "2025-11-01T11:07:50.915Z",
-    "text": "Vestiti per Bambole Natale 3pcs,17cm Babbo Natale Vestiti Peluche,Natale Vestiti Bambole,Vestiti per Bambola di Peluche,Natale Costume Accessori,Natale Regali per Bambini e Bambine(no doll)",
-    "link": "https://amazon.it/dp/B0FR4N45MH",
-    "image": "https://m.media-amazon.com/images/I/515NDfd0VfL._SS210_.jpg",
-    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 8€</span><br><span style=\"color:red;font-weight:bold;\">AM: 16€</span>",
-    "asin": "B0FR4N45MH",
-    "sourceChannel": "1432128848534962402"
-  },
-  {
     "id": "1434137647172812881",
     "timestamp": "2025-11-01T11:11:00.075Z",
     "text": "Weishuo Stivaletti Pioggia Bambino Leggeri Impermeabili Scarpe da Pioggia con Manici da Tirare Facili da Indossare Stivali di Gomma Unisex-Bambini Ragazzi e Ragazze",
@@ -1380,6 +1360,66 @@
     "sourceChannel": "1432128848534962402"
   },
   {
+    "id": "1434154663548289084",
+    "timestamp": "2025-11-01T12:18:37.095Z",
+    "text": "VGECEE Presa di protezione antipioggia in acciaio inox, 9, 2 x 9 cm, protezione per prese esterne, copertura in acciaio inox, per il bagno, la toilette, per esterni",
+    "link": "https://amazon.it/dp/B0FKFH8V22",
+    "image": "https://m.media-amazon.com/images/I/41v7M-0DBrL._SS210_.jpg",
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 6€</span><br><span style=\"color:red;font-weight:bold;\">AM: 11€</span>",
+    "asin": "B0FKFH8V22",
+    "sourceChannel": "1431551820509089842"
+  },
+  {
+    "id": "1434154663472660551",
+    "timestamp": "2025-11-01T12:18:37.077Z",
+    "text": "VGECEE Presa di protezione antipioggia in acciaio inox, 9, 2 x 9 cm, protezione per prese esterne, copertura in acciaio inox, per il bagno, la toilette, per esterni",
+    "link": "https://amazon.it/dp/B0FKFH8V22",
+    "image": "https://m.media-amazon.com/images/I/41v7M-0DBrL._SS210_.jpg",
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 6€</span><br><span style=\"color:red;font-weight:bold;\">AM: 11€</span>",
+    "asin": "B0FKFH8V22",
+    "sourceChannel": "1431551820509089842"
+  },
+  {
+    "id": "1434155063827365908",
+    "timestamp": "2025-11-01T12:20:12.529Z",
+    "text": "Betrynidil Portachiave Ragazza Lettera, Portachiavi Lettera C, Farfalla Portachiavi Donna Iniziale per Regalo Donna, Compleanno, Decorazione Della Zaino Borsa Scuola",
+    "link": "https://amazon.it/dp/B0FPR546FP",
+    "image": "https://m.media-amazon.com/images/I/31mci4svxTL._SS210_.jpg",
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 4€</span><br><span style=\"color:red;font-weight:bold;\">AM: 7€</span>",
+    "asin": "B0FPR546FP",
+    "sourceChannel": "1432128848534962402"
+  },
+  {
+    "id": "1434155063684763678",
+    "timestamp": "2025-11-01T12:20:12.495Z",
+    "text": "Betrynidil Portachiave Ragazza Lettera, Portachiavi Lettera C, Farfalla Portachiavi Donna Iniziale per Regalo Donna, Compleanno, Decorazione Della Zaino Borsa Scuola",
+    "link": "https://amazon.it/dp/B0FPR546FP",
+    "image": "https://m.media-amazon.com/images/I/31mci4svxTL._SS210_.jpg",
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 4€</span><br><span style=\"color:red;font-weight:bold;\">AM: 7€</span>",
+    "asin": "B0FPR546FP",
+    "sourceChannel": "1432128848534962402"
+  },
+  {
+    "id": "1434137114198671441",
+    "timestamp": "2025-11-01T11:08:53.004Z",
+    "text": "Ftemglo Accappatoio Neonato, Asciugamano da Bagno con Cappuccio, Corallo Fleece, Materiale Morbido, Super Assorbente, Asciugamano Neonato Bagnetto",
+    "link": "https://amazon.it/dp/B0FR8CM4V4",
+    "image": "https://m.media-amazon.com/images/I/41YYnnYuaGL._SS210_.jpg",
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 5€</span><br><span style=\"color:red;font-weight:bold;\">AM: 9€</span>",
+    "asin": "B0FR8CM4V4",
+    "sourceChannel": "1432128848534962402"
+  },
+  {
+    "id": "1434136853778403440",
+    "timestamp": "2025-11-01T11:07:50.915Z",
+    "text": "Vestiti per Bambole Natale 3pcs,17cm Babbo Natale Vestiti Peluche,Natale Vestiti Bambole,Vestiti per Bambola di Peluche,Natale Costume Accessori,Natale Regali per Bambini e Bambine(no doll)",
+    "link": "https://amazon.it/dp/B0FR4N45MH",
+    "image": "https://m.media-amazon.com/images/I/515NDfd0VfL._SS210_.jpg",
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 8€</span><br><span style=\"color:red;font-weight:bold;\">AM: 16€</span>",
+    "asin": "B0FR4N45MH",
+    "sourceChannel": "1432128848534962402"
+  },
+  {
     "id": "1434136819259150358",
     "timestamp": "2025-11-01T11:07:42.685Z",
     "text": "SternSinn Alimentatore Universale Notebook, Caricatore Universale PC alimentatores Regolabile 3A 3-24V, Alimentatore Variabile con Adattatori per Elettronica, Router, Luci LED, Fai da Te e Riparazioni",
@@ -1570,23 +1610,23 @@
     "sourceChannel": "1432128848534962402"
   },
   {
-    "id": "1434154663548289084",
-    "timestamp": "2025-11-01T12:18:37.095Z",
-    "text": "VGECEE Presa di protezione antipioggia in acciaio inox, 9, 2 x 9 cm, protezione per prese esterne, copertura in acciaio inox, per il bagno, la toilette, per esterni",
-    "link": "https://amazon.it/dp/B0FKFH8V22",
-    "image": "https://m.media-amazon.com/images/I/41v7M-0DBrL._SS210_.jpg",
-    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 6€</span><br><span style=\"color:red;font-weight:bold;\">AM: 11€</span>",
-    "asin": "B0FKFH8V22",
+    "id": "1434155402358034572",
+    "timestamp": "2025-11-01T12:21:33.241Z",
+    "text": "Kssvzz Spider Walkie-Talkie Bambini, Giochi Regalo Bambino 3 4 5 6 7 8 9 10 Anni, Woki Toki Gioco da Esterno Bambini, Compleanno Natale Regalo Bimbo 3-12 Anni Maschio",
+    "link": "https://amazon.it/dp/B0FLQ5RGZJ",
+    "image": "https://m.media-amazon.com/images/I/51b3UsJho2L._SS210_.jpg",
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 12€</span><br><span style=\"color:red;font-weight:bold;\">AM: 23€</span>",
+    "asin": "B0FLQ5RGZJ",
     "sourceChannel": "1431551820509089842"
   },
   {
-    "id": "1434154663472660551",
-    "timestamp": "2025-11-01T12:18:37.077Z",
-    "text": "VGECEE Presa di protezione antipioggia in acciaio inox, 9, 2 x 9 cm, protezione per prese esterne, copertura in acciaio inox, per il bagno, la toilette, per esterni",
-    "link": "https://amazon.it/dp/B0FKFH8V22",
-    "image": "https://m.media-amazon.com/images/I/41v7M-0DBrL._SS210_.jpg",
-    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 6€</span><br><span style=\"color:red;font-weight:bold;\">AM: 11€</span>",
-    "asin": "B0FKFH8V22",
+    "id": "1434155401816969236",
+    "timestamp": "2025-11-01T12:21:33.112Z",
+    "text": "Kssvzz Spider Walkie-Talkie Bambini, Giochi Regalo Bambino 3 4 5 6 7 8 9 10 Anni, Woki Toki Gioco da Esterno Bambini, Compleanno Natale Regalo Bimbo 3-12 Anni Maschio",
+    "link": "https://amazon.it/dp/B0FLQ5RGZJ",
+    "image": "https://m.media-amazon.com/images/I/51b3UsJho2L._SS210_.jpg",
+    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 12€</span><br><span style=\"color:red;font-weight:bold;\">AM: 23€</span>",
+    "asin": "B0FLQ5RGZJ",
     "sourceChannel": "1431551820509089842"
   }
 ]
