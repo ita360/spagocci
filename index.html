@@ -1,4 +1,3 @@
-<!-- /index.html (vetrina come colonna normale) -->
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -90,50 +89,30 @@ img[loading="lazy"] {content-visibility:auto;}
   </div>
 </div>
 
-<!-- === AUDIO === -->
+<!-- === AUDIO (essenziali) === -->
 <audio id="audioGenerale" src="https://raw.githubusercontent.com/spagocci/recensioni/main/tutti.mp3" preload="auto"></audio>
 <audio id="audioPochiSecondi" src="https://raw.githubusercontent.com/spagocci/recensioni/main/perte.mp3" preload="auto"></audio>
 <audio id="audioAttivate" src="https://raw.githubusercontent.com/spagocci/recensioni/main/attivate.mp3" preload="auto"></audio>
 <audio id="audioDisattivate" src="https://raw.githubusercontent.com/spagocci/recensioni/main/disattivate.mp3" preload="auto"></audio>
-<audio id="audioAggAttivato" src="https://raw.githubusercontent.com/spagocci/recensioni/main/aggattivato.mp3" preload="auto"></audio>
-<audio id="audioAggDisattivato" src="https://raw.githubusercontent.com/spagocci/recensioni/main/aggdisattivato.mp3" preload="auto"></audio>
-<audio id="audioValle" src="https://raw.githubusercontent.com/spagocci/recensioni/main/valledilacrime.mp3" preload="auto"></audio>
 
-<!-- === COLONNE (vetrina normale) === -->
+<!-- === COLONNE === -->
 <div class="row">
   <div class="column" id="canaleVetrina"><h2>#vetrina</h2><div class="contenuto" id="contenutoVetrina"></div></div>
   <div class="column" id="canaleSinistra"><h2>#tutti</h2><div class="contenuto" id="contenutoSinistra"></div></div>
   <div class="column" id="canaleFiltrati"><h2>#filtrati</h2><div class="contenuto" id="contenutoFiltrati"></div></div>
-  <div class="column" id="canaleDestra"><h2>#perpochisecondi</h2><div class="contenuto" id="contenutoDestra"></div></div>
+  <div class="column" id="canalePerte"><h2>#perte</h2><div class="contenuto" id="contenutoPerte"></div></div>
 </div>
-
-<button id="toggleRefresh">⏸ Ferma aggiornamento</button>
-<button id="btnValle">😭 Valle Di Lacrime</button>
 
 <!-- === SCRIPT PRINCIPALE === -->
 <script>
 window.onload = () => {
-  /* === REFRESH === */
-  let refreshActive = true;
-  const toggleButton = document.getElementById("toggleRefresh");
-  const audioAggAttivato = document.getElementById("audioAggAttivato");
-  const audioAggDisattivato = document.getElementById("audioAggDisattivato");
-  toggleButton.addEventListener("click", async () => {
-    refreshActive = !refreshActive;
-    toggleButton.textContent = refreshActive ? "⏸ Ferma aggiornamento" : "▶️ Riprendi aggiornamento";
-    try { if (refreshActive) await audioAggAttivato.play(); else await audioAggDisattivato.play(); } catch(e) {}
-  });
-
   /* === AUDIO NOTIFICHE === */
   let audioAttivo = localStorage.getItem('audioAttivo') === 'true';
   const toggleAudioBtn = document.getElementById('toggleAudio');
   const audioAttivate = document.getElementById('audioAttivate');
   const audioDisattivate = document.getElementById('audioDisattivate');
-  const audioValle = document.getElementById('audioValle');
-  const btnValle = document.getElementById('btnValle');
   function aggiornaBottoneAudio(){ toggleAudioBtn.textContent = audioAttivo ? "🔊Audio" : "🔇Audio"; }
   aggiornaBottoneAudio();
-  btnValle.addEventListener('click', async ()=>{ try{ await audioValle.play(); }catch(e){} });
   toggleAudioBtn.addEventListener('click', async () => {
     audioAttivo = !audioAttivo; localStorage.setItem('audioAttivo', audioAttivo); aggiornaBottoneAudio();
     try { if (audioAttivo) await audioAttivate.play(); else await audioDisattivate.play(); } catch(e){}
@@ -143,6 +122,9 @@ window.onload = () => {
   const conteggioNascosti = document.getElementById('conteggioNascosti');
   let messaggiVisualizzati = new Set(JSON.parse(localStorage.getItem('messaggiVisualizzati') || '[]'));
 
+  // canali che vanno nella colonna "perte"
+  const PERTE_CHANNELS = new Set(['1430829927175032954','1430131174197690479']); // <- aggiunto
+
   function caricaCatalogo(){
     const t = Date.now();
     return fetch(`https://spagocci.github.io/recensioni/data.json?t=${t}`)
@@ -150,10 +132,10 @@ window.onload = () => {
       .then(data => {
         data.sort((a,b)=> new Date(b.timestamp) - new Date(a.timestamp));
         const s = document.getElementById('contenutoSinistra');
-        const d = document.getElementById('contenutoDestra');
+        const p = document.getElementById('contenutoPerte');
         const f = document.getElementById('contenutoFiltrati');
         const v = document.getElementById('contenutoVetrina');
-        s.innerHTML = d.innerHTML = f.innerHTML = v.innerHTML = '';
+        s.innerHTML = p.innerHTML = f.innerHTML = v.innerHTML = '';
 
         data.forEach(item => {
           if (!messaggiVisualizzati.has(item.id)) {
@@ -175,24 +157,30 @@ window.onload = () => {
               <small>${new Date(item.timestamp).toLocaleString()}</small>
             </div>`;
 
-          if (item.sourceChannel === '1432128848534962402') s.appendChild(div);
-          else if (item.sourceChannel === '1430829927175032954') d.appendChild(div);
-          else if (item.sourceChannel === '1431551820509089842') f.appendChild(div);
-          else if (item.sourceChannel === '1433444235851468980') v.appendChild(div); // Vetrina
+          if (item.sourceChannel === '1432128848534962402') {
+            s.appendChild(div);
+          } else if (PERTE_CHANNELS.has(item.sourceChannel)) {
+            p.appendChild(div);
+          } else if (item.sourceChannel === '1431551820509089842') {
+            f.appendChild(div);
+          } else if (item.sourceChannel === '1433444235851468980') {
+            v.appendChild(div);
+          }
         });
 
         localStorage.setItem('messaggiVisualizzati', JSON.stringify([...messaggiVisualizzati]));
         applicaFiltri();
       })
       .catch(err => {
-        ['contenutoSinistra','contenutoDestra','contenutoFiltrati','contenutoVetrina']
+        ['contenutoSinistra','contenutoPerte','contenutoFiltrati','contenutoVetrina']
           .forEach(id => { document.getElementById(id).innerHTML = `<p style="color:red;">❌ ${err.message}</p>`; });
       });
   }
 
+  // aggiornamento periodico fisso
   (async function aggiornaCatalogoLoop(){
     while(true){
-      if (refreshActive) { await caricaCatalogo(); }
+      await caricaCatalogo();
       await new Promise(r => setTimeout(r, 25000));
     }
   })();
