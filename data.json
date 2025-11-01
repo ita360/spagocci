@@ -800,16 +800,6 @@
     "sourceChannel": "1432128848534962402"
   },
   {
-    "id": "1434140200858292244",
-    "timestamp": "2025-11-01T11:21:08.921Z",
-    "text": "FUGLUS bracciale magnetico, Braccialetto magnetico in rame da donna, bracciale rame donna, bracciale, bracciali donna, bracciale rame uomo, bracciale in rame, gioielli uomo (oro)",
-    "link": "https://amazon.it/dp/B0FT2SGMNT",
-    "image": "https://m.media-amazon.com/images/I/31LlIND7aRL._SS210_.jpg",
-    "price": "<span style=\"color:green;font-weight:bold;font-size:1.5em;\">Mio: 4€</span><br><span style=\"color:red;font-weight:bold;\">AM: 8€</span>",
-    "asin": "B0FT2SGMNT",
-    "sourceChannel": "1432128848534962402"
-  },
-  {
     "id": "1434140198035263599",
     "timestamp": "2025-11-01T11:21:08.248Z",
     "text": "Skön TattöoPro - Crema Idratante Viso e Corpo Tatuaggi, Lozione Ravvivante del Colore con Acido Ialuronico e Niacinamide - Calma i Rossori e Lenisce le Irritazioni, per Tutti i Tipi di Pelle, 100ml",
@@ -1250,26 +1240,6 @@
     "sourceChannel": "1432128848534962402"
   },
   {
-    "id": "1434168197921247324",
-    "timestamp": "2025-11-01T13:12:23.941Z",
-    "text": "BORHEA Podo Spa Crema Cherolitica Piedi 200ml con Urea, Acido Salicilico ed Estratto di Thuya – Crema Piedi Secchi e Talloni Screpolati, Azione Cheratolitica e Protettiva",
-    "link": "https://amazon.it/dp/B0FRTBG9X3",
-    "image": "https://m.media-amazon.com/images/I/216rZpLCUHL._SS210_.jpg",
-    "price": null,
-    "asin": "B0FRTBG9X3",
-    "sourceChannel": "1432128848534962402"
-  },
-  {
-    "id": "1434168197833297946",
-    "timestamp": "2025-11-01T13:12:23.920Z",
-    "text": "BORHEA Podo Spa Crema Cherolitica Piedi 200ml con Urea, Acido Salicilico ed Estratto di Thuya – Crema Piedi Secchi e Talloni Screpolati, Azione Cheratolitica e Protettiva",
-    "link": "https://amazon.it/dp/B0FRTBG9X3",
-    "image": "https://m.media-amazon.com/images/I/216rZpLCUHL._SS210_.jpg",
-    "price": null,
-    "asin": "B0FRTBG9X3",
-    "sourceChannel": "1432128848534962402"
-  },
-  {
     "id": "1434137175183720480",
     "timestamp": "2025-11-01T11:09:07.544Z",
     "text": "Ruryxel Ghirlanda natalizia, 10 m, colore verde, bianco, decorazione natalizia, ghirlanda di abete artificiale come reale, con 30 archi, ghirlanda per scale, albero, camino e esterni",
@@ -1298,6 +1268,36 @@
     "price": null,
     "asin": "B0FR4N45MH",
     "sourceChannel": "1432128848534962402"
+  },
+  {
+    "id": "1434168936097906780",
+    "timestamp": "2025-11-01T13:15:19.936Z",
+    "text": "24 decorazioni per albero di Natale, bastoncini di zucchero, albero di Natale, decorazioni natalizie (bastoncini di zucchero rossi con fiocchi)",
+    "link": "https://amazon.it/dp/B0FM7HBBL7",
+    "image": "https://m.media-amazon.com/images/I/51oz6Pq85-L._SS210_.jpg",
+    "price": null,
+    "asin": "B0FM7HBBL7",
+    "sourceChannel": "1431551820509089842"
+  },
+  {
+    "id": "1434168935040811089",
+    "timestamp": "2025-11-01T13:15:19.684Z",
+    "text": "24 decorazioni per albero di Natale, bastoncini di zucchero, albero di Natale, decorazioni natalizie (bastoncini di zucchero rossi con fiocchi)",
+    "link": "https://amazon.it/dp/B0FM7HBBL7",
+    "image": "https://m.media-amazon.com/images/I/51oz6Pq85-L._SS210_.jpg",
+    "price": null,
+    "asin": "B0FM7HBBL7",
+    "sourceChannel": "1431551820509089842"
+  },
+  {
+    "id": "1434169303791566942",
+    "timestamp": "2025-11-01T13:16:47.601Z",
+    "text": "VGECEE Giocattolo di Natale per Cani, Gioco Interattivo per Cani Gi...",
+    "link": "https://www.amazon.it/dp/B0FNR98H39",
+    "image": "https://m.media-amazon.com/images/I/71YLf2XbQAL.jpg_BO30,255,255,255_UF900,850_SR1910,1000,0,C_QL100_.jpg",
+    "price": null,
+    "asin": "B0FNR98H39",
+    "sourceChannel": "1433444235851468980"
   },
   {
     "id": "1434136819259150358",
@@ -1470,6 +1470,16 @@
     "sourceChannel": "1432128848534962402"
   },
   {
+    "id": "1434135450934579261",
+    "timestamp": "2025-11-01T11:02:16.451Z",
+    "text": "Astaxantina - 120 Capsule Morbide con 160mg Olio di Astaxantina Naturale - Estratto Haematococcus Pluvialis - Antiossidanti Integratori Sistema Immunitario, Occhi, Pelle - Senza OGM - ALDOUS",
+    "link": "https://amazon.it/dp/B0FX9CTRWB",
+    "image": "https://m.media-amazon.com/images/I/41XWAkWphnL._SS210_.jpg",
+    "price": null,
+    "asin": "B0FX9CTRWB",
+    "sourceChannel": "1432128848534962402"
+  },
+  {
     "id": "1434135094099968031",
     "timestamp": "2025-11-01T11:00:51.375Z",
     "text": "FINETOO Confezione da 5 Tanga da Donna in Cotone con Vita Bassa e Fascia Sportiva Confezione Multipla S-XL",
@@ -1478,45 +1488,5 @@
     "price": null,
     "asin": "B0CKHHDTR6",
     "sourceChannel": "1432128848534962402"
-  },
-  {
-    "id": "1434168937674706985",
-    "timestamp": "2025-11-01T13:15:20.312Z",
-    "text": "Rougj Full Color Rossetto + Matita Labbra Waterproof - Rossetto cremoso Nude Rose, idratante e a lunga durata - Matita labbra Nude Rose, precisa e a prova di sbavature - Made in Italy",
-    "link": "https://amazon.it/dp/B0FRS7SV35",
-    "image": "https://m.media-amazon.com/images/I/21patfR3SGL._SS210_.jpg",
-    "price": null,
-    "asin": "B0FRS7SV35",
-    "sourceChannel": "1431551820509089842"
-  },
-  {
-    "id": "1434168937624375407",
-    "timestamp": "2025-11-01T13:15:20.300Z",
-    "text": "Rougj Full Color Rossetto + Matita Labbra Waterproof - Rossetto cremoso Nude Rose, idratante e a lunga durata - Matita labbra Nude Rose, precisa e a prova di sbavature - Made in Italy",
-    "link": "https://amazon.it/dp/B0FRS7SV35",
-    "image": "https://m.media-amazon.com/images/I/21patfR3SGL._SS210_.jpg",
-    "price": null,
-    "asin": "B0FRS7SV35",
-    "sourceChannel": "1431551820509089842"
-  },
-  {
-    "id": "1434168936097906780",
-    "timestamp": "2025-11-01T13:15:19.936Z",
-    "text": "24 decorazioni per albero di Natale, bastoncini di zucchero, albero di Natale, decorazioni natalizie (bastoncini di zucchero rossi con fiocchi)",
-    "link": "https://amazon.it/dp/B0FM7HBBL7",
-    "image": "https://m.media-amazon.com/images/I/51oz6Pq85-L._SS210_.jpg",
-    "price": null,
-    "asin": "B0FM7HBBL7",
-    "sourceChannel": "1431551820509089842"
-  },
-  {
-    "id": "1434168935040811089",
-    "timestamp": "2025-11-01T13:15:19.684Z",
-    "text": "24 decorazioni per albero di Natale, bastoncini di zucchero, albero di Natale, decorazioni natalizie (bastoncini di zucchero rossi con fiocchi)",
-    "link": "https://amazon.it/dp/B0FM7HBBL7",
-    "image": "https://m.media-amazon.com/images/I/51oz6Pq85-L._SS210_.jpg",
-    "price": null,
-    "asin": "B0FM7HBBL7",
-    "sourceChannel": "1431551820509089842"
   }
 ]
